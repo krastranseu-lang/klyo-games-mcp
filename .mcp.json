@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "klyo-games": {
+      "type": "http",
+      "url": "https://panel.klyo.pl/mcp?profil=gry"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "klyo",
+  "owner": {
+    "name": "klyo",
+    "url": "https://klyo.pl"
+  },
+  "metadata": {
+    "description": "klyo plugins for game developers: publish and manage HTML5 browser games on games.klyo.pl from Claude Code.",
+    "version": "1.1.2"
+  },
+  "plugins": [
+    {
+      "name": "klyo-games",
+      "source": "./",
+      "description": "Publish HTML5 browser games from Claude Code: hosted klyo MCP server plus a publishing skill. Own address, leaderboards, cloud saves, clips, stats; you keep the rights.",
+      "version": "1.1.2",
+      "homepage": "https://games.klyo.pl/mcp/",
+      "category": "development",
+      "keywords": [
+        "html5-games",
+        "game-publishing",
+        "game-hosting",
+        "mcp"
+      ]
+    }
+  ]
+}

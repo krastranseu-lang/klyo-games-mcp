@@ -1,9 +1,13 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "pl.klyo/games",
-  "title": "klyo games — publish HTML5 browser games",
   "description": "Publish HTML5 browser games from your AI assistant: own address, live stats, 70% ad share.",
-  "version": "1.1.0",
+  "title": "klyo games: publish HTML5 browser games",
+  "repository": {
+    "url": "https://github.com/krastranseu-lang/klyo-games-mcp",
+    "source": "github"
+  },
+  "version": "1.1.2",
   "websiteUrl": "https://games.klyo.pl/mcp/",
   "icons": [
     {

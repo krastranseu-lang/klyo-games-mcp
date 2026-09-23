@@ -1,0 +1,9 @@
+{
+  "name": "klyo-games",
+  "description": "Publish, update and fix HTML5 browser games on klyo games from Claude Code: the hosted klyo MCP server (own g-<name>.klyo.pl address, leaderboards, cloud saves, player clips, stats) and a skill that walks the agent through build, local test, upload and release.",
+  "version": "1.1.2",
+  "author": { "name": "klyo", "url": "https://klyo.pl" },
+  "homepage": "https://games.klyo.pl/mcp/",
+  "repository": "https://github.com/krastranseu-lang/klyo-games-mcp",
+  "keywords": ["html5-games", "browser-games", "game-publishing", "game-hosting", "leaderboard", "mcp", "gamedev"]
+}

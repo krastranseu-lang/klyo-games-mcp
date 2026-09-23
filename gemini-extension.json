@@ -1,0 +1,11 @@
+{
+  "name": "klyo-games",
+  "version": "1.1.2",
+  "description": "Publish HTML5 browser games from Gemini CLI: the hosted klyo games MCP server plus a publishing skill. Own address, leaderboards, cloud saves, clips, stats; you keep the rights.",
+  "mcpServers": {
+    "klyo-games": {
+      "httpUrl": "https://panel.klyo.pl/mcp?profil=gry",
+      "oauth": { "enabled": true }
+    }
+  }
+}

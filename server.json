@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "pl.klyo/games",
+  "title": "klyo games — publish HTML5 browser games",
+  "description": "Publish HTML5 browser games from your AI assistant: own address, live stats, 70% ad share.",
+  "version": "1.1.0",
+  "websiteUrl": "https://games.klyo.pl/mcp/",
+  "icons": [
+    {
+      "src": "https://klyo.pl/logo/klyo-znak-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    },
+    {
+      "src": "https://klyo.pl/logo/klyo-znak.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://panel.klyo.pl/mcp?profil=gry"
+    }
+  ]
+}

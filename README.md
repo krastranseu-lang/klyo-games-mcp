@@ -7,6 +7,16 @@ MCP (Model Context Protocol) is the open standard assistants use to call outside
 [![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=klyo-games&config=eyJ1cmwiOiJodHRwczovL3BhbmVsLmtseW8ucGwvbWNwP3Byb2ZpbD1ncnkifQ==)
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_klyo_games-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=klyo-games&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fpanel.klyo.pl%2Fmcp%3Fprofil%3Dgry%22%7D)
 
+## Documentation
+
+The product documentation lives in [`docs/`](docs/README.md). It is generated from the website, so every file names its canonical page:
+
+- [Everything klyo games can do](docs/features.md): every feature of the portal, grouped by area, each one checked against our code when the site is built.
+- [klyo Developer Studio](docs/developer-studio.md): upload, a preview on four screens, versions and rollback, statistics, the creator page.
+- [klyo SDK reference](docs/sdk.md) and [the MCP server](docs/mcp.md).
+- Help center: [publish an HTML5 game](docs/help/publish-html5-game.md), [release a new version or roll back](docs/help/release-new-version.md), [add a leaderboard](docs/help/add-leaderboard.md), [fix a white screen](docs/help/white-screen.md), [record a gameplay clip with captions](docs/help/record-gameplay-clip.md).
+- Po polsku: [spis dokumentacji](docs/README.md#po-polsku).
+
 ## Server
 
 | | |

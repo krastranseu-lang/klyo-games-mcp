@@ -79,7 +79,7 @@ klyo games jest podłączone do asystentów AI przez otwarty protokół MCP: 45 
 
 ## Skąd się to wzięło
 
-klyo jest małą polską firmą, która na co dzień robi strony i utrzymuje je na własnych serwerach. Gry zaczęliśmy pisać dla siebie, jako dowód, że coś, co działa w przeglądarce, może być szybkie i wygodne również na telefonie. Kiedy pierwsze gry były gotowe, okazało się, że najtrudniejsza część wcale nie polega na napisaniu gry.
+klyo to polska firma technologiczna z siedzibą w Łodzi. Oprócz portalu gier tworzy i utrzymuje inne własne produkty: klyo hosting (hosting stron i firmowa poczta), Prześwietlarka (darmowy audyt dowolnej strony z publicznym API), klyo QR (generator kodów QR), Klyo Pass (cyfrowa wizytówka), Klyo Switcher (przełącznik okien dla macOS) i Routence (system dla firm transportowych, w rozwoju). Gry zaczęliśmy pisać dla siebie, jako dowód, że coś, co działa w przeglądarce, może być szybkie i wygodne również na telefonie. Kiedy pierwsze gry były gotowe, okazało się, że najtrudniejsza część wcale nie polega na napisaniu gry.
 
 Twórca kończy grę i nie ma jej gdzie pokazać. Na forach wpis czeka na moderatora albo znika jako reklama własnej pracy. Na serwisach z plikami dostaje adres, ale graczy musi przyprowadzić sam. Do dużych portali zgłoszenie leży miesiącami. Portal powstał po to, żeby ta droga trwała jedno popołudnie zamiast pół roku.
 
@@ -128,7 +128,7 @@ Czego jeszcze nie ma: aplikacji w sklepach z telefonami i sprzedaży płatnych g
 - **Siedziba:** Łódź, Polska
 - **Kontakt:** [kontakt@klyo.pl](mailto:kontakt@klyo.pl)
 
-Pisać można pod kontakt@klyo.pl. Odpowiadamy na listy od twórców osobiście: przy tej wielkości katalogu nie ma jeszcze mowy o automacie, i dobrze.
+Pisać można pod kontakt@klyo.pl albo w rozmowie z klyo w studiu twórcy (dev.klyo.pl). Odpowiadamy na listy od twórców osobiście: przy tej wielkości katalogu nie ma jeszcze mowy o automacie, i dobrze.
 
 Każdą grę ogląda człowiek, a do czasu, aż to zrobi, gra jest widoczna wyłącznie na kontach dorosłych. Każdą grę i każdy wpis można zgłosić, a zgłoszenia rozpatrujemy i opisujemy w jawnym sprawozdaniu.
 
@@ -168,4 +168,4 @@ Zagraj w cokolwiek z katalogu albo, jeśli sam robisz gry, wydaj swoją. Obie dr
 
 ---
 
-Źródło: https://games.klyo.pl/pl/o-klyo-games/ · Wykonawca: klyo software house (Łódź, cała Polska) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt
+Źródło: https://games.klyo.pl/pl/o-klyo-games/ · Autor: klyo, polska firma technologiczna (Łódź, klienci w całej Polsce) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt

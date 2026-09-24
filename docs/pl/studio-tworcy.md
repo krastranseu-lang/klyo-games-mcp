@@ -119,4 +119,4 @@ Otwórz studio na swoim koncie klyo albo najpierw przeczytaj instrukcję krok po
 
 ---
 
-Źródło: https://games.klyo.pl/pl/studio-tworcy/ · Wykonawca: klyo software house (Łódź, cała Polska) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt
+Źródło: https://games.klyo.pl/pl/studio-tworcy/ · Autor: klyo, polska firma technologiczna (Łódź, klienci w całej Polsce) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt

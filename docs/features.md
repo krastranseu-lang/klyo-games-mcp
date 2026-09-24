@@ -206,4 +206,4 @@ Play any game in the catalogue, or open the studio and publish your own. Either 
 
 ---
 
-Source: https://games.klyo.pl/features/ · Built and run by klyo (Łódź, Poland) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt
+Source: https://games.klyo.pl/features/ · Built and run by klyo, a Polish technology company (Łódź) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt

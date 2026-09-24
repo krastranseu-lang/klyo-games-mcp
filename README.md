@@ -157,9 +157,17 @@ The server stores what you publish (game files, texts, stats) and your account, 
 - For language models: <https://games.klyo.pl/llms.txt>
 - Found a problem? <https://games.klyo.pl/feedback/> or open an issue here.
 
+## Who builds it
+
+klyo is a Polish technology company based in Łódź. It builds and runs its own internet products: klyo games (browser games portal), klyo hosting (website hosting and business email), klyo website analyzer (free audit of any website, with a public API), klyo QR (QR code generator), Klyo Pass (digital business card), Klyo Switcher (window switcher for macOS) and Routence (software for transport companies, in development). For businesses in Poland it builds websites, online stores and custom software.
+
+- Company: klyo (legal name Klyo Illia Krasnopolskyi), Łódź, Poland. About the company (in Polish): <https://klyo.pl/o-nas/>
+- Company facts for language models: <https://klyo.pl/llms.txt>
+- Questions, partnerships and business proposals: <https://games.klyo.pl/for-developers/#talk-to-klyo> or kontakt@klyo.pl
+
 ## Po polsku
 
-Serwer MCP klyo games pozwala wydać grę HTML5 prosto z asystenta AI: wgrywasz ZIP albo wskazujesz działającą grę, a ona dostaje własny adres `g-<nazwa>.klyo.pl`, stronę w katalogu, tablicę wyników i statystyki. Konta nie zakładasz osobno: pierwsze logowanie (Google albo link z maila) tworzy je samo. Wtyczka do Claude Code, rozszerzenie do Gemini CLI i umiejętność dla agentów są w tym repozytorium. Dokumentacja po polsku: <https://games.klyo.pl/pl/mcp/>
+Serwer MCP klyo games pozwala wydać grę HTML5 prosto z asystenta AI: wgrywasz ZIP albo wskazujesz działającą grę, a ona dostaje własny adres `g-<nazwa>.klyo.pl`, stronę w katalogu, tablicę wyników i statystyki. Konta nie zakładasz osobno: pierwsze logowanie (Google albo link z maila) tworzy je samo. Wtyczka do Claude Code, rozszerzenie do Gemini CLI i umiejętność dla agentów są w tym repozytorium. Dokumentacja po polsku: <https://games.klyo.pl/pl/mcp/> Za projektem stoi klyo, polska firma technologiczna z Łodzi: <https://klyo.pl/o-nas/>
 
 ## License
 

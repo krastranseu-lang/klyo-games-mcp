@@ -54,4 +54,4 @@ Nadal coś nie działa? Napisz na [kontakt@klyo.pl](mailto:kontakt@klyo.pl) i po
 
 ---
 
-Źródło: https://games.klyo.pl/pl/wsparcie/tablica-wynikow/ · Wykonawca: klyo software house (Łódź, cała Polska) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt
+Źródło: https://games.klyo.pl/pl/wsparcie/tablica-wynikow/ · Autor: klyo, polska firma technologiczna (Łódź, klienci w całej Polsce) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt

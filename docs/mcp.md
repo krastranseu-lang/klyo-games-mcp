@@ -279,4 +279,4 @@ No. Everything the tool does you can do in a browser at [dev.klyo.pl](https://de
 
 ---
 
-Source: https://games.klyo.pl/mcp/ · Built and run by klyo (Łódź, Poland) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt
+Source: https://games.klyo.pl/mcp/ · Built and run by klyo, a Polish technology company (Łódź) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt

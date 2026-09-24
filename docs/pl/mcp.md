@@ -278,4 +278,4 @@ Nie. Wszystko, co robi narzędzie, zrobisz w przeglądarce na [dev.klyo.pl](http
 
 ---
 
-Źródło: https://games.klyo.pl/pl/mcp/ · Wykonawca: klyo software house (Łódź, cała Polska) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt
+Źródło: https://games.klyo.pl/pl/mcp/ · Autor: klyo, polska firma technologiczna (Łódź, klienci w całej Polsce) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt

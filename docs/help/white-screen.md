@@ -53,4 +53,4 @@ Still stuck? Write to [kontakt@klyo.pl](mailto:kontakt@klyo.pl) and include the 
 
 ---
 
-Source: https://games.klyo.pl/support/white-screen/ · Built and run by klyo (Łódź, Poland) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt
+Source: https://games.klyo.pl/support/white-screen/ · Built and run by klyo, a Polish technology company (Łódź) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt

@@ -206,4 +206,4 @@ Zagraj w dowolną grę z katalogu albo otwórz studio i wydaj własną. Na jedno
 
 ---
 
-Źródło: https://games.klyo.pl/pl/funkcje/ · Wykonawca: klyo software house (Łódź, cała Polska) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt
+Źródło: https://games.klyo.pl/pl/funkcje/ · Autor: klyo, polska firma technologiczna (Łódź, klienci w całej Polsce) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt

@@ -119,4 +119,4 @@ Open the studio with your klyo account, or read the step-by-step guide first.
 
 ---
 
-Source: https://games.klyo.pl/developer-studio/ · Built and run by klyo (Łódź, Poland) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt
+Source: https://games.klyo.pl/developer-studio/ · Built and run by klyo, a Polish technology company (Łódź) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt

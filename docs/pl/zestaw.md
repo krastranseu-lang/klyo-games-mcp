@@ -216,4 +216,4 @@ Przy publikacji otwieramy grę w czterech ekranach (telefon w pionie i w poziomi
 
 ---
 
-Źródło: https://games.klyo.pl/pl/zestaw-do-gry/ · Wykonawca: klyo software house (Łódź, cała Polska) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt
+Źródło: https://games.klyo.pl/pl/zestaw-do-gry/ · Autor: klyo, polska firma technologiczna (Łódź, klienci w całej Polsce) · Kontakt: kontakt@klyo.pl · Indeks dla modeli językowych: https://games.klyo.pl/llms.txt

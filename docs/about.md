@@ -79,7 +79,7 @@ klyo games is wired into AI assistants through the open MCP protocol: 45 ready c
 
 ## Where this came from
 
-klyo is a small Polish company that builds websites and keeps them running on its own servers. We started writing games for ourselves, as proof that something running in a browser can be fast and comfortable on a phone too. Once the first games were finished, it turned out the hard part was not writing them.
+klyo is a Polish technology company based in Łódź. Besides this portal it builds and runs other products of its own: klyo hosting (website hosting and business email), klyo website analyzer (free audit of any website, with a public API), klyo QR (QR code generator), Klyo Pass (digital business card), Klyo Switcher (window switcher for macOS) and Routence (software for transport companies, in development). We started writing games for ourselves, as proof that something running in a browser can be fast and comfortable on a phone too. Once the first games were finished, it turned out the hard part was not writing them.
 
 A developer finishes a game and has nowhere to show it. On forums the post waits for a moderator or disappears as self-promotion. File services give you an address but you have to bring the players yourself. At the big portals a submission sits for months. This portal exists so that road takes an afternoon instead of half a year.
 
@@ -128,7 +128,7 @@ What is missing: an app in the phone stores and sales of paid games. We are work
 - **Based in:** Łódź, Poland
 - **Contact:** [kontakt@klyo.pl](mailto:kontakt@klyo.pl)
 
-You can write to kontakt@klyo.pl. Letters from developers are answered personally: at this size of catalogue there is no room for an automated reply, and that is a good thing.
+You can write to kontakt@klyo.pl or talk to klyo in the developer studio (dev.klyo.pl). Letters from developers are answered personally: at this size of catalogue there is no room for an automated reply, and that is a good thing.
 
 Games are reviewed by a person before they enter the catalogue. Every game and every post can be reported, and reports are handled and described in a public moderation report.
 
@@ -168,4 +168,4 @@ Play anything from the catalogue or, if you make games yourself, publish yours. 
 
 ---
 
-Source: https://games.klyo.pl/about/ · Built and run by klyo (Łódź, Poland) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt
+Source: https://games.klyo.pl/about/ · Built and run by klyo, a Polish technology company (Łódź) · Contact: kontakt@klyo.pl · Index for language models: https://games.klyo.pl/llms.txt

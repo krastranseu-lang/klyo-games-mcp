@@ -150,3 +150,7 @@ The server stores what you publish (game files, texts, stats) and your account, 
 ## Po polsku
 
 Serwer MCP klyo games pozwala wydać grę HTML5 prosto z asystenta AI: wgrywasz ZIP albo wskazujesz działającą grę, a ona dostaje własny adres `g-<nazwa>.klyo.pl`, stronę w katalogu, tablicę wyników i statystyki. Konta nie zakładasz osobno: pierwsze logowanie (Google albo link z maila) tworzy je samo. Wtyczka do Claude Code, rozszerzenie do Gemini CLI i umiejętność dla agentów są w tym repozytorium. Dokumentacja po polsku: <https://games.klyo.pl/pl/mcp/>
+
+## License
+
+MIT for the files in this repository (documentation, plugin, extension and skill). The klyo games service and its server are not part of this license. See [LICENSE](LICENSE).

@@ -21,7 +21,8 @@
         "game-publishing",
         "game-hosting",
         "mcp"
-      ]
+      ],
+      "license": "MIT"
     }
   ]
 }

@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/about/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/about/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
 
 # What *klyo games* is
 
@@ -22,11 +22,11 @@ One account, one portal and eight parts that work together. Each one has its own
 - **[Records and ranks](https://games.klyo.pl/records/)**: Boards for the day and all time, medals and 17 ranks, with scores that come only from real rounds.
 - **[Play together](https://games.klyo.pl/game-sdk/)**: Rooms with a code, quick matches and a ready-made lobby for turn-based and live games.
 - **[Developer Studio](https://games.klyo.pl/developer-studio/)**: Uploads, a preview on four screens, versions, statistics and a creator page at dev.klyo.pl.
-- **[AI assistants](https://games.klyo.pl/mcp/)**: An MCP server with 20 tools: publish and fix a game by talking to Claude or ChatGPT.
+- **[AI assistants](https://games.klyo.pl/mcp/)**: An MCP server with 21 tools: publish and fix a game by talking to Claude or ChatGPT.
 - **[klyo SDK](https://games.klyo.pl/game-sdk/)**: One line in a game adds scores, cloud saves, rewarded ads, clips and online play.
 - **[Safety](https://games.klyo.pl/moderation-report/)**: A person reviews every game, age labels use the PEGI and Apple scales, and reports are decided within 24 hours.
 
-[See all 86 features](https://games.klyo.pl/features/)
+[See all 92 features](https://games.klyo.pl/features/)
 
 ## What did you come here for?
 
@@ -73,13 +73,13 @@ We did not invent a portal from scratch. We took three things that work separate
 
 ### And this one none of them has: you publish a game by talking to an assistant
 
-klyo games is wired into AI assistants through the open MCP protocol: 45 ready commands, twenty of them for game developers. You tell your assistant “prepare this game on klyo” and it creates the entry, uploads the package, checks the state and reads back the statistics. You release it to the catalogue yourself, with one button, because software can tell that a package is complete but not that the game is playable.
+klyo games is wired into AI assistants through the open MCP protocol: 46 ready commands, 21 of them for game developers. You tell your assistant “prepare this game on klyo” and it creates the entry, uploads the package, checks the state and reads back the statistics. You release it to the catalogue yourself, with one button, because software can tell that a package is complete but not that the game is playable.
 
 [See how to connect an assistant](https://games.klyo.pl/mcp/)
 
 ## Where this came from
 
-klyo is a Polish technology company based in Łódź. Besides this portal it builds and runs other products of its own: klyo hosting (website hosting and business email), klyo website analyzer (free audit of any website, with a public API), klyo QR (QR code generator), Klyo Pass (digital business card), Klyo Switcher (window switcher for macOS) and Routence (software for transport companies, in development). We started writing games for ourselves, as proof that something running in a browser can be fast and comfortable on a phone too. Once the first games were finished, it turned out the hard part was not writing them.
+klyo is a Polish technology company based in Łódź. Besides this portal it builds and runs other products of its own: klyo website analyzer (free audit of any website, with a public API), klyo QR (QR code generator), Klyo Pass (digital business card), Klyo Switcher (window switcher for macOS) and Routence (software for transport companies, in development). We started writing games for ourselves, as proof that something running in a browser can be fast and comfortable on a phone too. Once the first games were finished, it turned out the hard part was not writing them.
 
 A developer finishes a game and has nowhere to show it. On forums the post waits for a moderator or disappears as self-promotion. File services give you an address but you have to bring the players yourself. At the big portals a submission sits for months. This portal exists so that road takes an afternoon instead of half a year.
 
@@ -113,7 +113,7 @@ One thing has to be said plainly: developer payouts start with the first payout 
 
 ## What stage we are at
 
-The catalogue is young: 20 games from 7 developers, every one looked at by a person before it reached the shelf. We are not going to dress that up: a portal that promises a developer thousands of players on day one is lying, and it shows within a week.
+The catalogue is young: 26 games from 8 developers, every one looked at by a person before it reached the shelf. We are not going to dress that up: a portal that promises a developer thousands of players on day one is lying, and it shows within a week.
 
 What we can promise today is the absence of obstacles. A game goes live the same day, gets its own address, is visible to search engines immediately, and the developer has statistics, ratings and reviews from the first play. Whoever publishes now stands on the first page of the catalogue, not the tenth.
 

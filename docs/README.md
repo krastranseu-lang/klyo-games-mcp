@@ -21,6 +21,7 @@ These files are generated from the website, so each one names its canonical page
 - [How to add a leaderboard to an HTML5 game](help/add-leaderboard.md): Add a leaderboard to a browser game with the klyo SDK: one script tag and three calls give daily, weekly and all-time boards and a place on the records hub.
 - [Game shows a white screen on klyo games: how to fix it](help/white-screen.md): A white or black screen in the preview usually means a missing file, a wrong path or a blocked script. Find the cause in the studio and fix it in minutes.
 - [How to record a gameplay clip with captions on klyo games](help/record-gameplay-clip.md): Record a clip of a game in the browser, keep the last 30 seconds, add captions from your voice, your face and a theme, and post it to the klyo games clip feed.
+- [Let your AI assistant play your game on klyo games](help/assistant-plays-your-game.md): Your AI assistant (Claude, ChatGPT) can play your game on your computer or phone and see the screen. It takes the open studio and one click on “Allow”.
 
 ## Po polsku
 
@@ -37,3 +38,4 @@ These files are generated from the website, so each one names its canonical page
 - [Jak dodać tablicę wyników do gry HTML5](pl/pomoc/tablica-wynikow.md): Dodaj tablicę wyników do gry przeglądarkowej z zestawem klyo: jedna linijka skryptu i trzy wywołania dają tablice dnia, tygodnia, wszech czasów i centrum rekordów.
 - [Gra pokazuje białe okno na klyo games: jak to naprawić](pl/pomoc/biale-okno.md): Białe albo czarne okno w podglądzie to zwykle brakujący plik, zła ścieżka albo zablokowany skrypt. Znajdź przyczynę w studiu i napraw ją w kilka minut.
 - [Jak nagrać klip z gry z napisami na klyo games](pl/pomoc/nagraj-klip.md): Nagraj klip z gry w przeglądarce, zachowaj ostatnie 30 sekund, dodaj napisy z głosu, swoją twarz i motyw, a potem wystaw klip do strumienia klipów klyo games.
+- [Asystent AI gra w twoją grę na klyo games: jak mu pozwolić](pl/pomoc/asystent-gra-w-twoja-gre.md): Twój asystent AI (Claude, ChatGPT) zagra w twoją grę na twoim komputerze albo telefonie i zobaczy ekran. Wystarczy otwarte studio i kliknięcie „Pozwól”.

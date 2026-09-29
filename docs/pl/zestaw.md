@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/zestaw-do-gry/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/zestaw-do-gry/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Zestaw klyo dla gry HTML5
 
@@ -39,6 +39,45 @@ Trzy okresy: day, week, all. Odpowiedź zawiera podpisy graczy, te same, które 
 
 `klyo.leaderboard.get("day", (t) => {
 pokazTablice(t.entries);
+});`
+
+## Drużyny, mapy i zaproszenie jednym linkiem
+
+Drużyny i mapy podajesz w lobby, a trzyma je pokój na serwerze: lobby portalu pokazuje kolumny drużyn z liczbą miejsc (gracz wybiera, pełna drużyna odmawia) i kafelki map (wybiera gospodarz). Link zaproszenia prowadzi znajomego prosto do pokoju i do drużyny tego, kto go wysłał, więc gracie razem. Na komputerze wystarczy otworzyć link, na telefonie jedno dotknięcie karty zaproszenia. Szybki mecz dobiera po mapie i drużynie, a z dropIn wpuszcza od razu do trwającego meczu. Strony i mapę ustawiaj tylko z room().players[i].team i room().map, nigdy z lokalnego wyboru w menu gry: tak dwaj gracze, którzy wybrali atak, na pewno trafią do jednej drużyny.
+
+`klyo.online.onInvite(() => graOnline()); // gracz z linku
+function graOnline() {
+klyo.online.lobby({ players: 10, mode: "realtime", dropIn: true,
+teams: [{ id: "atak", name: "Atak" }, { id: "obrona", name: "Obrona" }],
+maps: [{ id: "port", name: "Port", image: "mapy/port.webp" }] }, (o) => {
+if (!o.ok) return;
+const ja = o.room.players.find((g) => g.who === o.room.me);
+zacznijMecz(o.room.map, ja.team, o.room.players);
+});
+}`
+
+## Jak serwer pilnuje zasad meczu
+
+Zasady meczu wpisujesz do pliku klyo-rules.json w paczce: ile razy na sekundę wolno strzelić, ile naboi ma magazynek, co go odnawia i jak długo trwa przeładowanie, jak szybko porusza się postać i jakie są największe obrażenia. Plik czytamy przy wydaniu, więc gracz nie zmieni go w przeglądarce. Serwer meczów sprawdza każdą akcję, zanim zobaczą ją inni gracze, także na zapasowym połączeniu. Złamana zasada nie dochodzi do nikogo, a twoja gra dostaje onReject z powodem. Trafienia i punkty przyjmuj tylko z wiadomości z polem action.
+
+`klyo.online.act("shoot", { damage: 36, hit: cel });
+klyo.online.pos(x, y, z);
+klyo.online.onReject((r) => {
+// r.reason: "burst-empty", "locked", "too-fast", "too-far"
+poprawAmunicje(r);
+});
+// klyo-rules.json:
+// { "online": { "actions": { "shoot": { "perSecond": 10, "burst": 30, "refill": "reload" },
+// "reload": { "lockMs": 2500 } }, "position": { "maxSpeed": 7.5 } } }`
+
+## Jak pokazać turniej tygodnia
+
+Każda gra z zestawem ma turniej sama: od poniedziałku do niedzieli, bez nagród pieniężnych, podium dostaje XP (100, 60 i 30), gdy grało co najmniej trzech graczy. Do tabeli wchodzą tylko wyniki, które przeszły sprawdzenie uczciwości. Odpowiedź ma koniec edycji, 50 najlepszych, twoje miejsce i zwycięzców ostatnich tygodni.
+
+`klyo.tournament.get((t) => {
+// t.endsAt, t.entries, t.me = { rank, score },
+// t.winners = [{ edition, name, score }]
+pokazTurniej(t);
 });`
 
 ## Jak zapisać postęp gracza między urządzeniami
@@ -98,7 +137,7 @@ if (d.touch) pokazPrzyciskiNaEkranie();`
 
 ## Jak zagrać online w kilka osób
 
-Pokój z kodem (6 znaków) do wysłania znajomym albo szybkie kojarzenie w obrębie gry. Serwer pilnuje kolejności tur i zapisuje ruchy, a reguły sprawdza sama gra. Ruch i wiadomość mają do 1 KB, pokój na tury do 64 osób, na żywo do 16. Partię kończy move z result.winner: z tego liczy się ranking wygranych (klyo.online.ranking), a szybki mecz dobiera gracza o podobnym bilansie. Gra czasu rzeczywistego łączy graczy bezpośrednio (WebRTC) przez signal i onSignal; send to tylko zapas z limitem 20 na sekundę. Klucze odpowiedzi po angielsku: room.code, room.me, room.host, room.turn, room.players.
+Pokój z kodem (6 znaków) do wysłania znajomym albo szybkie kojarzenie w obrębie gry. Serwer pilnuje kolejności tur i zapisuje ruchy, a reguły sprawdza sama gra. Ruch i wiadomość mają do 1 KB, pokój na tury do 64 osób, na żywo do 16. Partię kończy move z result.winner: z tego liczy się ranking wygranych (klyo.online.ranking), a szybki mecz dobiera gracza o podobnym bilansie. W pokoju na żywo (mode: 'realtime') send i onMessage jadą kanałem UDP do serwera meczów klyo, do 120 wiadomości na sekundę; wysyłasz bajty (Uint8Array), napis albo obiekt do ok. 1 KB i odbiorca dostaje ten sam typ. Wiadomość send może zginąć po drodze jak każdy pakiet UDP, więc nadaje się do stanu, który zaraz i tak się odświeży. Zdarzenie, które musi dojść (strzał, trafienie, podniesienie), wysyłaj przez klyo.online.act, także w grze bez zasad: zestaw wysyła je trzy razy, a odbiorca dostaje raz. klyo.online.net() mówi, czym jedzie gra i jaki jest ping. Gdy UDP nie przejdzie, te same wywołania jadą zapasowym połączeniem (20 na sekundę). Klucze odpowiedzi po angielsku: room.code, room.me, room.host, room.turn, room.players.
 
 `klyo.online.quick((o) => {
 if (o.ok) pokazKod(o.room.code);
@@ -150,6 +189,33 @@ Gra wie najlepiej, kiedy dzieje się coś, co warto pokazać: combo, wybuch, prz
 
 `klyo.moment("combo", { seria: 12 });`
 
+## Wspólny turniej tygodnia — API 1.2.0
+
+Edycja zmienia się automatycznie w poniedziałek o 00:00 UTC. Serwer oblicza wynik z ruchów i zapisuje najlepszą ukończoną próbę. Zwykłe rekordy gry pozostają osobno.
+
+Właściciel najpierw włącza zainstalowany moduł reguł swojej gry. Obecnie dostępny: blockfall-weekly-v1. Inna gra wymaga własnego modułu reguł po stronie serwera.
+
+`klyo.league.standings({scope: 'week'}, showBoard);
+klyo.league.start(crypto.randomUUID(), resumeRun);
+// Keep run and base; retry identical moves after a lost acknowledgement.
+klyo.league.moves(run, base, [column], acceptServerState);
+klyo.league.finish(run, moveCount, showConfirmedScore);`
+Rekordy zwykłej gry: standings({scope:"classic"}). Są zgłoszone przez klienta, nie zweryfikowane ruchem. record({}) zwraca profil i requiredConsent. Jawna publikacja wymaga {score, gameRank, publish:true, consentVersion:requiredConsent, eligible16:true}; nie ustawiaj zgody automatycznie. record({score,gameRank}) aktualizuje tylko opublikowany wpis. record({publish:false}) wycofuje publikację bez zmiany prywatnej gry. data i erase obejmują obie tabele.
+
+| SDK | RPC v1 | Argumenty |
+| --- | --- | --- |
+| `klyo.league.standings` | `gry.liga.tablica.v1` | options, callback |
+| `klyo.league.start` | `gry.liga.start.v1` | requestId string or {requestId, gameRank?}, callback |
+| `klyo.league.moves` | `gry.liga.ruchy.v1` | run, base, columns, callback |
+| `klyo.league.finish` | `gry.liga.koniec.v1` | run, moves, callback |
+| `klyo.league.data` | `gry.liga.dane.v1` | options, callback |
+| `klyo.league.erase` | `gry.liga.usun.v1` | confirm, callback |
+| `klyo.league.record` | `gry.liga.rekord.v1` | options, callback |
+
+Tożsamość nadaje zalogowany host Klyo lub zweryfikowany podpis Facebooka. Konta tych dostawców nie są automatycznie łączone. Przyszłe aplikacje Klyo Games mogą użyć tego samego mostu SDK; ta wersja nie dostarcza aplikacji mobilnej.
+
+Eksport danych jest stronicowany po 10 prób (pole next); usunięcie wymaga confirm: "DELETE". Próby: 90 dni, edycje tygodniowe: 52 tygodnie, rekord turniejowy: do usunięcia. Przy błędzie SERVER_BUSY ponów z opóźnieniem, zachowując identyfikator operacji.
+
 ## Jak zbudować grę pod rekordy
 
 **Co gra dostaje za darmo.** Kafel na hubie rekordów (games.klyo.pl/pl/rekordy/) z rekordem od zawsze i podium, miejsce w tabeli medalowej dnia (złoto, srebro, brąz za miejsca 1–3 w każdej grze), wpis na pasku „ostatnie rekordy” na żywo, plakietkę „Dziś prowadzi X” na kaflu w katalogu i powiadomienie „X cię wyprzedził” dla graczy z kontem. Warunek jest jeden: gra woła `klyo.wynik`.
@@ -189,7 +255,7 @@ gra.on("tap", function (d) { /* dotyk i mysz razem */ gra.dzwiek.graj("zbior"); 
 gra.koniec({ wygrana: true, wynik: 120 }); // ekran końca + tablica + rekord
 `
 
-- **Gry referencyjne na kicie:** [Statki](https://klyo.pl/pl/statki/) (solo, na jednym urządzeniu, online na link, ~200 linii), [Czwórki](https://klyo.pl/pl/czworki/) (przeciwnik z `gra.ai.minimax`, ~110 linii), [Air Hockey](https://klyo.pl/pl/air-hockey/) (dwa palce na jednym ekranie, ~60 linii). Reszta jest w kicie.
+- **Gra referencyjna na kicie:** [Statki](https://games.klyo.pl/pl/statki/) (solo, na jednym urządzeniu, online na link, ~200 linii). Przeciwnika do gier turowych daje `gra.ai.minimax`, a sterowanie kilkoma palcami na jednym ekranie `gra.wskazniki`. Reszta jest w kicie.
 - **Przez asystenta:** `klyo_game_scaffold` zwraca pliki-startery i pełne API; asystent nie pisze menu, pauzy ani dźwięku drugi raz.
 - **Bez zewnętrznych arkuszy i czcionek:** hosty gier mają `style-src 'self'`, więc kit ma CSS wbudowany, czcionka systemowa, kolory z `gra.motyw.paleta`.
 
@@ -211,7 +277,7 @@ Przy publikacji otwieramy grę w czterech ekranach (telefon w pionie i w poziomi
 
 - Plik **index.html** w katalogu głównym paczki ZIP. Od niego zaczyna się gra.
 - Gra ma działać **bez instalacji i bez konta**, w przeglądarce, także na telefonie.
-- Do 100 MB. Sito sprawdza rozmiar, brakujące pliki, obce sieci reklamowe i ślady złośliwego kodu w kilkanaście sekund.
+- Do 200 MB. Sito sprawdza rozmiar, brakujące pliki, obce sieci reklamowe i ślady złośliwego kodu w kilkanaście sekund.
 - Ankieta wieku wypełniana przy wgrywaniu daje etykietę, która decyduje o widoczności i o wejściu do aplikacji sklepowych.
 
 ---

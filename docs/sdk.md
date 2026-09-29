@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/game-sdk/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/game-sdk/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
 
 # klyo SDK for HTML5 games
 
@@ -39,6 +39,45 @@ Three periods: day, week, all. The answer carries player names, the same ones th
 
 `klyo.leaderboard.get("day", (t) => {
 showBoard(t.entries);
+});`
+
+## Teams, maps and one-link invites
+
+You pass teams and maps to the lobby, and the room on the server keeps them: the portal lobby shows team columns with free spots (the player picks, a full team says no) and map tiles (the host picks). An invite link takes a friend straight into the room and into the team of whoever sent it, so you play together. On a computer opening the link is enough, on a phone one tap on the invite card. Quick match picks by map and team, and with dropIn it puts players straight into a running match. Set sides and the map only from room().players[i].team and room().map, never from a local choice in your game menu: that way two players who both picked attack are sure to end up in one team.
+
+`klyo.online.onInvite(() => playOnline()); // player from a link
+function playOnline() {
+klyo.online.lobby({ players: 10, mode: "realtime", dropIn: true,
+teams: [{ id: "attack", name: "Attack" }, { id: "defense", name: "Defense" }],
+maps: [{ id: "port", name: "Port", image: "maps/port.webp" }] }, (o) => {
+if (!o.ok) return;
+const me = o.room.players.find((p) => p.who === o.room.me);
+startMatch(o.room.map, me.team, o.room.players);
+});
+}`
+
+## How the server guards match rules
+
+You write the match rules into a klyo-rules.json file in your package: how many times per second a player may shoot, how many rounds a magazine holds, what refills it and how long a reload takes, how fast a character moves and the highest damage. We read the file at release, so a player cannot change it in the browser. The match server checks every action before other players see it, on the fallback connection too. A broken rule reaches nobody, and your game gets onReject with the reason. Take hits and points only from messages that carry an action.
+
+`klyo.online.act("shoot", { damage: 36, hit: target });
+klyo.online.pos(x, y, z);
+klyo.online.onReject((r) => {
+// r.reason: "burst-empty", "locked", "too-fast", "too-far"
+fixAmmo(r);
+});
+// klyo-rules.json:
+// { "online": { "actions": { "shoot": { "perSecond": 10, "burst": 30, "refill": "reload" },
+// "reload": { "lockMs": 2500 } }, "position": { "maxSpeed": 7.5 } } }`
+
+## How to show the weekly tournament
+
+Every game with the SDK gets a tournament on its own: Monday to Sunday, no cash prizes, the podium earns XP (100, 60 and 30) when at least three players took part. Only scores that passed the fairness check enter the table. The answer has the edition end, the top 50, your place and the winners of recent weeks.
+
+`klyo.tournament.get((t) => {
+// t.endsAt, t.entries, t.me = { rank, score },
+// t.winners = [{ edition, name, score }]
+showTournament(t);
 });`
 
 ## How to save progress across devices
@@ -98,7 +137,7 @@ if (d.touch) showOnScreenButtons();`
 
 ## How to play online with several people
 
-A room with a 6-character code to send to friends, or quick matching within the game. The server keeps turn order and stores the moves, and the game checks the rules. A move or message is up to 1 KB, a turn-based room up to 64 people, a live one up to 16. A match ends with move and result.winner, which feeds the wins ranking (klyo.online.ranking), and quick match pairs players with a similar record. A real-time game connects players directly (WebRTC) through signal and onSignal; send is only a fallback limited to 20 per second. Response keys: room.code, room.me, room.host, room.turn, room.players.
+A room with a 6-character code to send to friends, or quick matching within the game. The server keeps turn order and stores the moves, and the game checks the rules. A move or message is up to 1 KB, a turn-based room up to 64 people, a live one up to 16. A match ends with move and result.winner, which feeds the wins ranking (klyo.online.ranking), and quick match pairs players with a similar record. In a live room (mode: 'realtime') send and onMessage travel over a UDP channel to the klyo match server, up to 120 messages a second; send bytes (Uint8Array), a string or an object of up to about 1 KB and the receiver gets the same type. A send message can be lost on the way like any UDP packet, so use it for state that refreshes anyway. For an event that must arrive (a shot, a hit, a pickup), use klyo.online.act, also in a game without rules: the SDK sends it three times and the receiver gets it once. klyo.online.net() tells you the transport and the ping. If UDP does not get through, the same calls use a backup connection (20 per second). Response keys: room.code, room.me, room.host, room.turn, room.players.
 
 `klyo.online.quick((o) => {
 if (o.ok) showCode(o.room.code);
@@ -150,6 +189,33 @@ The game knows best when something worth showing happens: a combo, an explosion,
 
 `klyo.moment("combo", { streak: 12 });`
 
+## Shared weekly competition — API 1.2.0
+
+The edition changes automatically on Monday at 00:00 UTC. The server calculates scores from moves and records the best completed attempt. Ordinary game records remain separate.
+
+The owner must first enable an installed rules module for the game. Available now: blockfall-weekly-v1. Another game requires its own server rules module.
+
+`klyo.league.standings({scope: 'week'}, showBoard);
+klyo.league.start(crypto.randomUUID(), resumeRun);
+// Keep run and base; retry identical moves after a lost acknowledgement.
+klyo.league.moves(run, base, [column], acceptServerState);
+klyo.league.finish(run, moveCount, showConfirmedScore);`
+Ordinary records: standings({scope:"classic"}). These are client-reported, not replay-verified. record({}) returns a profile and requiredConsent. Explicit publication requires {score, gameRank, publish:true, consentVersion:requiredConsent, eligible16:true}; never set consent automatically. record({score,gameRank}) only updates an existing public entry. record({publish:false}) withdraws publication without changing the private game save. data and erase cover both boards.
+
+| SDK | RPC v1 | Arguments |
+| --- | --- | --- |
+| `klyo.league.standings` | `gry.liga.tablica.v1` | options, callback |
+| `klyo.league.start` | `gry.liga.start.v1` | requestId string or {requestId, gameRank?}, callback |
+| `klyo.league.moves` | `gry.liga.ruchy.v1` | run, base, columns, callback |
+| `klyo.league.finish` | `gry.liga.koniec.v1` | run, moves, callback |
+| `klyo.league.data` | `gry.liga.dane.v1` | options, callback |
+| `klyo.league.erase` | `gry.liga.usun.v1` | confirm, callback |
+| `klyo.league.record` | `gry.liga.rekord.v1` | options, callback |
+
+Identity comes from the authenticated Klyo host or verified Facebook proof. Provider accounts are not automatically linked. Future Klyo Games apps can use the same SDK bridge; this release does not ship a native mobile host.
+
+Data export is paginated in batches of 10 runs (next cursor); deletion requires confirm: "DELETE". Runs: 90 days, weekly editions: 52 weeks, all-time competitive best: until deletion. On SERVER_BUSY retry after a delay with the same operation identifier.
+
 ## How to build a game for the records hub
 
 **What the game gets for free.** A tile on the records hub (games.klyo.pl/records/) with the all-time record and podium, a place in the medal table of the day (gold, silver, bronze for places 1–3 in every game), an entry on the live “latest records” strip, a “Today's leader: X” badge on the catalogue tile and a “X passed you” notification for players with an account. One condition: the game calls `klyo.wynik`.
@@ -189,7 +255,7 @@ gra.on("tap", function (d) { /* touch and mouse together */ gra.dzwiek.graj("zbi
 gra.koniec({ wygrana: true, wynik: 120 }); // end screen + leaderboard + best
 `
 
-- **Reference games on the kit:** [Battleship](https://klyo.pl/statki/) (solo, same device, online by link, ~200 lines), [Connect Four](https://klyo.pl/czworki/) (opponent from `gra.ai.minimax`, ~110 lines), [Air Hockey](https://klyo.pl/air-hockey/) (two fingers on one screen, ~60 lines). The rest is the kit.
+- **Reference game on the kit:** [Battleship](https://games.klyo.pl/statki/) (solo, same device, online by link, ~200 lines). `gra.ai.minimax` gives turn-based games an opponent, and `gra.wskazniki` handles several fingers on one screen. The rest is the kit.
 - **Through an assistant:** `klyo_game_scaffold` returns starter files and the full API; the assistant never writes a menu, pause or audio twice.
 - **No external stylesheets or fonts:** game hosts have `style-src 'self'`, so the kit embeds its CSS, uses the system font, colours come from `gra.motyw.paleta`.
 
@@ -211,7 +277,7 @@ On release we open the game on four screens (phone portrait and landscape with t
 
 - An **index.html** file in the root of the ZIP. The game starts there.
 - The game must run **without an install and without an account**, in a browser, on phones too.
-- Up to 100 MB. The check looks at size, missing files, third-party ad networks and traces of malicious code, in about a dozen seconds.
+- Up to 200 MB. The check looks at size, missing files, third-party ad networks and traces of malicious code, in about a dozen seconds.
 - The age questionnaire filled in at upload produces the label that decides visibility and entry into the store apps.
 
 ---

@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/support/record-gameplay-clip/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/record-gameplay-clip/ · updated 2026-09-28 · This file is generated from the klyo games website, so changes are made on the website.
 
 # How to record a gameplay clip with captions
 
@@ -16,7 +16,7 @@ Start the game and press “Record a clip” next to it. Play, then press “Sav
 2. **Add your voice and face if you like**: In the recording capsule press **Turn microphone on** for captions from your speech and **Turn camera on** to put your face in the frame. Both are optional, and you can also add them later.
 3. **Play and keep the moment**: Play as usual. When something great happens press **Save the last 30s**, or press **Stop** when you are done. With the option “Automatically keep the last 30s while I play” turned on, you never have to press record before the good moment.
 4. **Cut the best moment**: The editor opens with a strip of frames and two handles. A clip lasts 3 to 30 seconds, and if the game marked a big moment it is already selected. Choose “Vertical” for a feed-shaped clip or “As in game” to keep the original shape.
-5. **Polish the captions**: Captions from your speech appear in time with your words; tap any caption to fix it, or press **Caption here** to add one. Pick a “Theme”: Classic, Neon, Game or TikTok. For the second language press **Translate on this device** and read the result. Forgot to talk? **Record voice** and **Record face** play the clip back while you add them.
+5. **Polish the captions**: Captions from your speech appear in time with your words. Tap a caption on the video to fix it right there: drag it where you want it and pull a corner of its frame to resize it. **Add caption** under the video writes a new one where the video stands. Pick a “Theme”: Classic, Neon, Game or Pop. For the second language press **Translate on this device** and read the result. Forgot to talk? **Record voice** and **Record face** play the clip back while you add them.
 6. **Post it**: Write the caption players will see and press **Post the clip**. The clip goes to the community and the clip feed under your nickname. To keep a copy as a file, press **Save to device**.
 
 ## If something goes wrong

@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/studio-tworcy/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/studio-tworcy/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # *Studio twórcy* klyo
 
@@ -9,9 +9,9 @@ Miejsce, w którym niezależny twórca wgrywa grę przeglądarkową, gra w nią 
 [Jak wydać grę krok po kroku](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
 
 - **0 zł** za wydanie, hosting i utrzymanie gry
-- **100 MB** na paczkę: ZIP albo jeden plik HTML
+- **200 MB** na paczkę: ZIP albo jeden plik HTML
 - **4 ekrany** mierzone przy każdym wydaniu gry
-- **20** narzędzi MCP, żeby klikało za ciebie AI
+- **21** narzędzi MCP, żeby klikało za ciebie AI
 
 ## Od ZIP-a do graczy w pięciu krokach
 
@@ -25,7 +25,7 @@ Miejsce, w którym niezależny twórca wgrywa grę przeglądarkową, gra w nią 
 
 Trzy drogi i jedno, takie samo sprawdzenie.
 
-- **ZIP albo jeden plik HTML**: Do 100 MB, wysyłane w kawałkach, więc słabe łącze nie każe zaczynać od nowa. Plik index.html leży w głównym katalogu ZIP-a.
+- **ZIP albo jeden plik HTML**: Do 200 MB, wysyłane w kawałkach, więc słabe łącze nie każe zaczynać od nowa. Plik index.html leży w głównym katalogu ZIP-a.
 - **Przeniesienie z innej strony**: itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify albo własny serwer. Własność potwierdzasz linkiem w opisie gry albo wpisem DNS, a pliki pobieramy my.
 - **Albo zrobi to twój asystent**: Claude, ChatGPT i inni asystenci wgrywają i przygotowują grę przez serwer MCP klyo. Ostatni przycisk i tak naciskasz ty.
 
@@ -72,7 +72,7 @@ Każda gra dostaje te same narzędzia, od pierwszego dnia.
 
 Klikasz w studiu, rozmawiasz z asystentem albo wołasz wszystko ze skryptu.
 
-- **Serwer MCP: dwadzieścia narzędzi**: Wydanie, wersje, powrót, okładki, tłumaczenia, diagnostyka i statystyki z asystenta, którego już używasz.
+- **Serwer MCP: 21 narzędzi**: Wydanie, wersje, powrót, okładki, tłumaczenia, diagnostyka i statystyki z asystenta, którego już używasz.
 - **Klucz API**: Dla własnego agenta, skryptu albo automatu budowania. Pokazujemy go raz, a u siebie trzymamy tylko jego skrót.
 - **Rejestr zdarzeń**: Każda publikacja, zmiana i decyzja moderacji z datą, do pobrania jako plik do arkusza.
 - **Bezpośrednia linia do zespołu**: Prywatna rozmowa w studiu, ze zrzutem ekranu albo poprawką kodu w załączniku.

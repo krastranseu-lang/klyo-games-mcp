@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/ · aktualizacja 2026-09-28 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Jak wydać grę HTML5 na klyo games
 
@@ -6,7 +6,7 @@ Zaloguj się na dev.klyo.pl, wgraj ZIP z plikiem index.html, zagraj w grę w pod
 
 ## Zanim zaczniesz
 
-- Gra, która działa w przeglądarce: ZIP z plikiem index.html w głównym katalogu albo jeden plik HTML, do 100 MB.
+- Gra, która działa w przeglądarce: ZIP z plikiem index.html w głównym katalogu albo jeden plik HTML, do 200 MB.
 - Darmowe konto klyo. Konto, na którym grasz na games.klyo.pl, otwiera też studio.
 - Około dziesięciu minut, z czego większość to granie we własną grę.
 
@@ -23,7 +23,7 @@ Zaloguj się na dev.klyo.pl, wgraj ZIP z plikiem index.html, zagraj w grę w pod
 
 ### Paczka została odrzucona
 
-Sprawdzenie zawsze podaje powód: brak pliku index.html w głównym katalogu ZIP-a, paczka większa niż 100 MB albo obca sieć reklamowa w kodzie. Popraw to i wgraj ponownie.
+Sprawdzenie zawsze podaje powód: brak pliku index.html w głównym katalogu ZIP-a, paczka większa niż 200 MB albo obca sieć reklamowa w kodzie. Popraw to i wgraj ponownie.
 
 ### Podgląd pokazuje białe okno
 

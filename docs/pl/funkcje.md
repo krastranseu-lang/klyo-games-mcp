@@ -1,15 +1,15 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/funkcje/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/funkcje/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Wszystko, co potrafi *klyo games*
 
-Jedno miejsce, w którym grasz w gry przeglądarkowe, przewijasz klipy, rozmawiasz o grach i wydajesz własne. Dziś działa 86 funkcji, a 3 są w budowie. Każdą z nich przy budowie strony porównujemy z naszym kodem.
+Jedno miejsce, w którym grasz w gry przeglądarkowe, przewijasz klipy, rozmawiasz o grach i wydajesz własne. Dziś działają 92 funkcje, a 3 są w budowie. Każdą z nich przy budowie strony porównujemy z naszym kodem.
 
 [Zagraj teraz](https://games.klyo.pl/pl/)
 
 [Wydaj swoją grę](https://games.klyo.pl/pl/studio-tworcy/)
 
-- **86** funkcji działa dziś, każda z dowodem w kodzie
-- **20** narzędzi dla asystentów AI przez otwarty protokół MCP
+- **92** funkcje działają dziś, każda z dowodem w kodzie
+- **21** narzędzi dla asystentów AI przez otwarty protokół MCP
 - **0 zł** za granie i za wydanie własnej gry
 - **PL i EN** każda strona portalu po polsku i po angielsku
 
@@ -43,7 +43,7 @@ Krótkie filmy z rozgrywki, które przewijasz jak na TikToku, nagrywane prosto w
 - **Zachowaj ostatnie 30 sekund**: Z włączonym nagrywaniem grasz, ile chcesz. Gdy wydarzy się coś wielkiego, jeden przycisk zachowuje ostatnie 30 sekund.
 - **Wytnij najlepszy moment**: Pasek klatek z dwoma uchwytami. Gra może sama oznaczyć swoje wielkie chwile, więc najlepszy fragment zaznacza się za ciebie.
 - **Napisy z twojego głosu**: Mówisz w trakcie gry, a napisy pojawiają się zgrane ze słowami. Głos zamieniamy na tekst na naszym serwerze i zaraz potem kasujemy. Każdy napis poprawisz ręką.
-- **Style napisów i motywy**: Motywy Klasyczny, Neon, Gra i TikTok jednym dotknięciem ustawiają napisy, ramkę twarzy i animacje. Krój, kolor, obrys i wejście zmieniasz sam.
+- **Style napisów i motywy**: Motywy Klasyczny, Neon, Gra i Pop jednym dotknięciem ustawiają napisy, ramkę twarzy i animacje. Krój, kolor, obrys i wejście zmieniasz sam.
 - **Twoja reakcja w kadrze**: Włączasz kamerę i reagujesz w ramce nad rozgrywką: na żywo albo już po nagraniu, puszczając klip i nagrywając samą twarz.
 - **Głos dograsz później**: Nagrałeś bez mikrofonu? Puszczasz klip od początku zaznaczenia i nagrywasz na nim komentarz, równo z obrazem.
 - **Automatyczny bip**: Przekleństwo w twoim głosie przykrywa w gotowym klipie krótki ton, a w napisach to słowo znika.
@@ -72,7 +72,8 @@ Każdy wynik pochodzi z prawdziwej partii, a każdy gracz wspina się po tej sam
 
 - **Centrum rekordów**: Rekordy wszech czasów i podia każdej gry, tabela medali dnia i żywy pasek najnowszych rekordów.
 - **Tablice dnia, tygodnia i wszech czasów**: Gra z zestawem klyo dostaje tablice na dziś, na ten tydzień i na zawsze, a gracz widzi swoje miejsce i osobę tuż przed sobą. [Instrukcja: tablica wyników](https://games.klyo.pl/pl/wsparcie/tablica-wynikow/)
-- **Wyniku nie da się wpisać z ręki**: Wynik liczy się tylko z partii, którą serwer rozpoczął i podpisał, po co najmniej 3 sekundach gry i poniżej limitu ustawionego przez twórcę.
+- **Szczyt tablicy tylko z prawdziwej partii**: Wynik liczy się tylko z partii, którą serwer rozpoczął i podpisał, po co najmniej 3 sekundach gry i poniżej limitu twórcy. Zestaw sam zbiera dowód z partii: prawdziwe ruchy gracza, których żaden skrypt nie podrobi. Wynik wpisany z konsoli albo zbyt szybki jak na ludzi czeka na sprawdzenie, zamiast stanąć na tablicy.
+- **Turniej tygodnia w każdej grze**: Od poniedziałku do niedzieli, bez nagród pieniężnych. Podium dostaje XP, gdy grało co najmniej trzech graczy, a do tabeli wchodzą tylko wyniki, które przeszły sprawdzenie uczciwości.
 - **17 rang, od Rekruta do Generała**: XP zdobywasz za granie, wyniki, medale i rozmowy, nigdy za płacenie. XP nigdy nie ubywa.
 - **Wiesz, kto cię wyprzedził**: Gdy grasz, strona na żywo mówi ci, że ktoś właśnie pobił twój dzisiejszy wynik, i podaje jego imię.
 - **Strony graczy i ranking**: Każdy gracz z kontem ma publiczną stronę z rangą i rekordami oraz miejsce w rankingu graczy. [Ranking graczy](https://games.klyo.pl/pl/gracz/)
@@ -86,8 +87,12 @@ Pokoje, szybkie mecze i gotowe lobby. Obsługuje je klyo, więc twórca pisze ty
 - **Pokoje z kodem**: Zakładasz pokój i wysyłasz znajomym 6-znakowy kod albo link. Pokój turowy mieści do 64 graczy, pokój na żywo do 16.
 - **Szybki mecz**: Jedno dotknięcie i grasz z kimś, kto ma podobny bilans wygranych.
 - **Lobby rysuje portal**: Czekające pokoje, najlepsi gracze i twój bilans stoją w oknie portalu, więc gra dostaje lobby jednym wywołaniem.
-- **Bezpośrednie połączenie**: Gry na żywo łączą graczy ze sobą bezpośrednio (WebRTC), a klyo tylko ich sobie przedstawia.
-- **Ranking wygranych i powrót do meczu**: Skończone mecze tworzą ranking wygranych każdej gry, a po odświeżeniu strony wracasz do meczu ze wszystkimi ruchami.
+- **Mecz na żywo przez serwer klyo**: W pokoju na żywo gra sama łączy się z naszym serwerem meczów przez UDP: do 120 wiadomości na sekundę, żaden gracz nie poznaje adresu innego, a twórca nie pisze ani linijki kodu sieciowego. Gdy sieć blokuje UDP, gra jedzie zapasowym połączeniem.
+- **Serwer pilnuje zasad meczu**: Twórca wpisuje zasady do pliku w paczce: tempo strzałów, magazynek, przeładowanie, prędkość postaci i największe obrażenia. Serwer meczów sprawdza każdą akcję, zanim zobaczą ją inni gracze, także na zapasowym połączeniu, więc nikt nie strzela bez końca ani nie teleportuje się po mapie.
+- **Drużyny i mapy w pokoju**: Gra podaje drużyny i mapy, a pokój trzyma je dla wszystkich: każdy wybiera drużynę, pełna drużyna odmawia, gospodarz wybiera mapę, a gra dostaje ten sam skład co lobby. Dwie osoby, które wybrały tę samą drużynę, grają razem. W strzelankach można wejść do trwającego meczu, gdy jest w nim miejsce.
+- **Zaproszenie jednym linkiem**: Link z pokoju wpuszcza znajomego od razu: gra uruchamia się sama, znajomy jest w twoim pokoju i w twojej drużynie, bez szukania przycisku w menu gry. Na komputerze wystarczy otworzyć link, na telefonie jedno dotknięcie karty zaproszenia, które od razu daje też pełny ekran.
+- **Kto gra teraz i gdzie**: Lista pokoi zmienia się sama, gdy ktoś wchodzi, zmienia drużynę albo mapę: widać mapę, drużyny z liczbą graczy, trwające mecze i ilu graczy jest teraz online w tej grze. Na ekranie startowym gry z trybem online licznik pokazuje, ile osób gra w tej chwili.
+- **Ranking wygranych i powrót do meczu**: Skończone mecze tworzą ranking wygranych każdej gry, a po odświeżeniu strony wracasz do meczu ze wszystkimi ruchami. Do rankingu wchodzi tylko prawdziwy mecz: trwał co najmniej 20 sekund, każdy gracz wykonał ruch, a ta sama para nie wygrywa między sobą częściej niż 3 razy na dobę.
 
 ## Studio twórcy
 
@@ -95,7 +100,7 @@ Wszystko od wgrania gry do pierwszych graczy, pod adresem dev.klyo.pl.
 
 [Poznaj studio twórcy](https://games.klyo.pl/pl/studio-tworcy/)
 
-- **Wgraj ZIP**: ZIP z plikiem index.html w środku albo jeden plik HTML, do 100 MB. Duża paczka idzie w kawałkach, więc zerwane połączenie nie kasuje postępu. [Instrukcja: jak wydać grę](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
+- **Wgraj ZIP**: ZIP z plikiem index.html w środku albo jeden plik HTML, do 200 MB. Duża paczka idzie w kawałkach, więc zerwane połączenie nie kasuje postępu. [Instrukcja: jak wydać grę](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
 - **Przenieś grę z sieci**: Wklejasz adres gry z itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify albo własnego serwera. Potwierdzamy, że jest twoja, i przenosimy pliki. [Przenieś grę](https://games.klyo.pl/pl/przenies-gre/)
 - **Automatyczne sprawdzenie**: Każda paczka przechodzi kontrolę rozmiaru, brakujących plików, ścieżek, obcych sieci reklamowych i śladów złośliwego kodu.
 - **Formularz wypełnia twoje AI**: Jeden przycisk i Claude, ChatGPT albo Claude Code wpisuje nazwę, hasło i opis gry na twoich oczach. Ankietę treści zaznaczasz sam. [Asystenci AI i MCP](https://games.klyo.pl/pl/mcp/)
@@ -123,10 +128,11 @@ Wydajesz, poprawiasz i sprawdzasz grę, rozmawiając z asystentem, którego już
 
 [Podłącz asystenta AI](https://games.klyo.pl/pl/mcp/)
 
-- **Serwer MCP: dwadzieścia narzędzi dla twórców**: Claude, ChatGPT, Gemini, Copilot, Cursor i VS Code wydają twoje gry i nimi zarządzają przez otwarty protokół MCP.
+- **Serwer MCP: 21 narzędzi dla twórców**: Claude, ChatGPT, Gemini, Copilot, Cursor i VS Code wydają twoje gry i nimi zarządzają przez otwarty protokół MCP.
 - **Ostatnie słowo należy do ciebie**: Asystent przygotowuje grę, ale regulamin akceptujesz ty, ankietę zaznaczasz ty i to ty wypuszczasz grę do katalogu. Twoich pieniędzy nie widzi.
 - **Poprawka bez ZIP-a**: Asystent czyta pliki gry i poprawia je w wersji roboczej. Gracze jej nie widzą, dopóki w nią nie zagrasz i jej nie wydasz.
 - **Asystent widzi wnętrze gry**: Diagnostyka podaje asystentowi brakujące pliki i błędy z przeglądarki, więc białe okno zamienia się w jedno jasne zdanie.
+- **Asystent gra w twoją grę**: Na twoim urządzeniu, w studiu i na twoich oczach: naciska klawisze, klika i przeciąga, a potem ogląda zdjęcia ekranu. Także gry 3D, bo gra działa na twojej karcie graficznej, a nie na naszym serwerze.
 - **Pliki startowe nowej gry**: Prosisz o nową grę i dostajesz działające pliki na Klyo Kit, z menu, pauzą i dźwiękiem od pierwszej chwili.
 - **Klucz API do skryptów i CI**: Generujesz klucz w studiu i wydajesz grę z własnego skryptu albo automatu budowania. W bazie trzymamy tylko jego skrót. [Wydanie bez wgrywania](https://games.klyo.pl/pl/publikacja-bez-wgrywania/)
 - **Wtyczka, rozszerzenie i umiejętność**: Instalujesz klyo jako wtyczkę Claude Code, rozszerzenie Gemini CLI albo umiejętność agenta z naszego publicznego repozytorium na GitHubie.
@@ -182,7 +188,7 @@ Nie. Gra startuje z linku bez konta. Konto dodaje twoje imię na tablicach wynik
 
 ### Czy asystent AI może wydać grę na klyo games?
 
-Tak. Claude, ChatGPT, Gemini, Copilot, Cursor i VS Code łączą się z serwerem MCP klyo, który ma dwadzieścia narzędzi dla twórców gier. Asystent wgrywa i przygotowuje grę, a ty akceptujesz regulamin i sam wypuszczasz ją do katalogu.
+Tak. Claude, ChatGPT, Gemini, Copilot, Cursor i VS Code łączą się z serwerem MCP klyo, który ma 21 narzędzi dla twórców gier. Asystent wgrywa i przygotowuje grę, a ty akceptujesz regulamin i sam wypuszczasz ją do katalogu.
 
 ### Jak działają klipy?
 

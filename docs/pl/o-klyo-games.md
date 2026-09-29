@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/o-klyo-games/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/o-klyo-games/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Czym jest *klyo games*
 
@@ -22,11 +22,11 @@ Jedno konto, jeden portal i osiem części, które działają razem. Każda ma w
 - **[Rekordy i rangi](https://games.klyo.pl/pl/rekordy/)**: Tablice dnia i wszech czasów, medale i 17 rang, a wyniki pochodzą wyłącznie z prawdziwych partii.
 - **[Gra z innymi](https://games.klyo.pl/pl/zestaw-do-gry/)**: Pokoje z kodem, szybki mecz i gotowe lobby dla gier turowych i na żywo.
 - **[Studio twórcy](https://games.klyo.pl/pl/studio-tworcy/)**: Wgranie gry, podgląd na czterech ekranach, wersje, statystyki i strona twórcy pod dev.klyo.pl.
-- **[Asystenci AI](https://games.klyo.pl/pl/mcp/)**: Serwer MCP z 20 narzędziami: grę wydajesz i poprawiasz rozmową z Claude albo ChatGPT.
+- **[Asystenci AI](https://games.klyo.pl/pl/mcp/)**: Serwer MCP z 21 narzędziami: grę wydajesz i poprawiasz rozmową z Claude albo ChatGPT.
 - **[Zestaw klyo](https://games.klyo.pl/pl/zestaw-do-gry/)**: Jedna linijka w grze daje wyniki, zapis w chmurze, reklamę za nagrodę, klipy i grę online.
 - **[Bezpieczeństwo](https://games.klyo.pl/pl/sprawozdanie-moderacja/)**: Człowiek ogląda każdą grę, etykiety wieku są w skali PEGI i Apple, a zgłoszenie rozpatrujemy w 24 godziny.
 
-[Zobacz wszystkie funkcje (86)](https://games.klyo.pl/pl/funkcje/)
+[Zobacz wszystkie funkcje (92)](https://games.klyo.pl/pl/funkcje/)
 
 ## Po co tu przyszedłeś?
 
@@ -73,13 +73,13 @@ Nie wymyślaliśmy portalu od zera. Wzięliśmy trzy rzeczy, które gdzie indzie
 
 ### A tego nie ma żaden z nich: wydajesz grę, rozmawiając z asystentem
 
-klyo games jest podłączone do asystentów AI przez otwarty protokół MCP: 45 gotowych poleceń, z tego dwadzieścia dla twórców gier. Mówisz swojemu asystentowi „przygotuj tę grę na klyo”, a on zakłada wpis, wysyła paczkę, sprawdza stan i pokazuje statystyki. Do katalogu wypuszczasz ją sam, jednym przyciskiem, bo sprawdzarka orzeknie, że paczka jest kompletna, ale nie orzeknie, że w grę da się zagrać.
+klyo games jest podłączone do asystentów AI przez otwarty protokół MCP: 46 gotowych poleceń, z tego 21 dla twórców gier. Mówisz swojemu asystentowi „przygotuj tę grę na klyo”, a on zakłada wpis, wysyła paczkę, sprawdza stan i pokazuje statystyki. Do katalogu wypuszczasz ją sam, jednym przyciskiem, bo sprawdzarka orzeknie, że paczka jest kompletna, ale nie orzeknie, że w grę da się zagrać.
 
 [Zobacz, jak podłączyć asystenta](https://games.klyo.pl/pl/mcp/)
 
 ## Skąd się to wzięło
 
-klyo to polska firma technologiczna z siedzibą w Łodzi. Oprócz portalu gier tworzy i utrzymuje inne własne produkty: klyo hosting (hosting stron i firmowa poczta), Prześwietlarka (darmowy audyt dowolnej strony z publicznym API), klyo QR (generator kodów QR), Klyo Pass (cyfrowa wizytówka), Klyo Switcher (przełącznik okien dla macOS) i Routence (system dla firm transportowych, w rozwoju). Gry zaczęliśmy pisać dla siebie, jako dowód, że coś, co działa w przeglądarce, może być szybkie i wygodne również na telefonie. Kiedy pierwsze gry były gotowe, okazało się, że najtrudniejsza część wcale nie polega na napisaniu gry.
+klyo to polska firma technologiczna z siedzibą w Łodzi. Oprócz portalu gier tworzy i utrzymuje inne własne produkty: Prześwietlarka (darmowy audyt dowolnej strony z publicznym API), klyo QR (generator kodów QR), Klyo Pass (cyfrowa wizytówka), Klyo Switcher (przełącznik okien dla macOS) i Routence (system dla firm transportowych, w rozwoju). Gry zaczęliśmy pisać dla siebie, jako dowód, że coś, co działa w przeglądarce, może być szybkie i wygodne również na telefonie. Kiedy pierwsze gry były gotowe, okazało się, że najtrudniejsza część wcale nie polega na napisaniu gry.
 
 Twórca kończy grę i nie ma jej gdzie pokazać. Na forach wpis czeka na moderatora albo znika jako reklama własnej pracy. Na serwisach z plikami dostaje adres, ale graczy musi przyprowadzić sam. Do dużych portali zgłoszenie leży miesiącami. Portal powstał po to, żeby ta droga trwała jedno popołudnie zamiast pół roku.
 
@@ -113,7 +113,7 @@ Trzeba powiedzieć jedno wprost: wypłaty dla twórców zaczynają się od pierw
 
 ## Na jakim jesteśmy etapie
 
-Katalog jest młody: 20 gier od 7 twórców, każda obejrzana przez człowieka, zanim trafiła na półkę. Nie zamierzamy tego zaklinać: portal, który pierwszego dnia obiecuje twórcy tysiące graczy, kłamie, a to wychodzi po tygodniu.
+Katalog jest młody: 26 gier od 8 twórców, każda obejrzana przez człowieka, zanim trafiła na półkę. Nie zamierzamy tego zaklinać: portal, który pierwszego dnia obiecuje twórcy tysiące graczy, kłamie, a to wychodzi po tygodniu.
 
 To, co możemy obiecać dzisiaj, to brak przeszkód. Gra idzie na stronę tego samego dnia, dostaje własny adres, jest widoczna dla wyszukiwarek od razu, a twórca ma statystyki, oceny i recenzje od pierwszego uruchomienia. Kto wydaje teraz, stoi na pierwszej stronie katalogu, nie na dziesiątej.
 

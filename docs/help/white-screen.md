@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/support/white-screen/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/white-screen/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
 
 # Game shows a white screen: how to fix it
 
@@ -47,6 +47,7 @@ Yes. Connected over the klyo MCP server, it reads the same diagnosis, missing fi
 - [How to publish an HTML5 game on klyo games](https://games.klyo.pl/support/publish-html5-game/)
 - [How to release a new version of your game or roll back](https://games.klyo.pl/support/release-new-version/)
 - [How to add a leaderboard to an HTML5 game](https://games.klyo.pl/support/add-leaderboard/)
+- [Let your AI assistant play your game](https://games.klyo.pl/support/assistant-plays-your-game/)
 - [All guides](https://games.klyo.pl/support/)
 
 Still stuck? Write to [kontakt@klyo.pl](mailto:kontakt@klyo.pl) and include the address of the game. A person answers within two working days.

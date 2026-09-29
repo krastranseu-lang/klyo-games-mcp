@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/biale-okno/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/biale-okno/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Gra pokazuje białe okno: jak to naprawić
 
@@ -47,6 +47,7 @@ Tak. Podłączony przez serwer MCP klyo czyta tę samą diagnozę, brakujące pl
 - [Jak wydać grę HTML5 na klyo games](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
 - [Jak wydać nową wersję gry i wrócić do poprzedniej](https://games.klyo.pl/pl/wsparcie/nowa-wersja-gry/)
 - [Jak dodać tablicę wyników do gry HTML5](https://games.klyo.pl/pl/wsparcie/tablica-wynikow/)
+- [Asystent AI gra w twoją grę: jak mu pozwolić](https://games.klyo.pl/pl/wsparcie/asystent-gra-w-twoja-gre/)
 - [Wszystkie instrukcje](https://games.klyo.pl/pl/wsparcie/)
 
 Nadal coś nie działa? Napisz na [kontakt@klyo.pl](mailto:kontakt@klyo.pl) i podaj adres gry. Odpowiada człowiek, w dwa dni robocze.

@@ -1,15 +1,15 @@
-> **Canonical page:** https://games.klyo.pl/features/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/features/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
 
 # Everything *klyo games* can do
 
-One place to play browser games, swipe through clips, talk about games and publish your own. 86 features work today and 3 are in development. Each one is checked against our code every time the site is built.
+One place to play browser games, swipe through clips, talk about games and publish your own. 92 features work today and 3 are in development. Each one is checked against our code every time the site is built.
 
 [Play now](https://games.klyo.pl/)
 
 [Publish your game](https://games.klyo.pl/developer-studio/)
 
-- **86** features that work today, each backed by our code
-- **20** tools for AI assistants over the open MCP protocol
+- **92** features that work today, each backed by our code
+- **21** tools for AI assistants over the open MCP protocol
 - **0 PLN** to play, and to publish your own game
 - **EN and PL** every page of the portal in English and Polish
 
@@ -43,7 +43,7 @@ Short gameplay videos you swipe through like TikTok, recorded right in the brows
 - **Keep the last 30 seconds**: With recording on, play as long as you like. When something great happens, one button keeps the last 30 seconds.
 - **Cut the best moment**: A strip of frames with two handles. A game can mark its own big moments, so the best part is selected for you.
 - **Captions from your voice**: Talk while you play and captions appear in time with your words. Your voice becomes text on our server and is deleted right after. Every caption can be edited.
-- **Caption styles and themes**: The Classic, Neon, Game and TikTok themes set captions, the face frame and animations in one tap. Font, colour, outline and entrance are yours to change.
+- **Caption styles and themes**: The Classic, Neon, Game and Pop themes set captions, the face frame and animations in one tap. Font, colour, outline and entrance are yours to change.
 - **Your reaction in the frame**: Turn on the camera and react in a frame over the gameplay, live or after recording by playing the clip back and filming just your face.
 - **Add your voice later**: Recorded without a microphone? Play the clip from the start of your selection and talk over it, in sync with the picture.
 - **Automatic bleep**: A swear word in your voice is covered with a short tone in the finished clip and hidden in the captions.
@@ -72,7 +72,8 @@ Every score comes from a real round, and every player climbs the same ladder.
 
 - **Records hub**: All-time records and podiums for every game, a medal table of the day and a live strip of the newest records.
 - **Day, week and all-time boards**: A game with the klyo SDK gets boards for today, this week and all time, and players see their place and the person just above them. [Guide: add a leaderboard](https://games.klyo.pl/support/add-leaderboard/)
-- **Scores you cannot type in**: A score counts only from a round the server started and signed, after at least 3 seconds of play and under the limit the developer set.
+- **The top of the board only from a real round**: A score counts only from a round the server started and signed, after at least 3 seconds of play and under the developer's limit. The SDK collects proof from the round on its own: real player input that no script can fake. A score typed into the console or faster than humans play waits for a check instead of going on the board.
+- **A weekly tournament in every game**: Monday to Sunday, no cash prizes. The podium earns XP when at least three players took part, and only scores that passed the fairness check enter the table.
 - **17 ranks, from Recruit to General**: You earn XP for playing, scores, medals and conversation, never for paying. XP never goes down.
 - **Know who just passed you**: While you play, the page tells you live that someone has just beaten your score for today, and who it was.
 - **Player pages and ranking**: Every player with an account has a public page with rank and records, and a place in the players ranking. [Players ranking](https://games.klyo.pl/player/)
@@ -86,8 +87,12 @@ Rooms, quick matches and a ready-made lobby, run by klyo so the developer writes
 - **Rooms with a code**: Create a room and send friends a 6-character code or a link. A turn-based room holds up to 64 players, a live one up to 16.
 - **Quick match**: One tap and you are playing someone with a similar record of wins.
 - **A lobby drawn by the portal**: Waiting rooms, top players and your record live in a portal window, so a game gets a lobby with one call.
-- **Direct connection**: Real-time games connect players to each other directly (WebRTC), with klyo only introducing them.
-- **Wins ranking and match resume**: Finished matches build a wins ranking for each game, and after a page refresh you return to your match with every move.
+- **Live matches through klyo servers**: In a live room the game connects to our match server over UDP on its own: up to 120 messages a second, no player ever sees another player's address, and the developer writes no networking code. If a network blocks UDP, the game falls back to a backup connection.
+- **The server guards match rules**: The developer writes the rules into a file in the package: fire rate, magazine, reload, character speed and the highest damage. The match server checks every action before other players see it, on the fallback connection too, so nobody fires forever or teleports across the map.
+- **Teams and maps in the room**: The game names its teams and maps, and the room keeps them for everyone: each player picks a team, a full team says no, the host picks the map, and the game gets the same line-up as the lobby. Two people who pick the same team play together. In shooters you can join a running match when it has a free spot.
+- **One-link invites**: A room link lets a friend straight in: the game starts on its own, and your friend is in your room and in your team, without looking for a button in the game menu. On a computer opening the link is enough, on a phone one tap on the invite card, which also goes full screen.
+- **Who is playing now and where**: The room list updates by itself when someone joins, switches team or map: you see the map, teams with their player counts, running matches and how many players are online in this game right now. On the start screen of an online game a counter shows how many people are playing at this moment.
+- **Wins ranking and match resume**: Finished matches build a wins ranking for each game, and after a page refresh you return to your match with every move. Only a real match counts: it lasted at least 20 seconds, every player moved, and the same pair cannot win against each other more than 3 times a day.
 
 ## Developer Studio
 
@@ -95,7 +100,7 @@ Everything from uploading a game to its first players, at dev.klyo.pl.
 
 [Tour the Developer Studio](https://games.klyo.pl/developer-studio/)
 
-- **Upload a ZIP**: A ZIP with index.html inside or a single HTML file, up to 100 MB. Large packages upload in chunks, so a dropped connection keeps your progress. [Guide: publish a game](https://games.klyo.pl/support/publish-html5-game/)
+- **Upload a ZIP**: A ZIP with index.html inside or a single HTML file, up to 200 MB. Large packages upload in chunks, so a dropped connection keeps your progress. [Guide: publish a game](https://games.klyo.pl/support/publish-html5-game/)
 - **Move a game from the web**: Paste the address of a game on itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify or your own server. We confirm it is yours and bring the files over. [Move your game](https://games.klyo.pl/move-your-game/)
 - **Automatic check**: Every package is checked for size, missing files, paths, third-party ad networks and traces of malicious code.
 - **Your AI fills in the form**: One button and Claude, ChatGPT or Claude Code types the name, tagline and description while you watch. You tick the content survey yourself. [AI assistants and MCP](https://games.klyo.pl/mcp/)
@@ -123,10 +128,11 @@ Publish, fix and check your game by talking to the assistant you already use.
 
 [Connect your AI assistant](https://games.klyo.pl/mcp/)
 
-- **MCP server with twenty tools for developers**: Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code publish and manage your games through the open Model Context Protocol.
+- **MCP server with 21 tools for developers**: Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code publish and manage your games through the open Model Context Protocol.
 - **You have the last word**: The assistant prepares the game, but you accept the terms, you tick the survey and you release the game to the catalogue. It never sees your money.
 - **Fixes without a ZIP**: Your assistant reads the game's files and patches them in a draft version. Players do not see it until you play it and release it.
 - **Your agent sees inside the game**: Diagnostics hand your assistant the missing files and browser errors, so a white screen turns into one clear sentence.
+- **Your assistant plays your game**: On your device, in the studio, while you watch: it presses keys, clicks and drags, then looks at screenshots. 3D games too, because the game runs on your graphics card, not on our server.
 - **Starter files for a new game**: Ask for a new game and get working files built on the Klyo Kit, with menu, pause and sound from the first minute.
 - **API key for scripts and CI**: Generate a key in the studio and publish from your own script or build pipeline. We store only a hash of it. [Publishing without uploading](https://games.klyo.pl/publish-without-uploading/)
 - **Plugin, extension and skill**: Install klyo as a Claude Code plugin, a Gemini CLI extension or an agent skill from our public GitHub repository.
@@ -182,7 +188,7 @@ No. Games start from a link without an account. An account adds your name on lea
 
 ### Can an AI assistant publish a game on klyo games?
 
-Yes. Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code connect to the klyo MCP server, which has twenty tools for game developers. The assistant uploads and prepares the game, and you accept the terms and release it to the catalogue yourself.
+Yes. Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code connect to the klyo MCP server, which has 21 tools for game developers. The assistant uploads and prepares the game, and you accept the terms and release it to the catalogue yourself.
 
 ### How do clips work?
 

@@ -49,6 +49,7 @@ Call `klyo_game_requirements` before you design, write or change game code. It r
 - Small change without a ZIP: `klyo_game_files` to read, `klyo_game_patch` to edit a workshop copy. Players keep the current version until you release the new one.
 - A release broke the game: `klyo_release_rollback`.
 - Blank screen or errors: `klyo_game_diagnostics` with the `slug`.
+- See the game: `klyo_game_play` plays it on the owner's own device (the klyo studio open at https://dev.klyo.pl/, after they click "Allow") and returns screenshots and the game state. Play before you call a game or a new version done, and always when `bramka.wynik` is `NIESPRAWDZONA` (the server has no graphics card): a play in which the game draws frames is saved as evidence for those files.
 - Numbers: `klyo_game_stats`.
 
 ## Rules the server enforces

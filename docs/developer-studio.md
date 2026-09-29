@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/developer-studio/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/developer-studio/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
 
 # klyo *Developer Studio*
 
@@ -9,9 +9,9 @@ The workspace where independent developers bring in a browser game, play it befo
 [How to publish a game, step by step](https://games.klyo.pl/support/publish-html5-game/)
 
 - **0 PLN** to publish, host and keep a game online
-- **100 MB** per package, as a ZIP or one HTML file
+- **200 MB** per package, as a ZIP or one HTML file
 - **4 screens** measured at every release of a game
-- **20** MCP tools, so your AI can do the clicking
+- **21** MCP tools, so your AI can do the clicking
 
 ## From a ZIP to players in five steps
 
@@ -25,7 +25,7 @@ The workspace where independent developers bring in a browser game, play it befo
 
 Three ways in, one and the same check.
 
-- **A ZIP or a single HTML file**: Up to 100 MB, sent in chunks so a weak connection never makes you start over. index.html sits in the root of the ZIP.
+- **A ZIP or a single HTML file**: Up to 200 MB, sent in chunks so a weak connection never makes you start over. index.html sits in the root of the ZIP.
 - **Move it from another site**: itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify or your own server. You prove the game is yours with a link in its description or a DNS record, and we fetch the files.
 - **Or let your assistant do it**: Claude, ChatGPT and other assistants upload and prepare the game through the klyo MCP server. You still press the last button.
 
@@ -72,7 +72,7 @@ Every game gets the same tools, from day one.
 
 Click through the studio, talk to an assistant or call it all from a script.
 
-- **MCP server with twenty tools**: Publishing, versions, rollback, covers, translations, diagnostics and stats from the assistant you already use.
+- **MCP server with 21 tools**: Publishing, versions, rollback, covers, translations, diagnostics and stats from the assistant you already use.
 - **An API key**: For your own agent, script or build pipeline. It is shown once, and we keep only its hash.
 - **Event record**: Every publication, edit and moderation decision with its date, downloadable as a spreadsheet file.
 - **A direct line to the team**: A private conversation inside the studio, with a screenshot or a code patch attached.

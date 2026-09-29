@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/mcp/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/mcp/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
 
 # klyo MCP server: publish HTML5 games from your AI assistant
 
@@ -51,9 +51,9 @@ We are not the only MCP server that can publish a browser game. Here is what eac
 
 | | klyo games | Playgama | AIGameShare | Playfrog |
 | --- | --- | --- | --- | --- |
-| Tools for developers | 20 | 25+ | 5 | 2 |
+| Tools for developers | 21 | 25+ | 5 | 2 |
 | Sign-in | OAuth 2.1, nothing to paste | OAuth 2.1 | a token from your account pasted into the config | none; a separate management token for each game |
-| Package | ZIP up to 100 MB and 5,000 files | ZIP up to 300 MB | HTML up to 2 MB or ZIP up to 30 MB | up to 2.5 MB |
+| Package | ZIP up to 200 MB and 5,000 files | ZIP up to 300 MB | HTML up to 2 MB or ZIP up to 30 MB | up to 2.5 MB |
 | What the game gets | its own address g-.klyo.pl, a catalogue page in English and Polish, leaderboards, player clips, daily stats | a public playable link from the Playgama sandbox | a shareable link with plays, likes and a leaderboard | a shareable play link; the game has to be claimed within 7 days |
 | Money for the developer | 70% of the ad revenue from the day Google AdSense approves the portal (not yet) | ads through Playgama once the game passes a session threshold; payouts from 100 USD | not stated | not stated |
 
@@ -82,6 +82,7 @@ Checked on 23 September 2026 in each service's own documentation: [Playgama](htt
 | `klyo_game_translate` | game text translations made by your own AI: first the original and the missing languages, then proposals you approve in the studio |
 | `klyo_creator_card` | your creator card: “about me” and a tagline written from your games, saved only after you agree |
 | `klyo_add_post` | a community post: a question, a call for playtests, a launch |
+| `klyo_game_play` | plays your game on your device: the studio open on your side, permission with one “Allow” click; keyboard, mouse and touch moves, answered with screenshots and the game state, 3D games included |
 
 ## Fields and rules: the same as in the studio
 
@@ -126,6 +127,25 @@ We run no browser farm and need none. The game runs on your machine, and our sen
 
 Order matters: asking before the game runs returns an empty answer, because there was nothing to collect.
 
+## Your assistant plays your game on your device
+
+An assistant in a chat has no screen, so until now it knew your game only from error lists and thumbnails. Now it can play it: it presses keys, clicks, taps and drags, and after each run of moves it gets screenshots and the game state. The game runs in the studio open on your side, on your graphics card, so your assistant also sees 3D games our server cannot display. The klyo server does not draw a single pixel; it only passes the moves along.
+
+1. **Open the studio**: Go to [dev.klyo.pl](https://dev.klyo.pl/) on the computer or phone you want to test on. If your assistant has already asked to play, you see “Your assistant wants to play …” right away (the request waits 10 minutes).
+2. **Click “Allow”**: From then on your assistant may play on this device. The game opens in a small window in the corner of the screen, full screen on a phone, and you see every move.
+3. **Your assistant plays and looks**: It sends up to 40 moves at a time on one timeline of up to 3 seconds, also at once: run, turn the camera, jump. It gets back up to 4 screenshots, whether the game started, the score and how smoothly the game itself runs.
+4. **Stop it whenever you like**: “Stop” in the game window or “Turn off” on the bar ends it at once. Your assistant's next request asks for your permission again.
+
+- **Only your games.** Your assistant opens only your account's games: the workshop version or a waiting package under its preview address, otherwise the version players have.
+- **Screenshots stay in the chat.** They go only to the chat that asked for them. We do not store them in a database or on disk; they wait in server memory for at most 10 minutes, so a retried call does not play twice.
+- **Moves like a player's, with one catch.** The game gets keys, clicks, taps and mouse movement as if from a person, but the browser marks them as untrusted. Full screen and sound therefore wait for your click, and pointer lock for mouse-look games is simulated.
+- **The game needs the klyo SDK.** The SDK from `games.klyo.pl/sdk/klyo-gry-sdk.js` runs the moves. A game without it, or with an old copy in the package, answers “no SDK”, and your assistant says what to replace.
+- **One run at a time.** One call at a time per account, up to 600 an hour. A studio tab in the background pauses the game, so keep it visible next to the chat.
+- **Errors from this run.** Each session has its own sensor tag, so `klyo_game_diagnostics` with `sesja` shows only the errors from your assistant's play.
+- **When the measurement says NIESPRAWDZONA.** Our server measures games without a graphics card, so it cannot see a 3D game and will not give it a green light. Then the picture from your device shows your assistant whether the game works, and the release decision is yours, as always.
+
+[Step-by-step guide for developers, with the button names from the studio](https://games.klyo.pl/support/assistant-plays-your-game/)
+
 ## A package from disk, without exposing the game
 
 Do not open a tunnel and do not put an unreleased game on public hosting. The `klyo_upload_package` tool hands the assistant an **upload pass** (a token valid for one hour that opens nothing but sending files to your account) plus the list of packages already waiting with us without a game. An assistant with a shell (Claude Code, Codex, Cursor) sends the file itself in two requests; an assistant in a chat (claude.ai, ChatGPT) asks you to drop the ZIP in the studio: the package lands in the waiting room, nothing gets published, and it picks the number from the list. The short version is below.
@@ -162,7 +182,7 @@ Your assistant reads your game's files and edits them here, without a package fr
 1. **Start from scratch if there is no game yet**: `klyo_game_patch` with `nowa` (`plansza`, `zrecznosciowa` or `logiczna`) creates a package from the Klyo Kit skeleton right in the waiting room and writes the gameplay in the same call. An assistant in a chat, with no disk and no ZIP, has its own game at a preview address from that moment.
 2. **Read**: `klyo_game_files` with the game's `slug` or the package's `upload_id`. Without `path` you get the file list with a `hash` for each file, with `path` the file's content (up to 200 KB at a time, continue from `from_line`), and with `changes: true` what differs from the version players have.
 3. **Edit**: `klyo_game_patch` with a list of `edits`: an exact `old_string` replaced by `new_string`, a whole file in `content`, or `delete: true`. For a file that exists you pass `expected_hash` from your read: if someone changed the file in the meantime, nothing is saved. The edits of one call go in all together or not at all. The first edit opens the workshop, and the studio shows it straight away as “New version is waiting”.
-4. **Play and check**: The preview address comes back in the answer. Open it (a phone is the best test), and `klyo_game_diagnostics` shows the errors, missing files and check results of this very version, not of the one players have. An assistant without a browser passes `zmierz: true`: we open the preview for it and return the errors and thumbnails of four screens at full addresses, so it sees what the game looks like. Files unchanged since the last measurement do not start the browser again; one measurement at a time per account, six an hour.
+4. **Play and check**: The preview address comes back in the answer. Open it (a phone is the best test), and `klyo_game_diagnostics` shows the errors, missing files and check results of this very version, not of the one players have. An assistant without a browser passes `zmierz: true`: we open the preview for it and return the errors and thumbnails of four screens at full addresses, so it sees what the game looks like. Files unchanged since the last measurement do not start the browser again; one measurement at a time per account, six an hour. Your assistant can also play it itself, on your device: `klyo_game_play`, described [above](https://games.klyo.pl/mcp/#zagraj).
 5. **Release**: A game: `klyo_release_version` or “Release” in the studio. A package from the waiting room: `klyo_publish_game` publishes it together with the edits. Before the swap the whole game goes through the check once more.
 
 - **The version players have does not change.** The workshop is a copy next to it and every save creates a new file, so what players download does not change for a moment.
@@ -203,7 +223,7 @@ Any client that supports remote MCP servers with sign-in. Step-by-step instructi
 
 ### Where does the assistant get the package address?
 
-From wherever you already work: a repository, a drive, your own server. The address must be public and lead straight to a ZIP file with `index.html` at the top. A package may weigh up to 100 MB and hold up to 5,000 files.
+From wherever you already work: a repository, a drive, your own server. The address must be public and lead straight to a ZIP file with `index.html` at the top. A package may weigh up to 200 MB and hold up to 5,000 files.
 
 ### Does it work with Unity and Godot?
 
@@ -272,6 +292,10 @@ Use `limit`. `klyo_ads_ideas` returns the most searched phrases (50 by default, 
 ### Can I measure a game in chosen languages?
 
 Yes. `klyo_game_diagnostics` with `zmierz`, `pelny` and `jezyki: ["pl","en","de"]` checks exactly those languages, together with the weak phone. A second measurement ordered while the first runs waits in the queue and starts by itself.
+
+### Can my assistant play my game itself?
+
+Yes, on your device. Open the studio at [dev.klyo.pl](https://dev.klyo.pl/) and click “Allow” when your assistant asks. The game runs on your side, on your graphics card; your assistant sends moves and gets screenshots. The klyo server never displays games, and one click stops the play.
 
 ### Do I have to use an assistant?
 

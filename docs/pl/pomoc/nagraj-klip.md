@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/nagraj-klip/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/nagraj-klip/ · aktualizacja 2026-09-28 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Jak nagrać klip z gry z napisami
 
@@ -16,7 +16,7 @@ Uruchom grę i naciśnij „Nagraj klip” obok niej. Graj, potem naciśnij „Z
 2. **Dodaj głos i twarz, jeśli chcesz**: W kapsule nagrywania naciśnij **Włącz mikrofon**, żeby napisy powstały z twojej mowy, i **Włącz kamerkę**, żeby twoja twarz stanęła w kadrze. Oba są opcjonalne i możesz dodać je także później.
 3. **Graj i zachowaj moment**: Graj jak zwykle. Gdy wydarzy się coś wielkiego, naciśnij **Zapisz ostatnie 30 s** albo **Stop**, gdy skończysz. Z włączoną opcją „Zapisuj ostatnie 30 s automatycznie, gdy gram” nie musisz naciskać nagrywania przed dobrym momentem.
 4. **Wytnij najlepszy moment**: Edytor otwiera się z paskiem klatek i dwoma uchwytami. Klip trwa od 3 do 30 sekund, a jeśli gra oznaczyła ważną chwilę, jest już zaznaczona. Wybierz „Pionowy”, żeby klip pasował do strumienia, albo „Jak w grze”, żeby zachować oryginalny kształt.
-5. **Dopracuj napisy**: Napisy z twojej mowy pojawiają się zgrane ze słowami; dotknij dowolnego, żeby go poprawić, albo naciśnij **Napis tu**, żeby dodać nowy. Wybierz „Motyw”: Klasyczny, Neon, Gra albo TikTok. Drugi język przygotujesz przyciskiem **Przetłumacz na tym urządzeniu**; przeczytaj wynik. Zapomniałeś mówić? **Nagraj głos** i **Nagraj twarz** puszczają klip, a ty dogrywasz komentarz albo reakcję.
+5. **Dopracuj napisy**: Napisy z twojej mowy pojawiają się zgrane ze słowami. Dotknij napisu na filmie i popraw go na miejscu: przeciągnij, gdzie chcesz, a rogiem ramki zmień wielkość. **Dodaj napis** pod filmem dopisze nowy w chwili, w której stoi film. Wybierz „Motyw”: Klasyczny, Neon, Gra albo Pop. Drugi język przygotujesz przyciskiem **Przetłumacz na tym urządzeniu**; przeczytaj wynik. Zapomniałeś mówić? **Nagraj głos** i **Nagraj twarz** puszczają klip, a ty dogrywasz komentarz albo reakcję.
 6. **Wystaw klip**: Napisz podpis, który zobaczą gracze, i naciśnij **Wystaw klip**. Klip trafia do społeczności i do strumienia klipów pod twoim pseudonimem. Kopię w pliku zachowasz przyciskiem **Zapisz na urządzeniu**.
 
 ## Jeśli coś nie działa

@@ -93,7 +93,7 @@ Then just say: *"publish this game on klyo, the package is in this folder"*.
 
 ## Tools
 
-The table below is generated from the live server (`tools/list`, checked on 23 September 2026). Anyone can list the tools without signing in; every call needs sign-in.
+The table below is generated from the live server (`tools/list`, checked on 30 September 2026). Anyone can list the tools without signing in; every call needs sign-in.
 
 | Tool | What it does | Effect |
 |---|---|---|
@@ -113,6 +113,7 @@ The table below is generated from the live server (`tools/list`, checked on 23 S
 | `klyo_game_diagnostics` | Why the game is not working | read |
 | `klyo_game_files` | Read a game's files | read |
 | `klyo_game_patch` | Edit a game's files in a workshop | changes, can overwrite |
+| `klyo_game_play` | Play your game on your own device | changes; runs only on the owner's device, after they click Allow |
 | `klyo_game_translate` | Translate a game's texts (owner's own AI) | changes |
 | `klyo_creator_card` | Write the creator's profile card (owner's own AI) | changes, can overwrite |
 | `klyo_fill_game_form` | Fill the open New game form live (owner's own AI) | changes |
@@ -143,6 +144,7 @@ Checked on 23 September 2026 in each service's own documentation. Those services
 - **Publishing is free and immediate.** After the automatic check you play your own game in a preview and release it with one click. A person from klyo looks at it after that; until then the game is visible only to adult accounts.
 - **Revenue share:** 70% of the net ad revenue attributed to your game, payout threshold 100 PLN. It starts the day Google AdSense approves the portal. As of today no ads are shown and nothing has been paid out yet.
 - **Leaderboards** receive scores from the game itself over a signed round, never typed in.
+- **Your assistant can play your game** on your own computer or phone: open the studio at https://dev.klyo.pl/ and click Allow. It sends moves and gets screenshots; the klyo server never renders a game, so 3D games are checked on your graphics card.
 - **The portal is new.** It does not have the traffic of a big portal yet, and we do not pretend it does.
 
 ## Privacy

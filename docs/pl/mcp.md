@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/mcp/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/mcp/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Serwer MCP klyo: wydaj grę HTML5 asystentem AI
 
@@ -51,9 +51,9 @@ Nie jesteśmy jedynym serwerem MCP, który wydaje gry przeglądarkowe. Oto, co k
 
 | | klyo games | Playgama | AIGameShare | Playfrog |
 | --- | --- | --- | --- | --- |
-| Narzędzia dla twórcy | 20 | 25+ | 5 | 2 |
+| Narzędzia dla twórcy | 21 | 25+ | 5 | 2 |
 | Logowanie | OAuth 2.1, nic nie wklejasz | OAuth 2.1 | token z konta wklejany do konfiguracji | brak; osobny token zarządzania dla każdej gry |
-| Paczka | ZIP do 100 MB i 5 000 plików | ZIP do 300 MB | HTML do 2 MB albo ZIP do 30 MB | do 2,5 MB |
+| Paczka | ZIP do 200 MB i 5 000 plików | ZIP do 300 MB | HTML do 2 MB albo ZIP do 30 MB | do 2,5 MB |
 | Co dostaje gra | własny adres g-.klyo.pl, stronę w katalogu po angielsku i po polsku, tablicę wyników, klipy graczy, statystyki dzień po dniu | publiczny link do gry z piaskownicy Playgama | link do udostępnienia z zagraniami, polubieniami i tablicą wyników | link do gry; grę trzeba przejąć w ciągu 7 dni |
 | Pieniądze dla twórcy | 70% przychodu z reklam od dnia akceptacji portalu przez Google AdSense (jeszcze nie) | reklamy przez Playgama po przekroczeniu progu sesji; wypłaty od 100 USD | nie podają | nie podają |
 
@@ -82,6 +82,7 @@ Sprawdzone 23 września 2026 w dokumentacji każdego serwisu: [Playgama](https:/
 | `klyo_game_translate` | tłumaczenia tekstów gry robione przez twoje AI: najpierw oryginał i brakujące języki, potem propozycje, które zatwierdzasz w studiu |
 | `klyo_creator_card` | wizytówka twórcy: „o mnie” i hasło pisane na podstawie twoich gier, zapis dopiero po twojej zgodzie |
 | `klyo_add_post` | wpis w społeczności: pytanie, prośba o testy, premiera |
+| `klyo_game_play` | gra w twoją grę na twoim urządzeniu: studio otwarte u ciebie, zgoda jednym kliknięciem „Pozwól”; ruchy klawiatury, myszy i dotyku, a w odpowiedzi zdjęcia ekranu i stan gry, także gry 3D |
 
 ## Pola i reguły: te same co w kreatorze
 
@@ -126,6 +127,25 @@ Nie mamy farmy przeglądarek i nie potrzebujemy jej. Gra uruchamia się u ciebie
 
 Kolejność ma znaczenie: pytanie zadane przed otwarciem gry zwróci pustą odpowiedź, bo nie było czego zebrać.
 
+## Asystent gra w twoją grę na twoim urządzeniu
+
+Asystent w rozmowie nie ma ekranu, więc do tej pory znał grę tylko z listy błędów i z miniatur. Teraz może w nią zagrać: naciska klawisze, klika, dotyka i przeciąga, a po każdej serii ruchów dostaje zdjęcia ekranu i stan gry. Gra działa w studiu otwartym u ciebie, na twojej karcie graficznej, więc asystent widzi także gry 3D, których nasz serwer nie wyświetli. Serwer klyo nie rysuje ani jednego piksela, tylko przekazuje ruchy.
+
+1. **Otwórz studio**: Wejdź na [dev.klyo.pl](https://dev.klyo.pl/) na komputerze albo telefonie, na którym gra ma być sprawdzona. Jeśli asystent już poprosił o grę, od razu zobaczysz „Twój asystent chce zagrać w …” (prośba czeka 10 minut).
+2. **Kliknij „Pozwól”**: Od tej chwili asystent może grać na tym urządzeniu. Gra otwiera się w okienku w rogu ekranu, a na telefonie na całym ekranie, i widzisz każdy ruch.
+3. **Asystent gra i patrzy**: Wysyła do 40 ruchów naraz na jednej osi czasu do 3 sekund, także równocześnie: biegnij, obracaj kamerę, skacz. W odpowiedzi dostaje do 4 zdjęć ekranu, wiadomość, czy gra wystartowała, wynik i płynność samej gry.
+4. **Zatrzymaj, kiedy chcesz**: „Zatrzymaj” w okienku gry albo „Wyłącz” na pasku kończy granie od razu. Kolejna prośba asystenta znowu zapyta cię o zgodę.
+
+- **Tylko twoje gry.** Asystent otwiera wyłącznie gry twojego konta: wersję z warsztatu albo paczkę z poczekalni pod adresem podglądu, a gdy ich nie ma, wersję u graczy.
+- **Zdjęcia zostają w rozmowie.** Trafiają tylko do rozmowy, która o nie poprosiła. Nie zapisujemy ich w bazie ani na dysku; w pamięci serwera czekają najwyżej 10 minut, żeby ponowione wywołanie nie grało drugi raz.
+- **Ruchy jak od gracza, z jednym zastrzeżeniem.** Gra dostaje klawisze, kliknięcia, dotknięcia i ruch myszy jak od człowieka, ale przeglądarka oznacza je jako niezaufane. Pełny ekran i dźwięk czekają więc na twoje kliknięcie, a blokadę kursora dla gier z kamerą na myszy udajemy.
+- **Gra potrzebuje zestawu klyo.** Ruchy wykonuje zestaw z `games.klyo.pl/sdk/klyo-gry-sdk.js`. Gra bez niego albo ze starą kopią w paczce odpowiada „bez zestawu”, a asystent mówi, co podmienić.
+- **Jedno granie naraz.** Jedno wywołanie naraz na konto, do 600 na godzinę. Studio schowane w tle wstrzymuje grę, więc trzymaj je na wierzchu, obok rozmowy.
+- **Błędy z tego grania.** Każda sesja ma własny znacznik czujnika, więc `klyo_game_diagnostics` z `sesja` pokazuje wyłącznie błędy z gry asystenta.
+- **Gdy pomiar mówi NIESPRAWDZONA.** Nasz serwer mierzy grę bez karty graficznej, więc gry 3D nie zobaczy i nie da jej zielonego światła. Wtedy obraz z twojego urządzenia pokazuje asystentowi, czy gra działa, a decyzję o wydaniu podejmujesz ty, jak zawsze.
+
+[Instrukcja dla twórcy krok po kroku, z nazwami przycisków ze studia](https://games.klyo.pl/pl/wsparcie/asystent-gra-w-twoja-gre/)
+
 ## Paczka z dysku, bez wystawiania gry światu
 
 Nie stawiaj tunelu i nie wrzucaj niewydanej gry na publiczny hosting. Narzędzie `klyo_upload_package` oddaje asystentowi **bilet wgrywania** (token ważny godzinę, który otwiera wyłącznie wysyłanie plików na twoje konto) oraz listę paczek, które już czekają u nas bez gry. Asystent z powłoką (Claude Code, Codex, Cursor) wysyła plik sam, w dwóch żądaniach; asystent w rozmowie (claude.ai, ChatGPT) prosi cię, żebyś wgrał ZIP w studiu: paczka ląduje w poczekalni, nic się nie publikuje, a on bierze jej numer z listy. Poniżej ten sam przepis w skrócie.
@@ -161,7 +181,7 @@ Asystent czyta pliki twojej gry i poprawia je u nas, bez paczki od ciebie. Dzia�
 1. **Zacznij od zera, jeśli gry jeszcze nie ma**: `klyo_game_patch` z `nowa` (`plansza`, `zrecznosciowa` albo `logiczna`) zakłada paczkę ze szkieletu Klyo Kit prosto w poczekalni i w tym samym wywołaniu wpisuje rozgrywkę. Asystent w rozmowie, bez dysku i bez ZIP-a, ma od tej chwili własną grę pod adresem podglądu.
 2. **Przeczytaj**: `klyo_game_files` z `slug` gry albo `upload_id` paczki. Bez `path` dostajesz spis plików ze skrótem `hash`, z `path` treść pliku (do 200 KB naraz, dalej od `from_line`), a z `changes: true` różnice nowej wersji względem tej u graczy.
 3. **Popraw**: `klyo_game_patch` z listą `edits`: dokładny fragment `old_string` zamieniony na `new_string`, cały plik w `content` albo `delete: true`. Przy pliku, który istnieje, podajesz `expected_hash` z odczytu: jeśli ktoś zmienił plik w międzyczasie, nic się nie zapisze. Zmiany z jednego wywołania wchodzą wszystkie albo żadna. Pierwsza poprawka otwiera warsztat, a studio od razu pokazuje go jako „Nowa wersja czeka”.
-4. **Zagraj i sprawdź**: Adres podglądu przychodzi w odpowiedzi. Otwórz go (najlepiej na telefonie), a `klyo_game_diagnostics` pokaże błędy, brakujące pliki i sito właśnie tej wersji, a nie tej u graczy. Asystent bez przeglądarki podaje `zmierz: true`: otwieramy podgląd za niego i oddajemy błędy oraz miniatury czterech ekranów pod pełnymi adresami, więc widzi, jak gra wygląda. Pliki bez zmian od pomiaru nie uruchamiają przeglądarki drugi raz; jeden pomiar naraz na konto, sześć na godzinę.
+4. **Zagraj i sprawdź**: Adres podglądu przychodzi w odpowiedzi. Otwórz go (najlepiej na telefonie), a `klyo_game_diagnostics` pokaże błędy, brakujące pliki i sito właśnie tej wersji, a nie tej u graczy. Asystent bez przeglądarki podaje `zmierz: true`: otwieramy podgląd za niego i oddajemy błędy oraz miniatury czterech ekranów pod pełnymi adresami, więc widzi, jak gra wygląda. Pliki bez zmian od pomiaru nie uruchamiają przeglądarki drugi raz; jeden pomiar naraz na konto, sześć na godzinę. Asystent może też zagrać sam, na twoim urządzeniu: `klyo_game_play`, opis [wyżej](https://games.klyo.pl/pl/mcp/#zagraj).
 5. **Wypuść**: Gra: `klyo_release_version` albo „Wypuść” w studiu. Paczka z poczekalni: `klyo_publish_game` wyda ją razem z poprawkami. Przed podmianą cała gra przechodzi sito jeszcze raz.
 
 - **Wersja u graczy się nie zmienia.** Warsztat to kopia obok, a każdy zapis tworzy nowy plik, więc to, co pobierają gracze, nie zmienia się ani na chwilę.
@@ -202,7 +222,7 @@ Każdy klient, który obsługuje zdalne serwery MCP z logowaniem. Instrukcje kro
 
 ### Skąd asystent weźmie adres paczki?
 
-Z miejsca, w którym już pracujecie: repozytorium, dysk, własny serwer. Adres musi być publiczny i prowadzić prosto do pliku ZIP, w którym na wierzchu leży `index.html`. Paczka może ważyć do 100 MB i zawierać do 5 000 plików.
+Z miejsca, w którym już pracujecie: repozytorium, dysk, własny serwer. Adres musi być publiczny i prowadzić prosto do pliku ZIP, w którym na wierzchu leży `index.html`. Paczka może ważyć do 200 MB i zawierać do 5 000 plików.
 
 ### Czy to działa z Unity i Godotem?
 
@@ -271,6 +291,10 @@ Użyj `limit`. `klyo_ads_ideas` oddaje najpopularniejsze frazy (domyślnie 50, z
 ### Czy mogę zmierzyć grę w wybranych językach?
 
 Tak. `klyo_game_diagnostics` z `zmierz`, `pelny` i `jezyki: ["pl","en","de"]` sprawdza dokładnie te języki, razem ze słabym telefonem. Drugi pomiar zamówiony w czasie pierwszego czeka w kolejce i rusza sam.
+
+### Czy asystent może sam zagrać w moją grę?
+
+Tak, na twoim urządzeniu. Otwórz studio na [dev.klyo.pl](https://dev.klyo.pl/) i kliknij „Pozwól”, gdy asystent poprosi. Gra działa u ciebie, na twojej karcie graficznej, a asystent wysyła ruchy i dostaje zdjęcia ekranu. Serwer klyo gier nie wyświetla, a granie zatrzymasz jednym kliknięciem.
 
 ### Czy muszę używać asystenta?
 

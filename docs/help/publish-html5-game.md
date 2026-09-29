@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/support/publish-html5-game/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/publish-html5-game/ · updated 2026-09-28 · This file is generated from the klyo games website, so changes are made on the website.
 
 # How to publish an HTML5 game on klyo games
 
@@ -6,7 +6,7 @@ Sign in at dev.klyo.pl, upload a ZIP with index.html inside, play the game in th
 
 ## Before you start
 
-- A game that runs in a browser: a ZIP with index.html in its root, or a single HTML file, up to 100 MB.
+- A game that runs in a browser: a ZIP with index.html in its root, or a single HTML file, up to 200 MB.
 - A free klyo account. The account you play with on games.klyo.pl opens the studio too.
 - About ten minutes, most of it spent playing your own game.
 
@@ -23,7 +23,7 @@ Sign in at dev.klyo.pl, upload a ZIP with index.html inside, play the game in th
 
 ### The package is refused
 
-The check always names the reason: index.html missing from the root of the ZIP, a package over 100 MB, or a third-party ad network in the code. Fix it and upload again.
+The check always names the reason: index.html missing from the root of the ZIP, a package over 200 MB, or a third-party ad network in the code. Fix it and upload again.
 
 ### The preview shows a white screen
 

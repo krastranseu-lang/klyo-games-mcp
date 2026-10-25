@@ -1,176 +1,152 @@
-# klyo games MCP server: publish HTML5 games from Claude, ChatGPT, Cursor, VS Code, Codex or Gemini CLI
+<h1 align="center">Klyo Games MCP</h1>
+<p align="center"><strong>Connect an AI assistant to your browser-game publishing workflow.</strong></p>
+<p align="center">Inspect files · Prepare changes · Diagnose errors · Review releases</p>
+<p align="center">
+  <a href="https://games.klyo.pl/mcp/">Connection guide</a> &nbsp; · &nbsp;
+  <a href="https://dev.klyo.pl/">Developer studio</a> &nbsp; · &nbsp;
+  <a href="docs/tool-reference.md">Tool reference</a> &nbsp; · &nbsp;
+  <a href="docs/README.md">Product documentation</a>
+</p>
 
-Publish a browser game straight from your AI assistant. Upload a ZIP, or point at a game that already runs somewhere else, and the game gets its own address `g-<name>.klyo.pl`, a page in the [klyo games](https://games.klyo.pl/) catalogue, leaderboards, cloud saves, clips recorded by players and daily stats. Publishing is free, there is no exclusivity and you keep the rights.
+---
 
-MCP (Model Context Protocol) is the open standard assistants use to call outside tools. This repository documents the hosted klyo server and ships ready-made packages for Claude Code, Gemini CLI and any agent that reads skills. There is nothing to run on your side.
+## What this project is
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=klyo-games&config=eyJ1cmwiOiJodHRwczovL3BhbmVsLmtseW8ucGwvbWNwP3Byb2ZpbD1ncnkifQ==)
-[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_klyo_games-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=klyo-games&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fpanel.klyo.pl%2Fmcp%3Fprofil%3Dgry%22%7D)
+**Klyo Games MCP** connects compatible AI assistants to Klyo's hosted tools for HTML5 and WebGL game publishing. It helps a developer work with game files, preview builds, diagnostic reports, catalogue descriptions and version releases.
 
-## Documentation
+This repository contains **documentation, client configuration and an agent skill**. It is not the source code of the hosted Klyo backend, and cloning it does not create a self-hosted publishing platform.
 
-The product documentation lives in [`docs/`](docs/README.md). It is generated from the website, so every file names its canonical page:
+## Connection
 
-- [Everything klyo games can do](docs/features.md): every feature of the portal, grouped by area, each one checked against our code when the site is built.
-- [klyo Developer Studio](docs/developer-studio.md): upload, a preview on four screens, versions and rollback, statistics, the creator page.
-- [klyo SDK reference](docs/sdk.md) and [the MCP server](docs/mcp.md).
-- Help center: [publish an HTML5 game](docs/help/publish-html5-game.md), [release a new version or roll back](docs/help/release-new-version.md), [add a leaderboard](docs/help/add-leaderboard.md), [fix a white screen](docs/help/white-screen.md), [record a gameplay clip with captions](docs/help/record-gameplay-clip.md).
-- Po polsku: [spis dokumentacji](docs/README.md#po-polsku).
-
-## Server
-
-| | |
-|---|---|
-| URL | `https://panel.klyo.pl/mcp?profil=gry` |
+| Setting | Value |
+| :--- | :--- |
+| Remote MCP endpoint | `https://panel.klyo.pl/mcp?profil=gry` |
 | Transport | Streamable HTTP |
-| Auth | OAuth 2.1 with dynamic client registration, nothing to paste |
-| Official MCP Registry | [`pl.klyo/games`](https://registry.modelcontextprotocol.io/v0.1/servers?search=pl.klyo) |
-| Docs | <https://games.klyo.pl/mcp/> |
+| Interactive authentication | OAuth, through the Klyo sign-in and consent flow |
+| Registry identifier in the manifest | `pl.klyo/games` |
+| Developer dashboard | [dev.klyo.pl](https://dev.klyo.pl/) |
 
-The first tool call opens the klyo sign-in page; signing in with Google or with a one-time e-mail link creates the account on the spot. One step cannot be automated: the account owner accepts the developer terms once, in a browser, at <https://dev.klyo.pl/>.
+Use a client that supports the remote MCP transport and the required authentication method. Client features, plan availability and workspace policies can differ. See the [maintained connection guide](https://games.klyo.pl/mcp/) for client-specific setup.
 
-## Connect
+The account owner must accept the developer terms in the studio. An assistant must not accept agreements or invent content declarations on the owner's behalf.
 
-**Claude Code, as a plugin** (the server plus a skill that walks the agent through build, local test, upload and release):
+### Example: connect from VS Code
 
-```
-/plugin marketplace add krastranseu-lang/klyo-games-mcp
-/plugin install klyo-games@klyo
-```
+With MCP support enabled, use **MCP: Add Server** from the Command Palette, choose an HTTP server and enter the endpoint above. Review the trust prompt and complete the Klyo sign-in flow.
 
-**Claude Code, server only**
-
-```bash
-claude mcp add --transport http klyo-games "https://panel.klyo.pl/mcp?profil=gry"
-```
-
-**Codex CLI**
-
-```bash
-codex mcp add klyo-games --url "https://panel.klyo.pl/mcp?profil=gry"
-codex mcp login klyo-games
-```
-
-**Gemini CLI**, as an extension (server plus skill), then sign in once with `/mcp auth klyo-games`:
-
-```bash
-gemini extensions install https://github.com/krastranseu-lang/klyo-games-mcp
-```
-
-**Any agent that reads skills** (Claude Code, Codex, Cursor, Gemini CLI, Copilot and others, through [skills.sh](https://skills.sh)):
-
-```bash
-npx skills add krastranseu-lang/klyo-games-mcp
-```
-
-The skill tells the agent when and how to use klyo. It still needs the server connected.
-
-**Claude** (claude.ai, desktop, mobile): Settings → Customize → Connectors → **+** → *Add custom connector* → paste the URL → **Add** (leave Client ID and Secret empty) → sign in → **Allow**. The connector then appears on your phone as well.
-
-**ChatGPT** (paid plan with Developer mode): Settings → Apps & Connectors → Advanced → Developer mode → Create → paste the URL → finish signing in in the pop-up.
-
-**Cursor**: use the button above, or `~/.cursor/mcp.json`:
+For the VS Code workspace format, `.vscode/mcp.json` can contain:
 
 ```json
-{ "mcpServers": { "klyo-games": { "type": "http", "url": "https://panel.klyo.pl/mcp?profil=gry" } } }
+{
+  "servers": {
+    "klyo-games": {
+      "type": "http",
+      "url": "https://panel.klyo.pl/mcp?profil=gry"
+    }
+  }
+}
 ```
 
-**VS Code**: use the button above, or `.vscode/mcp.json`, then click **Auth** above the entry:
+Merge this entry with existing configuration rather than replacing unrelated servers. Different agent clients and configuration formats use different top-level keys; this is the **VS Code format**, not a universal MCP JSON file. Authentication remains a separate step.
 
-```json
-{ "servers": { "klyo-games": { "type": "http", "url": "https://panel.klyo.pl/mcp?profil=gry" } } }
-```
+[VS Code connection instructions](https://code.visualstudio.com/docs/agent-customization/mcp-servers) · [Configuration formats](https://code.visualstudio.com/docs/agents/reference/mcp-configuration)
 
-**opencode**, `opencode.json`:
+### Included client packages
 
-```json
-{ "mcp": { "klyo-games": { "type": "remote", "url": "https://panel.klyo.pl/mcp?profil=gry", "enabled": true } } }
-```
+| Package | Repository files |
+| :--- | :--- |
+| Claude Code plugin | [Plugin manifest](.claude-plugin/plugin.json), [marketplace manifest](.claude-plugin/marketplace.json) and [.mcp.json](.mcp.json) |
+| Gemini CLI extension | [gemini-extension.json](gemini-extension.json) |
+| Publishing skill | [skills/publish-html5-game/SKILL.md](skills/publish-html5-game/SKILL.md) |
+| MCP Registry metadata | [server.json](server.json) |
 
-**Your own script or CI step**: generate a key in the studio at <https://dev.klyo.pl/> ("Server integration (API)") and send `Authorization: Bearer klyo_sk_…` to the same URL. The same tools, no login window.
+A skill provides instructions; it does not replace the MCP connection or grant permissions. Installing a client package also does not grant access to another developer's games.
 
-Then just say: *"publish this game on klyo, the package is in this folder"*.
+## Start with a read-only check
 
-## Tools
+Once connected, ask your assistant:
 
-The table below is generated from the live server (`tools/list`, checked on 30 September 2026). Anyone can list the tools without signing in; every call needs sign-in.
+> Check my Klyo connection and list my games. Do not change files or publish anything.
 
-| Tool | What it does | Effect |
-|---|---|---|
-| `klyo_my_games` | My games in the catalogue | read |
-| `klyo_publish_game` | Publish a game to the catalogue | changes; fetches a public URL |
-| `klyo_upload_package` | Upload a package from disk (no public URL needed) | changes |
-| `klyo_update_game` | Update a game with a new version | changes, can overwrite; fetches a public URL |
-| `klyo_release_rollback` | Roll back to the previous version of a game | changes |
-| `klyo_release_version` | Release the waiting version of a game | changes |
-| `klyo_delete_game` | Take your game off the portal | changes, can overwrite |
-| `klyo_game_stats` | Game statistics | read |
-| `klyo_game_requirements` | Klyo game production standard (call first) | read |
-| `klyo_game_scaffold` | Klyo Kit: game skeleton to start from | read |
-| `klyo_game_sdk` | What a game can call (klyo game SDK) | read |
-| `klyo_game_cover` | Game cover in the catalogue | changes |
-| `klyo_fix_game` | Fix a game's catalogue listing | changes, can overwrite |
-| `klyo_game_diagnostics` | Why the game is not working | read |
-| `klyo_game_files` | Read a game's files | read |
-| `klyo_game_patch` | Edit a game's files in a workshop | changes, can overwrite |
-| `klyo_game_play` | Play your game on your own device | changes; runs only on the owner's device, after they click Allow |
-| `klyo_game_translate` | Translate a game's texts (owner's own AI) | changes |
-| `klyo_creator_card` | Write the creator's profile card (owner's own AI) | changes, can overwrite |
-| `klyo_fill_game_form` | Fill the open New game form live (owner's own AI) | changes |
-| `klyo_add_post` | Post in the games community | changes |
-| `klyo_status` | Connection status | read |
+The relevant tools are `klyo_status` and `klyo_my_games`. Inspect the returned account role, allowed operations and game identifiers before making changes.
 
-## What happens when you publish
+For an existing game:
 
-1. The assistant reads the production standard (`klyo_game_requirements`), builds or keeps your game, and runs the local test [`klyo-test.mjs`](https://games.klyo.pl/sdk/klyo-test.mjs). The server runs the same file after upload.
-2. The package is checked (size, files, third-party ads, malicious code, other companies' brands) and measured on four screens.
-3. The game goes live at `https://g-<name>.klyo.pl` in a waiting state. You play it and press **Release to the catalogue** in the studio. The assistant cannot press that button for you.
-4. New versions go to a preview first; players keep the old version until you release the new one, and the previous version stays available for a one-step rollback.
+> Read this game's files and diagnostics. Explain the problem and propose a fix before editing. Keep the current release unchanged.
 
-## How it compares
+For a new project:
 
-Checked on 23 September 2026 in each service's own documentation. Those services change their rules without notice; open an issue if something no longer matches.
+> Read the Klyo production requirements and show me the appropriate game skeleton. Prepare a preview first; ask before publication.
 
-| | klyo games | [Playgama](https://github.com/Playgama/developer-cabinet-mcp) | [AIGameShare](https://www.aigameshare.com/developers) | [Playfrog](https://glama.ai/mcp/connectors/games.playfrog/publish) |
-|---|---|---|---|---|
-| Tools for developers | 20 | 25+ | 5 | 2 |
-| Sign-in | OAuth 2.1, nothing to paste | OAuth 2.1 | a token from your account pasted into the config | none; a separate management token per game |
-| Package | ZIP up to 100 MB and 5,000 files | ZIP up to 300 MB | HTML up to 2 MB or ZIP up to 30 MB | up to 2.5 MB |
-| What the game gets | own address, catalogue page in English and Polish, leaderboards, player clips, daily stats | a public playable link from the Playgama sandbox | a shareable link with plays, likes and a leaderboard | a shareable play link; the game has to be claimed within 7 days |
-| Money for the developer | 70% of ad revenue from the day Google AdSense approves the portal (not yet) | ads through Playgama once the game passes a session threshold; payouts from 100 USD | not stated | not stated |
+## What the tools support
 
-## What is live and what is not
+| Work | Relevant tools | Boundary |
+| :--- | :--- | :--- |
+| Connection and discovery | `klyo_status`, `klyo_my_games` | Read the account's actual capabilities. |
+| Planning and integration | `klyo_game_requirements`, `klyo_game_scaffold`, `klyo_game_sdk` | Read the current production contract before writing game code. |
+| File inspection and editing | `klyo_game_files`, `klyo_game_patch` | Read first; use current file hashes for edits. |
+| Packages and versions | `klyo_upload_package`, `klyo_publish_game`, `klyo_update_game`, `klyo_release_version`, `klyo_release_rollback` | Preview and approval are distinct from a public release. |
+| Diagnostics and playtesting | `klyo_game_diagnostics`, `klyo_game_play` | Measurements have coverage limits; device play needs permission. |
+| Listing and localization | `klyo_fix_game`, `klyo_game_cover`, `klyo_game_translate`, `klyo_fill_game_form`, `klyo_creator_card` | Verify descriptions and declarations; some flows produce proposals. |
+| Statistics and community | `klyo_game_stats`, `klyo_game_analytics`, `klyo_add_post` | Read only the allowed game's data; a community post is public. |
+| Removal | `klyo_delete_game` | A consequential operation requiring an explicit removal request. |
 
-- **Publishing is free and immediate.** After the automatic check you play your own game in a preview and release it with one click. A person from klyo looks at it after that; until then the game is visible only to adult accounts.
-- **Revenue share:** 70% of the net ad revenue attributed to your game, payout threshold 100 PLN. It starts the day Google AdSense approves the portal. As of today no ads are shown and nothing has been paid out yet.
-- **Leaderboards** receive scores from the game itself over a signed round, never typed in.
-- **Your assistant can play your game** on your own computer or phone: open the studio at https://dev.klyo.pl/ and click Allow. It sends moves and gets screenshots; the klyo server never renders a game, so 3D games are checked on your graphics card.
-- **The portal is new.** It does not have the traffic of a big portal yet, and we do not pretend it does.
+Availability is determined by live discovery and permissions. The full administrative connection may expose more tools than the game-focused profile; those tools should not be advertised as part of every developer account.
 
-## Privacy
+[Read the effects and safety notes for individual tools](docs/tool-reference.md)
 
-The server stores what you publish (game files, texts, stats) and your account, and it keeps an audit log of every change made through these tools. klyo runs no AI model for your assistant: translations and texts are written by your own assistant on your own plan. Full policy: <https://games.klyo.pl/privacy/>. Developer terms: <https://games.klyo.pl/developer-terms/>.
+## The release workflow
 
-## Links
+**Requirements → Build → Test → Upload or workshop → Preview → Approval → Release**
 
-- Documentation: <https://games.klyo.pl/mcp/>
-- Machine-readable server card, no login: <https://games.klyo.pl/mcp.json>
-- Agent resource catalogue (ARD): <https://games.klyo.pl/.well-known/ai-catalog.json>
-- For language models: <https://games.klyo.pl/llms.txt>
-- Found a problem? <https://games.klyo.pl/feedback/> or open an issue here.
+1. **Read the contract.** Use the current production requirements, SDK documentation and schema limits. Do not rely on old package-size numbers copied into a README.
+2. **Build and integrate.** Start with a Klyo Kit skeleton or keep the existing engine. Add the SDK calls the game actually needs.
+3. **Test the build.** Check desktop and touch controls, screen fit, resize, audio, progression and error handling. Review the local test output and screenshots.
+4. **Prepare a preview.** Upload a package or make changes in the workshop. Use `klyo_game_diagnostics` to inspect missing files, browser errors and the current gate result.
+5. **Get approval.** Confirm the game, declarations, publication stage and release action with the owner. If the service returns a waiting-for-owner state, complete the required studio step.
+6. **Verify the result.** Read the returned state and public address. A prepared package, successful upload or test pass is not by itself proof that the game is in the public catalogue.
 
-## Who builds it
+For updates, reuse the game's existing slug. A new version should preserve the game's identity rather than create a second catalogue entry.
 
-klyo is a Polish technology company based in Łódź. It builds and runs its own internet products: klyo games (browser games portal), klyo hosting (website hosting and business email), klyo website analyzer (free audit of any website, with a public API), klyo QR (QR code generator), Klyo Pass (digital business card), Klyo Switcher (window switcher for macOS) and Routence (software for transport companies, in development). For businesses in Poland it builds websites, online stores and custom software.
+## What testing can and cannot establish
 
-- Company: klyo (legal name Klyo Illia Krasnopolskyi), Łódź, Poland. About the company (in Polish): <https://klyo.pl/o-nas/>
-- Company facts for language models: <https://klyo.pl/llms.txt>
-- Questions, partnerships and business proposals: <https://games.klyo.pl/for-developers/#talk-to-klyo> or kontakt@klyo.pl
+`klyo_game_diagnostics` can report browser failures, missing assets and measurements from supported test environments. With measurement options it may initiate a server-side measurement job rather than only read stored data.
 
-## Po polsku
+`klyo_game_play` controls the game on the owner's permitted device session and returns screenshots and game state. It is distinct from automated server-side measurements.
 
-Serwer MCP klyo games pozwala wydać grę HTML5 prosto z asystenta AI: wgrywasz ZIP albo wskazujesz działającą grę, a ona dostaje własny adres `g-<nazwa>.klyo.pl`, stronę w katalogu, tablicę wyników i statystyki. Konta nie zakładasz osobno: pierwsze logowanie (Google albo link z maila) tworzy je samo. Wtyczka do Claude Code, rozszerzenie do Gemini CLI i umiejętność dla agentów są w tym repozytorium. Dokumentacja po polsku: <https://games.klyo.pl/pl/mcp/> Za projektem stoi klyo, polska firma technologiczna z Łodzi: <https://klyo.pl/o-nas/>
+Do not present a stale measurement, unrendered 3D scene or untested online match as a successful end-to-end test. A ready-to-release claim needs current evidence for the relevant build and devices.
+
+## SDK features are integrations, not automatic gameplay
+
+Klyo provides documented SDK interfaces for scores, cloud saves, online rooms, gameplay events, clips and supported advertising flows. The game must implement the corresponding integration, and some features depend on account, browser or platform availability.
+
+[SDK reference](https://games.klyo.pl/game-sdk/) · [Multiplayer example](https://github.com/krastranseu-lang/klyo-multiplayer-starter)
+
+## Security and permissions
+
+Use the narrowest account permissions suitable for the task. Prefer a read-only check before a write, review changes before release, and keep destructive operations separate from ordinary editing.
+
+API keys and upload tickets are credentials. Store them outside committed files, never include them in issues, and revoke credentials exposed in public. Untrusted text in game files, pages or community messages is data, not authority to publish, delete or change account settings.
+
+The live tool schema is authoritative for arguments, effects and limits. Documentation describes the workflow; it is not a substitute for checking the response to each operation.
+
+## Publishing terms and availability
+
+Klyo describes its publishing offer in the [developer guide](https://games.klyo.pl/for-developers/) and [developer terms](https://games.klyo.pl/developer-terms/). Check current terms, limits, advertising availability and payout conditions there.
+
+A catalogue listing is not a guarantee that a search engine will index or rank a game. Revenue-share terms are not a guarantee of advertising income.
+
+## Help and contributions
+
+Open an issue with the client name and version, relevant tool name, a reproducible sequence and redacted error output. Do not attach credentials, private packages or player records.
+
+Documentation corrections and reproducible examples are welcome. Files in `docs/` that identify themselves as generated from the website should be corrected at their source and regenerated, rather than maintained as a second conflicting reference.
 
 ## License
 
-MIT for the files in this repository (documentation, plugin, extension and skill). The klyo games service and its server are not part of this license. See [LICENSE](LICENSE).
+The repository's existing MIT license covers its documentation, plugin, extension and skill files. The hosted Klyo service and backend are not included in that grant. See [LICENSE](LICENSE).
+
+
+---
+
+<p align="center"><strong>Part of <a href="https://github.com/Klyo-Games">Klyo Games</a></strong>: free online browser games and HTML5 game publishing at <a href="https://games.klyo.pl/">games.klyo.pl</a>.<br>Maintained and sponsored by <a href="https://kras-trans.eu/">KRAS-TRANS</a>.</p>

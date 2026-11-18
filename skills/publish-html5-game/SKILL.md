@@ -51,6 +51,7 @@ Call `klyo_game_requirements` before you design, write or change game code. It r
 - Blank screen or errors: `klyo_game_diagnostics` with the `slug`.
 - See the game: `klyo_game_play` plays it on the owner's own device (the klyo studio open at https://dev.klyo.pl/, after they click "Allow") and returns screenshots and the game state. Play before you call a game or a new version done, and always when `bramka.wynik` is `NIESPRAWDZONA` (the server has no graphics card): a play in which the game draws frames is saved as evidence for those files.
 - Numbers: `klyo_game_stats`.
+- What real players got stuck on: `klyo_game_analytics`. Its `testy` section comes from playtest recordings the owner collected with a test link (https://games.klyo.pl/playtesting/). Each task names the element or screen position, the error text and the moment in the recording. Fix those first, then ask the owner for a new test from the same link.
 
 ## Rules the server enforces
 

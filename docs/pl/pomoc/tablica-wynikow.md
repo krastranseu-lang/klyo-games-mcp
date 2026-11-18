@@ -1,8 +1,13 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/tablica-wynikow/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/tablica-wynikow/ · aktualizacja 2026-11-10 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Jak dodać tablicę wyników do gry HTML5
 
 Dodaj skrypt zestawu klyo do pliku index.html, wywołaj klyo.ready(), gdy gra jest gotowa, klyo.progress() w trakcie partii i klyo.score() na końcu. Ustaw w studiu najwyższy możliwy wynik, a gra dostanie tablice dnia, tygodnia i wszech czasów.
+
+- 2 min czytania
+- Kroki: 6
+
+### Na tej stronie
 
 ## Zanim zaczniesz
 
@@ -33,13 +38,11 @@ Jest powyżej ustawionego limitu albo przyszedł za szybko po poprzednim wyniku 
 
 Stoi sama na stronie gry i w centrum rekordów. W samej grze rysujesz ją tylko wtedy, gdy wywołasz klyo.leaderboard.get.
 
-## Częste pytania
-
-### Czy gracz potrzebuje konta do tablicy wyników?
+## Czy gracz potrzebuje konta do tablicy wyników?
 
 Nie. Wynik należy do urządzenia; z kontem na tablicy stoi imię gracza, a wynik idzie za nim na jego inne urządzenia.
 
-### Czy da się oszukać tablicę z konsoli przeglądarki?
+## Czy da się oszukać tablicę z konsoli przeglądarki?
 
 Nie. Wynik przechodzi tylko z żetonem, który serwer podpisuje przy starcie partii, po co najmniej 3 sekundach gry i poniżej twojego limitu, więc wpisanie liczby w konsoli nic nie da.
 
@@ -48,6 +51,7 @@ Nie. Wynik przechodzi tylko z żetonem, który serwer podpisuje przy starcie par
 - [Jak wydać grę HTML5 na klyo games](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
 - [Jak wydać nową wersję gry i wrócić do poprzedniej](https://games.klyo.pl/pl/wsparcie/nowa-wersja-gry/)
 - [Gra pokazuje białe okno: jak to naprawić](https://games.klyo.pl/pl/wsparcie/biale-okno/)
+- [Jak zapisać postęp gracza w grze HTML5](https://games.klyo.pl/pl/wsparcie/zapis-postepu/)
 - [Wszystkie instrukcje](https://games.klyo.pl/pl/wsparcie/)
 
 Nadal coś nie działa? Napisz na [kontakt@klyo.pl](mailto:kontakt@klyo.pl) i podaj adres gry. Odpowiada człowiek, w dwa dni robocze.

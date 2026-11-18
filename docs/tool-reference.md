@@ -69,7 +69,7 @@ Preview and release are separate steps. A successful upload is not a release.
 | Tool | Effect | What it does |
 | :--- | :--- | :--- |
 | `klyo_game_stats` | Read | Visits to the game page and plays, day by day. Optionally asks Google when it last crawled the game's pages. |
-| `klyo_game_analytics` | Read | A verdict with the top fixes, the session funnel recorded by Klyo Kit without extra code (page, Play, loaded, first move, 30 s, round end, next game), levels, custom events, a click map and anonymous sessions. |
+| `klyo_game_analytics` | Read | A verdict with the top fixes, the session funnel recorded by Klyo Kit without extra code (page, Play, loaded, first move, 30 s, round end, next game), levels, custom events, a click map and anonymous sessions. Its `testy` section lists fixes found in playtest recordings (dead taps, rage clicks, JavaScript errors, exit screens), each with the tester and the moment in the recording as evidence. |
 | `klyo_add_post` | Public | Publishes a post in the Klyo community (question, playtest request, launch or showcase). It is visible immediately, with no moderation queue. |
 
 ## Removal

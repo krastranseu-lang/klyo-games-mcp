@@ -1,8 +1,13 @@
-> **Canonical page:** https://games.klyo.pl/support/white-screen/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/white-screen/ · updated 2026-11-10 · This file is generated from the klyo games website, so changes are made on the website.
 
 # Game shows a white screen: how to fix it
 
 Press “Show what happened” in the studio preview. It lists the files the game asked for and did not get, and the errors it threw. Most white screens come from capital letters in file names, absolute paths or scripts loaded from another server.
+
+- 2 min read
+- Steps: 6
+
+### On this page
 
 ## Before you start
 
@@ -32,13 +37,11 @@ Browsers start sound only after the first tap or click. Resume the audio in a pl
 
 Press **Talk to us** in the studio and send the game address with a screenshot. A person reads it.
 
-## Common questions
-
-### Why does the game work on my computer but not on klyo?
+## Why does the game work on my computer but not on klyo?
 
 Usually because of capital letters in file names, absolute paths or files loaded from another server. A local computer forgives these; a web server does not.
 
-### Can my AI assistant find the cause?
+## Can my AI assistant find the cause?
 
 Yes. Connected over the klyo MCP server, it reads the same diagnosis, missing files and browser errors, and can patch the files in a draft version for you to play and release.
 

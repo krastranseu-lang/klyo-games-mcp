@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/studio-tworcy/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/studio-tworcy/ · aktualizacja 2026-11-16 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # *Studio twórcy* klyo
 
@@ -9,23 +9,23 @@ Miejsce, w którym niezależny twórca wgrywa grę przeglądarkową, gra w nią 
 [Jak wydać grę krok po kroku](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
 
 - **0 zł** za wydanie, hosting i utrzymanie gry
-- **200 MB** na paczkę: ZIP albo jeden plik HTML
+- **350 MB** na paczkę: ZIP albo jeden plik HTML
 - **4 ekrany** mierzone przy każdym wydaniu gry
-- **21** narzędzi MCP, żeby klikało za ciebie AI
+- **22** narzędzi MCP, żeby klikało za ciebie AI
 
 ## Od ZIP-a do graczy w pięciu krokach
 
-1. **Paczka**: Upuszczasz ZIP z plikiem index.html albo wklejasz adres, pod którym gra już działa. Automatyczne sprawdzenie odpowiada od razu, a gdy coś odrzuca, podaje powód.
+1. **Paczka**: Upuszczasz ZIP, cały folder gry albo jeden plik HTML (paczkę zrobi przeglądarka) albo wklejasz adres, pod którym gra już działa. Automatyczne sprawdzenie odpowiada od razu, a gdy coś odrzuca, podaje powód.
 2. **Partia**: Gra otwiera się w oknie studia. Grasz 15 do 30 sekund, my nagrywamy w tle, a z tej partii powstaje klip na kafelku i okładka.
 3. **Opis**: Nazwa, hasło, opis po angielsku (polski dla chętnych) i dziesięć pytań tak albo nie o treść. Tekst może wpisać za ciebie twoje AI.
-4. **Katalog**: Jedno kliknięcie w „Wypuść do katalogu” i gra stoi przed graczami, z własnym adresem i stroną po polsku i po angielsku.
+4. **Katalog**: Jedno kliknięcie w „Wypuść do katalogu” i gra działa pod własnym adresem. Gdy obejrzy ją człowiek z klyo, zwykle tego samego dnia, staje w katalogu ze stroną po polsku i po angielsku.
 5. **Gracze**: Uruchomienia i odsłony wpadają na kartę gry na żywo, a recenzje trafiają do studia. Po wydaniu każdą nową grę twórcy ogląda człowiek z klyo.
 
 ## Jak gra trafia do studia
 
 Trzy drogi i jedno, takie samo sprawdzenie.
 
-- **ZIP albo jeden plik HTML**: Do 200 MB, wysyłane w kawałkach, więc słabe łącze nie każe zaczynać od nowa. Plik index.html leży w głównym katalogu ZIP-a.
+- **ZIP albo jeden plik HTML**: Do 350 MB, wysyłane w kawałkach, więc słabe łącze nie każe zaczynać od nowa. Plik index.html leży w głównym katalogu ZIP-a.
 - **Przeniesienie z innej strony**: itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify albo własny serwer. Własność potwierdzasz linkiem w opisie gry albo wpisem DNS, a pliki pobieramy my.
 - **Albo zrobi to twój asystent**: Claude, ChatGPT i inni asystenci wgrywają i przygotowują grę przez serwer MCP klyo. Ostatni przycisk i tak naciskasz ty.
 
@@ -72,42 +72,40 @@ Każda gra dostaje te same narzędzia, od pierwszego dnia.
 
 Klikasz w studiu, rozmawiasz z asystentem albo wołasz wszystko ze skryptu.
 
-- **Serwer MCP: 21 narzędzi**: Wydanie, wersje, powrót, okładki, tłumaczenia, diagnostyka i statystyki z asystenta, którego już używasz.
+- **Serwer MCP: 22 narzędzi**: Wydanie, wersje, powrót, okładki, tłumaczenia, diagnostyka i statystyki z asystenta, którego już używasz.
 - **Klucz API**: Dla własnego agenta, skryptu albo automatu budowania. Pokazujemy go raz, a u siebie trzymamy tylko jego skrót.
 - **Rejestr zdarzeń**: Każda publikacja, zmiana i decyzja moderacji z datą, do pobrania jako plik do arkusza.
 - **Bezpośrednia linia do zespołu**: Prywatna rozmowa w studiu, ze zrzutem ekranu albo poprawką kodu w załączniku.
 
 ## Pieniądze, powiedziane wprost
 
-Wydanie gry nic nie kosztuje, nie ma wyłączności, a prawa zostają twoje. Twórca dostaje 70% przychodu netto z reklam przy swoich grach, z wypłatą od 100 zł.
+Wydanie gry nic nie kosztuje, nie ma wyłączności, a prawa zostają twoje. Twórca dostaje 70% przychodu netto z reklam w swoich grach (przerwa i reklama za nagrodę przez zestaw klyo), z wypłatą od 100 zł.
 
 Mówimy wprost
 
 Reklamy na portalu czekają na zgodę Google, więc nie wypłaciliśmy jeszcze ani złotówki. Udział zacznie się liczyć w dniu, w którym reklamy się włączą.
 
-## Częste pytania o studio
+## Czy studio twórcy jest darmowe?
 
-### Czy studio twórcy jest darmowe?
+Tak. Wgranie, hosting, strona w katalogu, klipy, tablice wyników i statystyki nic nie kosztują. klyo będzie zarabiać na swoich reklamach obok gier, a twórca dostanie 70% przychodu z reklam w swojej grze; dziś reklam jeszcze nie ma, celowo.
 
-Tak. Wgranie, hosting, strona w katalogu, klipy, tablice wyników i statystyki nic nie kosztują. klyo zarabia na reklamach przy grach, a twórca dostaje udział w tym przychodzie.
-
-### Czy potrzebuję osobnego konta twórcy?
+## Czy potrzebuję osobnego konta twórcy?
 
 Nie. Konto, na którym grasz na games.klyo.pl, otwiera też studio, a konto założone w studiu działa w portalu.
 
-### Co dzieje się z moimi plikami?
+## Co dzieje się z moimi plikami?
 
 Gra działa pod własnym adresem w domenie klyo.pl, w oddzielonej ramce, a prawa zostają przy tobie. Gdy przenosimy grę z innej strony, pomijamy skrypty ładowane z cudzych serwerów.
 
-### Czy asystent AI może zrobić robotę za mnie?
+## Czy asystent AI może zrobić robotę za mnie?
 
-Większość. Przez serwer MCP klyo asystent wgrywa, wypełnia, aktualizuje i sprawdza grę. Akceptacja regulaminu, ankieta treści i wypuszczenie do katalogu zostają przy tobie.
+Większość. Przez serwer MCP klyo asystent wgrywa, wypełnia, aktualizuje i sprawdza grę. Akceptacja regulaminu, ankieta treści i wypuszczenie gry zostają przy tobie.
 
-### Jak szybko gra jest w sieci?
+## Jak szybko gra jest w sieci?
 
-Zaraz po kliknięciu „Wypuść do katalogu”. Strona gry w katalogu powstaje zwykle w półtorej minuty, a człowiek z klyo ogląda grę już po wydaniu.
+Pod własnym adresem zaraz po kliknięciu „Wypuść do katalogu”. Do katalogu gra wchodzi, gdy obejrzy ją człowiek z klyo, zwykle tego samego dnia.
 
-## Twoja gra przed graczami jeszcze dziś
+## Wydaj swoją grę jeszcze dziś
 
 Otwórz studio na swoim koncie klyo albo najpierw przeczytaj instrukcję krok po kroku.
 

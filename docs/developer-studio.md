@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/developer-studio/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/developer-studio/ · updated 2026-11-16 · This file is generated from the klyo games website, so changes are made on the website.
 
 # klyo *Developer Studio*
 
@@ -9,23 +9,23 @@ The workspace where independent developers bring in a browser game, play it befo
 [How to publish a game, step by step](https://games.klyo.pl/support/publish-html5-game/)
 
 - **0 PLN** to publish, host and keep a game online
-- **200 MB** per package, as a ZIP or one HTML file
+- **350 MB** per package, as a ZIP or one HTML file
 - **4 screens** measured at every release of a game
-- **21** MCP tools, so your AI can do the clicking
+- **22** MCP tools, so your AI can do the clicking
 
 ## From a ZIP to players in five steps
 
-1. **Package**: Drop a ZIP with index.html inside, or paste the address where the game already runs. The automatic check answers at once, and when it refuses something it tells you why.
+1. **Package**: Drop a ZIP, the whole game folder or a single HTML file (the browser builds the package), or paste the address where the game already runs. The automatic check answers at once, and when it refuses something it tells you why.
 2. **Play**: The game opens in the studio window. Play for 15 to 30 seconds while we record in the background, and that round becomes the tile clip and the cover.
 3. **Description**: A name, a tagline, a description in English (Polish if you like) and ten yes or no questions about the content. Your own AI can type the text for you.
-4. **Catalogue**: One click on Release to the catalogue and the game is in front of players, with its own address and a page in English and Polish.
+4. **Catalogue**: One click on Release to the catalogue and the game works at its own address. Once a person from klyo has looked at it, usually the same day, it stands in the catalogue with a page in English and Polish.
 5. **Players**: Plays and visits reach the game card live, and reviews land in the studio. After release, a person from klyo looks at every new developer's game.
 
 ## Bring the game in
 
 Three ways in, one and the same check.
 
-- **A ZIP or a single HTML file**: Up to 200 MB, sent in chunks so a weak connection never makes you start over. index.html sits in the root of the ZIP.
+- **A ZIP or a single HTML file**: Up to 350 MB, sent in chunks so a weak connection never makes you start over. index.html sits in the root of the ZIP.
 - **Move it from another site**: itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify or your own server. You prove the game is yours with a link in its description or a DNS record, and we fetch the files.
 - **Or let your assistant do it**: Claude, ChatGPT and other assistants upload and prepare the game through the klyo MCP server. You still press the last button.
 
@@ -72,42 +72,40 @@ Every game gets the same tools, from day one.
 
 Click through the studio, talk to an assistant or call it all from a script.
 
-- **MCP server with 21 tools**: Publishing, versions, rollback, covers, translations, diagnostics and stats from the assistant you already use.
+- **MCP server with 22 tools**: Publishing, versions, rollback, covers, translations, diagnostics and stats from the assistant you already use.
 - **An API key**: For your own agent, script or build pipeline. It is shown once, and we keep only its hash.
 - **Event record**: Every publication, edit and moderation decision with its date, downloadable as a spreadsheet file.
 - **A direct line to the team**: A private conversation inside the studio, with a screenshot or a code patch attached.
 
 ## Money, said plainly
 
-Publishing costs nothing, there is no exclusivity and the rights stay yours. Developers get 70% of the net ad revenue next to their games, paid out from 100 PLN.
+Publishing costs nothing, there is no exclusivity and the rights stay yours. Developers get 70% of the net revenue from ads in their own games (ad breaks and rewarded ads through the klyo toolkit), paid out from 100 PLN.
 
 Said plainly
 
 Ads on the portal are waiting for Google's approval, so nothing has been paid out yet. The share starts counting on the day ads switch on.
 
-## Common questions about the studio
+## Is the Developer Studio free?
 
-### Is the Developer Studio free?
+Yes. Uploading, hosting, the catalogue page, clips, leaderboards and statistics cost nothing. klyo will earn from its own ads next to the games, and developers will get 70% of the revenue from ads in their own games; there are no ads yet, on purpose.
 
-Yes. Uploading, hosting, the catalogue page, clips, leaderboards and statistics cost nothing. klyo earns from ads next to the games, and developers get a share of that revenue.
-
-### Do I need a separate developer account?
+## Do I need a separate developer account?
 
 No. The account you play with on games.klyo.pl opens the studio too, and an account made in the studio works on the portal.
 
-### What happens to my files?
+## What happens to my files?
 
 The game runs at its own address on a klyo.pl subdomain, in a separated frame, and the rights stay with you. When we move a game from another site, we leave out scripts loaded from other people's servers.
 
-### Can my AI assistant do the work?
+## Can my AI assistant do the work?
 
-Most of it. Through the klyo MCP server an assistant uploads, fills in, updates and checks your game. Accepting the terms, the content survey and the release to the catalogue stay with you.
+Most of it. Through the klyo MCP server an assistant uploads, fills in, updates and checks your game. Accepting the terms, the content survey and releasing the game stay with you.
 
-### How fast is a game live?
+## How fast is a game live?
 
-Right after you press Release to the catalogue. The game's catalogue page is usually built within a minute and a half, and a person from klyo looks at the game after release.
+At its own address right after you press Release to the catalogue. It enters the catalogue once a person from klyo has looked at it, usually the same day.
 
-## Your game in front of players today
+## Release your game today
 
 Open the studio with your klyo account, or read the step-by-step guide first.
 

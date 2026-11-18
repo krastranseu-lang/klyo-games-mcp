@@ -1,8 +1,13 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/asystent-gra-w-twoja-gre/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/asystent-gra-w-twoja-gre/ · aktualizacja 2026-11-10 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Asystent AI gra w twoją grę: jak mu pozwolić
 
 Otwórz studio na dev.klyo.pl na komputerze albo telefonie, na którym gra ma być sprawdzona, i kliknij „Pozwól”, gdy asystent poprosi o grę. Gra działa u ciebie, na twojej karcie graficznej, a asystent wysyła ruchy i ogląda zdjęcia ekranu. Zatrzymasz go jednym kliknięciem.
+
+- 2 min czytania
+- Kroki: 5
+
+### Na tej stronie
 
 ## Zanim zaczniesz
 
@@ -36,19 +41,17 @@ Gra nie ładuje zestawu klyo albo ma jego starą kopię w paczce. Wczytuj go z a
 
 Przeglądarka włącza dźwięk dopiero po twoim kliknięciu w grę. Ruchy asystenta tego nie zastąpią, więc kliknij raz w okienko gry.
 
-## Częste pytania
-
-### Czy serwer klyo widzi moją grę?
+## Czy serwer klyo widzi moją grę?
 
 Nie wyświetla jej. Gra działa na twoim urządzeniu, a serwer tylko przekazuje ruchy asystenta i zdjęcia ekranu do rozmowy, która o nie poprosiła. Zdjęć nie zapisujemy w bazie ani na dysku.
 
-### Czy asystent zagra w cudzą grę?
+## Czy asystent zagra w cudzą grę?
 
 Nie. Otwiera wyłącznie gry twojego konta, tę samą wersję, którą czyta i poprawia w warsztacie.
 
-### Czy to działa z grą 3D?
+## Czy to działa z grą 3D?
 
-Tak. Gra korzysta z karty graficznej twojego urządzenia, więc asystent widzi to samo co ty. To właśnie przypadek, w którym pomiar na naszym serwerze mówi NIESPRAWDZONA.
+Tak. Gra korzysta z karty graficznej twojego urządzenia, więc asystent widzi to samo co ty. To właśnie przypadek, w którym bramka jakości na naszym serwerze pisze, że grafiki 3D jeszcze nie widzieliśmy.
 
 ## Powiązane instrukcje
 

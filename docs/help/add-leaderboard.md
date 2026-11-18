@@ -1,8 +1,13 @@
-> **Canonical page:** https://games.klyo.pl/support/add-leaderboard/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/add-leaderboard/ · updated 2026-11-10 · This file is generated from the klyo games website, so changes are made on the website.
 
 # How to add a leaderboard to an HTML5 game
 
 Add the klyo SDK script to index.html, call klyo.ready() when the game can be played, klyo.progress() during a round and klyo.score() at the end. Set the highest possible score in the studio, and the game gets daily, weekly and all-time boards.
+
+- 2 min read
+- Steps: 6
+
+### On this page
 
 ## Before you start
 
@@ -33,13 +38,11 @@ It is above the cap you set, or it came too soon after the previous score from t
 
 It stands on the game page and on the records hub by itself. Inside the game you draw it only if you call klyo.leaderboard.get.
 
-## Common questions
-
-### Do players need an account for the leaderboard?
+## Do players need an account for the leaderboard?
 
 No. A score belongs to the device; with an account the player's name goes on the board and the score follows them to their other devices.
 
-### Can players cheat the leaderboard from the browser console?
+## Can players cheat the leaderboard from the browser console?
 
 No. A score is accepted only with a token the server signs when the round starts, after at least 3 seconds of play and below the cap you set, so typing a number into the console does not work.
 
@@ -48,6 +51,7 @@ No. A score is accepted only with a token the server signs when the round starts
 - [How to publish an HTML5 game on klyo games](https://games.klyo.pl/support/publish-html5-game/)
 - [How to release a new version of your game or roll back](https://games.klyo.pl/support/release-new-version/)
 - [Game shows a white screen: how to fix it](https://games.klyo.pl/support/white-screen/)
+- [How to save player progress in an HTML5 game](https://games.klyo.pl/support/save-game-progress/)
 - [All guides](https://games.klyo.pl/support/)
 
 Still stuck? Write to [kontakt@klyo.pl](mailto:kontakt@klyo.pl) and include the address of the game. A person answers within two working days.

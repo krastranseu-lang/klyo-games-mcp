@@ -1,4 +1,4 @@
-> **Canonical page:** https://games.klyo.pl/mcp/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/mcp/ · updated 2026-11-18 · This file is generated from the klyo games website, so changes are made on the website.
 
 # klyo MCP server: publish HTML5 games from your AI assistant
 
@@ -11,8 +11,8 @@ MCP (Model Context Protocol) is the open standard AI assistants use to reach for
 
 1. **Accept the terms in a browser**: Go to [dev.klyo.pl](https://dev.klyo.pl/) and accept the developer terms. An assistant will not do this for you, and that is the point: a person signs the agreement.
 2. **Add klyo to your assistant**: Easiest: [**connect in one click**](https://panel.klyo.pl/mcp/connect): pick your AI (Claude, ChatGPT, Gemini, Copilot, Claude Code, opencode) and we do the rest. Manually: in your assistant's settings add the tool server (MCP) at `https://panel.klyo.pl/mcp?profil=gry`. You sign in with your klyo account and decide what you agree to, the same way you connect a drive or a mailbox.
-3. **Say what you want**: “Publish this game on klyo, the package is at this address” is enough. The assistant provides the ZIP address, the name, the description for players and the age questionnaire answers. Want a leaderboard and a place on the records hub? Say “add the klyo leaderboard” and the klyo_game_sdk tool describes the calls (ready → progress → score) and the score cap.
-4. **Look at it and release it**: The game waits in the studio with a preview and a QR code. You play it on your phone and then press “Release to the catalogue”. Only that click puts the game in front of players.
+3. **Say what you want**: “Publish this game on klyo, the package is at this address” is enough. The assistant provides the ZIP address, the name, the description for players and the age questionnaire answers. Want a leaderboard and a place on the records hub? Say “add the klyo leaderboard” and the `klyo_game_sdk` tool describes the calls (`ready` → `progress` → `score`) and the score cap.
+4. **Look at it and release it**: The game waits in the studio with a preview and a QR code. You play it on your phone and then press “Release to the catalogue”. Only that click releases the game, and it enters the catalogue once a person from klyo has looked at it.
 
 ## Your own AI in the studio, on your own plan
 
@@ -51,13 +51,15 @@ We are not the only MCP server that can publish a browser game. Here is what eac
 
 | | klyo games | Playgama | AIGameShare | Playfrog |
 | --- | --- | --- | --- | --- |
-| Tools for developers | 21 | 25+ | 5 | 2 |
+| Tools for developers | 22 | 25+ | 5 | 2 |
 | Sign-in | OAuth 2.1, nothing to paste | OAuth 2.1 | a token from your account pasted into the config | none; a separate management token for each game |
-| Package | ZIP up to 200 MB and 5,000 files | ZIP up to 300 MB | HTML up to 2 MB or ZIP up to 30 MB | up to 2.5 MB |
+| Package | ZIP up to 350 MB and 5,000 files | ZIP up to 300 MB | HTML up to 2 MB or ZIP up to 30 MB | up to 2.5 MB |
 | What the game gets | its own address g-.klyo.pl, a catalogue page in English and Polish, leaderboards, player clips, daily stats | a public playable link from the Playgama sandbox | a shareable link with plays, likes and a leaderboard | a shareable play link; the game has to be claimed within 7 days |
-| Money for the developer | 70% of the ad revenue from the day Google AdSense approves the portal (not yet) | ads through Playgama once the game passes a session threshold; payouts from 100 USD | not stated | not stated |
+| Money for the developer | 70% of the revenue from ads in the game, once ads are switched on (not yet) | ads through Playgama once the game passes a session threshold; payouts from 100 USD | not stated | not stated |
 
 Checked on 23 September 2026 in each service's own documentation: [Playgama](https://github.com/Playgama/developer-cabinet-mcp), [AIGameShare](https://www.aigameshare.com/developers), [Playfrog](https://glama.ai/mcp/connectors/games.playfrog/publish). Those services change their rules without notice; if something no longer matches, tell us and we will correct it the same day.
+
+### On this page
 
 ## What else the tools can do
 
@@ -65,6 +67,7 @@ Checked on 23 September 2026 in each service's own documentation: [Playgama](htt
 | --- | --- |
 | `klyo_publish_game` | sends the package and prepares the game for release: name, tagline, description in English and Polish, genre, content survey; the same fields and limits as the studio form |
 | `klyo_game_stats` | visits and plays, day by day |
+| `klyo_game_analytics` | why players leave: funnel, levels and click map, and from playtest links dead taps, rage clicks and game errors with evidence from the recording |
 | `klyo_game_requirements` | the game production contract, the agent's first call: screens, input, game lifecycle, audio, visuals, social layer, local test, quality gate, release stages |
 | `klyo_game_scaffold` | Klyo Kit, a studio-grade game skeleton: starter files and the API (menu, pause, end screen, audio, theme, input, online, hot-seat); the assistant writes only the gameplay |
 | `klyo_release_rollback` | roll the game back to the previous version in one move: the previous files sit next to the current ones, nothing to upload |
@@ -92,7 +95,7 @@ The assistant fills in exactly what a person clicks in the studio. Limits live i
 | --- | --- |
 | Tagline | **Required.** One sentence up to 80 characters, no full stop: what the game is, in the words players search for. It is the H2 and the title of the Google result. |
 | Description | **At least 25 words**, about 220 for Google (shorter = the game page stays out of search). What you do, how a round goes, who it is for, what makes it different. Like a human: no em dashes, no “dive in”, no bullet lists. |
-| Text language | `jezyk_tekstu` (pl, en, de, fr, es, pt, it, ru, uk, tr) says which language the texts are written in. **Your own AI translates the other languages** with `klyo_game_translate`, on your plan; every language goes through checks and waits in the studio for your “Approve”. `…` markers only for a version the creator really wrote. |
+| Text language | `jezyk_tekstu` (`pl`, `en`, `de`, `fr`, `es`, `pt`, `it`, `ru`, `uk`, `tr`) says which language the texts are written in. **Your own AI translates the other languages** with `klyo_game_translate`, on your plan; every language goes through checks and waits in the studio for your “Approve”. `…` markers only for a version the creator really wrote. |
 | Genre, shelves, mood | Genre from the list, up to three; catalogue shelves and mood optional; the lists are in the schema and come from the same file the catalogue filters by. |
 | Content survey | **Ten yes/no questions** (the `ankieta` object): cartoon violence, realistic violence, fear, strong language, nudity, drugs, gambling, interaction, purchases, location access. They decide the age label, ads and the store apps. The assistant must ask the creator, not guess. |
 | Age set by the creator | `wiek_min` (3, 7, 12, 16, 18) can only raise the label above the survey result, never lower it. |
@@ -100,11 +103,22 @@ The assistant fills in exactly what a person clicks in the studio. Limits live i
 | Stores | `sklep_play` and `sklep_apple`: the same game’s addresses in Google Play and the App Store: badges on the game page and in share texts. |
 | Controls, round, layout, score | Touch and keyboard controls (up to 300 characters), round length (up to 40), landscape/portrait/both, the highest possible score as a leaderboard guard. |
 
+## Which AI clients work with klyo
+
+Today's state, from our sign-in log, not from promises. If your client does not get through the sign-in, connect it with a key: the same address, the same tools.
+
+- **ChatGPT** works Sign-in through klyo (OAuth) on a paid ChatGPT plan, in the browser, with developer mode on.
+- **Claude** works Sign-in through klyo (OAuth), on the web and in the apps. Custom connector: paste the address and leave the OAuth client fields empty.
+- **Your own program or agent** works A key from dev.klyo.pl in the header `Authorization: Bearer klyo_sk_…`. No sign-in window.
+- **Claude Code, Codex, Cursor, VS Code** works Add the server address as a remote MCP server and connect with the klyo sign-in or with a key from dev.klyo.pl in the header. Claude Code and Codex connect to klyo every day.
+
+Did your client stop at the sign-in? The server then answers invalid_request with a description. Generate a key and send it in the header: it works in every client that lets you add an HTTP header. Did the connector in your chat (claude.ai, ChatGPT) suddenly stop reaching klyo? Usually the chat provider has an outage, not klyo: check its status page and meanwhile work in Klyo Studio or with a key, because those connect to klyo directly.
+
 ## Your own agent: a key instead of a login
 
 Claude and ChatGPT sign in to your account themselves. If you are writing your own agent or script, you get a key and send it in a header. The same path and the same tools, without the login window.
 
-1. **Generate a key in the studio**: At [dev.klyo.pl](https://dev.klyo.pl/), under “Server integration (API)”, press “Generate a key”. We show it once, so save it straight away. The key starts with `klyo_sk_` and you can revoke it at any moment.
+1. **Generate a key in the studio**: At [dev.klyo.pl](https://dev.klyo.pl/), under “MCP and key” → “Key for a program”, press “Generate a key” and then “Check”: you will see how many game tools your program gets and whether it has connected yet. We show it once, so save it straight away. The key starts with `klyo_sk_` and you can revoke it at any moment.
 2. **Send it when you connect**: The header `Authorization: Bearer klyo_sk_…` against `https://panel.klyo.pl/mcp?profil=gry`. Your agent sees exactly the tools Claude sees, not one more.
 3. **Watch what the game does**: Once the preview is open, call the diagnosis. You get the files the game asked for but are missing from the package, and the errors from the browser, instead of guessing from a white screen.
 
@@ -142,7 +156,7 @@ An assistant in a chat has no screen, so until now it knew your game only from e
 - **The game needs the klyo SDK.** The SDK from `games.klyo.pl/sdk/klyo-gry-sdk.js` runs the moves. A game without it, or with an old copy in the package, answers “no SDK”, and your assistant says what to replace.
 - **One run at a time.** One call at a time per account, up to 600 an hour. A studio tab in the background pauses the game, so keep it visible next to the chat.
 - **Errors from this run.** Each session has its own sensor tag, so `klyo_game_diagnostics` with `sesja` shows only the errors from your assistant's play.
-- **When the measurement says NIESPRAWDZONA.** Our server measures games without a graphics card, so it cannot see a 3D game and will not give it a green light. Then the picture from your device shows your assistant whether the game works, and the release decision is yours, as always.
+- **When the quality gate says it has not seen the 3D graphics yet.** Our server measures games without a graphics card, so it cannot see a 3D game and will not give it a green light. Then the picture from your device shows your assistant whether the game works, and the release decision is yours, as always.
 
 [Step-by-step guide for developers, with the button names from the studio](https://games.klyo.pl/support/assistant-plays-your-game/)
 
@@ -167,13 +181,13 @@ An ordinary person tells their assistant “I want a battleship game”. An assi
 
 ## A new version of your game: through the assistant, the same as in the studio
 
-Three steps, the same as the “New build” and “Release” buttons in the studio. The assistant does not guess what changed: we measure it from the files and tell it what that means for the clip. **You record the clip for the new version yourself**: in the studio, after the release (the recording window opens by itself for a new look or feature).
+Three steps, the same as the “New build” and “Release” buttons in the studio. The assistant does not guess what changed: we measure it from the files and tell it what that means for the clip. **You record the clip for the new version yourself**: in the studio, after the release. The recording window opens by itself only for a new look; after a fix or a new feature the clip stays, and you record a new one when you want.
 
-1. **Upload**: `klyo_update_game` with `slug` and `upload_id` (a file from disk) or `zip_url`. The game in the catalogue does not change right away: the new version waits in the waiting room under its own preview address. The answer: `zmiana` (code / look / sound in %, new files and strings, `podpowiedz`: poprawka | funkcja | interfejs), `adres_nowej`, `wyrok` and `dalej`.
+1. **Upload**: `klyo_update_game` with `slug` and `upload_id` (a file from disk) or `zip_url`. The game in the catalogue does not change right away: the new version waits in the waiting room under its own preview address. The answer: `zmiana` (code / look / sound in %, new files and strings, `podpowiedz`: `poprawka` | `funkcja` | `interfejs`), `adres_nowej`, `wyrok` and `dalej`.
 2. **Play**: This is your check, not the assistant’s: open the preview address, ideally on your phone. The studio shows the same version in the game window with the track “version → play → release → clip”.
 3. **Release**: `klyo_release_version` with `slug`; skip `zmiana` (we take the measured one) or pass it when you know better; `nowosc` is one sentence for the feed with a new feature. Before the swap the whole new version goes through the check once more. Players get it right away (whoever is playing chooses: update or finish the round), the previous one stays with us, the game page rebuilds, and we measure the screens once, after the release. Followers get a notification when the game is in the catalogue.
 
-What it means for the clip: a poprawka (fix) keeps the clip; a funkcja (feature) keeps the clip and “what is new” goes to the feed as “New”; with an interfejs (new look) the old clip comes off the tile and the feed until you record a new one in the studio.
+What it means for the clip: a `poprawka` (fix) keeps the clip; a `funkcja` (feature) keeps the clip and “what is new” goes to the feed as “New”; with an `interfejs` (new look) the old clip comes off the tile and the feed until you record a new one in the studio.
 
 ## Fix without a ZIP: the game workshop
 
@@ -186,14 +200,14 @@ Your assistant reads your game's files and edits them here, without a package fr
 5. **Release**: A game: `klyo_release_version` or “Release” in the studio. A package from the waiting room: `klyo_publish_game` publishes it together with the edits. Before the swap the whole game goes through the check once more.
 
 - **The version players have does not change.** The workshop is a copy next to it and every save creates a new file, so what players download does not change for a moment.
-- **Text in the conversation, files by ticket.** An edit's content writes text files (html, htm, js, mjs, css, json, svg, txt, xml, webmanifest). An image, sound, font or big file (up to 20 MB) the assistant sends with the `klyo_upload_package` ticket and passes in `from_upload`: no base64, and the start of the file has to match its extension.
+- **Text in the conversation, files by ticket.** An edit's content writes text files (`html`, `htm`, `js`, `mjs`, `css`, `json`, `svg`, `txt`, `xml`, `webmanifest`). An image, sound, font or big file (up to 20 MB) the assistant sends with the `klyo_upload_package` ticket and passes in `from_upload`: no base64, and the start of the file has to match its extension.
 - **The same check as at upload.** Every changed file is checked straight away: malicious code, third-party ads, nothing from outside klyo. A refusal saves nothing.
 - **Limits.** A file up to 1 MB, one call up to 256 KB and 20 edits, three open workshops per account and one per game, up to 300 edits an hour. Releases, rollbacks and new packages up to 10 an hour: each one starts a screen measurement, and there is one measuring browser for all developers.
 - **Tidiness.** A workshop with no changes for 7 days expires, and the version players have stays untouched. A preview nothing points to any more disappears after 7 days. Preview addresses stay out of Google.
 - **A trail.** Every edit is written to your account's log: the file, the hash before and after, the size.
 - **Undo while you work.** Before every edit we save a point `auto-N` (it is in the answer), and the assistant can name its own with `checkpoint`. `revert` goes back to any point, `discard` drops the whole workshop. This is not a release rollback: players see none of it.
 - **A weak phone before release too.** At upload and at release we measure the game once more on a phone with the processor slowed down four times and a network like weak 3G: smoothness, stutters, memory and time to the first frame. Below 15 frames a second the game will not pass the gate as finished. An assistant without a browser orders the same measurement before a release: `klyo_game_diagnostics` with `zmierz` and `pelny`.
-- **In every language of the game.** Klyo Kit speaks ten languages (Polish, English, German, French, Spanish, Portuguese, Italian, Russian, Ukrainian, Turkish), and the game speaks those it has its own texts for. We open the same phone in every declared language, with a thumbnail. A key instead of a word and a declared language the game does not show block the release; English in place of a translation, a sentence identical to the English one and text that does not fit its button or runs off the screen are warnings. Text drawn on a canvas you check on the thumbnails side by side.
+- **In every language of the game.** Klyo Kit speaks ten languages (Polish, English, German, French, Spanish, Portuguese, Italian, Russian, Ukrainian, Turkish), and the game speaks those it has its own texts for. We open the same phone in every declared language, with a thumbnail. A key instead of a word and a declared language the game does not show block the release; English in place of a translation, a sentence identical to the English one and text that does not fit its button or runs off the screen are warnings. Text drawn on a `canvas` you check on the thumbnails side by side.
 - **Slow frames with a cause.** The frame count alone does not say whose fault it is. We measure separately the time of the game code in each frame, the browser's work and how much of the picture really changes. Slow code is `niski_fps`; light code with slow drawing is `wolne_rysowanie`, with advice on what to draw once and what every frame.
 - **Security.** We open game code on our side only in an isolated browser with no access to our internal network. A game at its own address cannot act on behalf of a signed-in player either.
 
@@ -211,93 +225,91 @@ The quality gate catches errors, but it cannot tell whether a game looks cheap. 
 
 Leaderboard: a game that declares a score (`wynik_max`) but does not send it with `klyo.score` will not pass the gate as finished. A game with no points gives the reason in its description. The review can be skipped for a demo and a game in development, and for a plain fix (`zmiana: "poprawka"`) too.
 
-## Common questions
-
-### What does MCP mean here?
+## What does MCP mean here?
 
 Model Context Protocol: the open standard that lets an AI assistant call tools on outside servers. It is not a hosting platform. klyo games is the platform, and MCP is the way your assistant talks to it: it uploads the package, fills in the description and brings back a playable link.
 
-### Which AI assistants can publish a game on klyo?
+## Which AI assistants can publish a game on klyo?
 
 Any client that supports remote MCP servers with sign-in. Step-by-step instructions are ready for Claude (claude.ai, the apps and Claude Code), ChatGPT in developer mode, Cursor, VS Code with Copilot, opencode and Gemini Enterprise. You add the server address once; the first tool call opens the klyo sign-in page and creates the account.
 
-### Where does the assistant get the package address?
+## Where does the assistant get the package address?
 
-From wherever you already work: a repository, a drive, your own server. The address must be public and lead straight to a ZIP file with `index.html` at the top. A package may weigh up to 200 MB and hold up to 5,000 files.
+From wherever you already work: a repository, a drive, your own server. The address must be public and lead straight to a ZIP file with `index.html` at the top. A package may weigh up to 350 MB and hold up to 5,000 files.
 
-### Does it work with Unity and Godot?
+## Does it work with Unity and Godot?
 
 Yes, if you export for the browser. We accept WebAssembly files, Unity data and Godot packs the same as plain HTML with JavaScript.
 
-### What if the game does not start?
+## What if the game does not start?
 
 You will see that in the preview, before you release anything. If the game is missing a file we say which one, and when moving a game from another portal we fetch the missing files from the source address.
 
-### Can my assistant fix a game without a ZIP package?
+## Can my assistant fix a game without a ZIP package?
 
 Yes. `klyo_game_files` reads the game's files and `klyo_game_patch` edits the text files in a workshop, next to the version players have. You see the changes in the studio as “New version is waiting” and release them with one click. Images and sounds are still replaced with a package.
 
-### Can the agent see what happens inside the game?
+## Can the agent see what happens inside the game?
 
 It sees what your own browser console would: the files the game asked for in vain, and the JavaScript errors in the order they happened. We collect them while the game is WAITING: in the package preview and at its own address before you press “Release to the catalogue”. The moment it is published we stop: the game then belongs to the player and sends us nothing.
 
-### Does klyo pay for my AI or see my sign-in?
+## Does klyo pay for my AI or see my sign-in?
 
 No. Your AI runs on your own subscription and your sign-in stays with you, just like in VS Code and Cursor. We only receive the finished text and publish nothing without your approval.
 
-### How do I choose translation languages?
+## How do I choose translation languages?
 
 In the “Translate with your AI” window you press the languages you want. You can also say “now German” in the chat. Every language shows up in the “Translations” window for approval.
 
-### How do I know my AI is connected to klyo?
+## How do I know my AI is connected to klyo?
 
 The studio window tells you after the click: a ✓ and the name of the connected AI. The full list of connections and disconnecting live on the [connections page](https://panel.klyo.pl/mcp/connect).
 
-### Why is my game page not in Google?
+## Why is my game page not in Google?
 
-A game page enters Google when, in that language, it has at least 220 words of description written or accepted by the creator, plus a name and a tagline in that language. A shorter page carries a noindex, so a thin page does not drag the whole portal down. So does a page that repeats another game page by more than 42%: then add sentences that are only about this game. `klyo_my_games` shows the reason with numbers for every game in `tlumaczenia.indeks`, for example a description at 198 of the 220 words. Game pages exist in Polish and English, while texts can have ten languages.
+A game page enters Google when, in that language, it has at least 220 words of description written or accepted by the creator, plus a name and a tagline in that language. A shorter page carries a `noindex` tag, so a thin page does not drag the whole portal down. So does a page that repeats another game page by more than 42%: then add sentences that are only about this game. `klyo_my_games` shows the reason with numbers for every game in `tlumaczenia.indeks`, for example a description at 198 of the 220 words. Game pages exist in Polish and English, while texts can have ten languages.
 
-### How do I check what Google sees right now?
+## How do I check what Google sees right now?
 
 `klyo_game_stats` with `sprawdz_google: true` asks Google about the game pages at that moment (once an hour per game) and gives, for each page, when we asked and when Google’s crawler last visited it. Re-indexing of an ordinary page is requested in Search Console with the button next to the address: Google does not accept that request through an API, and the sitemap already submits the page.
 
-### When does a category page, like solitaire, appear?
+## When does a category page, like solitaire, appear?
 
 When the category has at least three games. A page with one game is a copy of a tile to Google, and such pages pull the whole portal down. The first game in a category can rank high on its own through its game page with a full description; the category page joins at the third.
 
-### My key does not see some tools. What now?
+## My key does not see some tools. What now?
 
 `klyo_status` lists the hidden tools, the reason (scope or account type) and how to unlock them. The `klyo:publish` scope covers preview edits (`klyo:edit_preview`), and new keys from the studio carry all scopes.
 
-### The description check stopped my game. Why?
+## The description check stopped my game. Why?
 
 A refusal always names the word that caused it. The description is checked in the language of each tag (``, ``), and genre words, such as a shot in Battleships or shooting a bubble, do not require ticking violence in the survey. Violence means killing, blood, weapons and the shooter genre.
 
-### How do I delete a package from the waiting room?
+## How do I delete a package from the waiting room?
 
 `klyo_delete_game` with `upload_id` instead of `slug`. A package that already became a game stays, because it is that game’s preview.
 
-### The gate says “exceptions” but the game works. What does it mean?
+## The gate says “exceptions” but the game works. What does it mean?
 
 An exception is a JavaScript error reported by the browser. Game state reports (`stan:`) and the recording log (`obraz:`, `kompozyt:`) are not exceptions and do not stop a release. A score sent through the kit held in a variable counts too: the preview then reports that the game sent a score.
 
-### Do online games survive a dropped connection?
+## Do online games survive a dropped connection?
 
 Yes. Every move has a number and its own id. When a phone loses the network for a moment, the page pulls the moves the player missed once it is back, once and in order, and a move sent at a bad moment retries by itself without being doubled. Quick match finds an opponent on its own, and “Leave room” really closes the room.
 
-### A tool answer is too big for my assistant. What now?
+## A tool answer is too big for my assistant. What now?
 
 Use `limit`. `klyo_ads_ideas` returns the most searched phrases (50 by default, with the total count), and with `tylko_zarodki` only the phrases you gave, with their numbers. `klyo_keyword_map` trims its lists to 40 and counts its summary from everything. `klyo_my_games` carries only the recording verdict for each game, without the measurements.
 
-### Can I measure a game in chosen languages?
+## Can I measure a game in chosen languages?
 
 Yes. `klyo_game_diagnostics` with `zmierz`, `pelny` and `jezyki: ["pl","en","de"]` checks exactly those languages, together with the weak phone. A second measurement ordered while the first runs waits in the queue and starts by itself.
 
-### Can my assistant play my game itself?
+## Can my assistant play my game itself?
 
 Yes, on your device. Open the studio at [dev.klyo.pl](https://dev.klyo.pl/) and click “Allow” when your assistant asks. The game runs on your side, on your graphics card; your assistant sends moves and gets screenshots. The klyo server never displays games, and one click stops the play.
 
-### Do I have to use an assistant?
+## Do I have to use an assistant?
 
 No. Everything the tool does you can do in a browser at [dev.klyo.pl](https://dev.klyo.pl/): pick the package, see the game in a window straight away and fill in the description.
 

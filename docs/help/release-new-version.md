@@ -1,8 +1,13 @@
-> **Canonical page:** https://games.klyo.pl/support/release-new-version/ · updated 2026-09-24 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/release-new-version/ · updated 2026-11-10 · This file is generated from the klyo games website, so changes are made on the website.
 
 # How to release a new version of your game or roll back
 
 Drop the new ZIP on the game card in the studio, play the new version, confirm whether it is a fix, a new feature or a new look, and release it. The previous version stays with us, one button away.
+
+- 2 min read
+- Steps: 5
+
+### On this page
 
 ## Before you start
 
@@ -32,13 +37,11 @@ After a new look the old clip leaves the tile and the feed. Record a new one fro
 
 Go back with **Back to the previous version**, then press **Show what happened** in the preview of the new build to see the missing files and errors.
 
-## Common questions
-
-### Does a new version change the address or the scores?
+## Does a new version change the address or the scores?
 
 No. The address, scores, records, reviews and statistics stay. Only the files of the game change, and the previous version stays available for a rollback.
 
-### Can an AI assistant release a new version?
+## Can an AI assistant release a new version?
 
 Yes. Over the klyo MCP server it uploads the new build or patches files in a draft, and releases it when you say so. Playing the new version first stays your check.
 
@@ -47,6 +50,7 @@ Yes. Over the klyo MCP server it uploads the new build or patches files in a dra
 - [How to publish an HTML5 game on klyo games](https://games.klyo.pl/support/publish-html5-game/)
 - [Game shows a white screen: how to fix it](https://games.klyo.pl/support/white-screen/)
 - [How to record a gameplay clip with captions](https://games.klyo.pl/support/record-gameplay-clip/)
+- [How to save player progress in an HTML5 game](https://games.klyo.pl/support/save-game-progress/)
 - [All guides](https://games.klyo.pl/support/)
 
 Still stuck? Write to [kontakt@klyo.pl](mailto:kontakt@klyo.pl) and include the address of the game. A person answers within two working days.

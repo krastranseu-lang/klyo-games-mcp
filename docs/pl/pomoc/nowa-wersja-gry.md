@@ -1,8 +1,13 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/nowa-wersja-gry/ · aktualizacja 2026-09-24 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/nowa-wersja-gry/ · aktualizacja 2026-11-10 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Jak wydać nową wersję gry i wrócić do poprzedniej
 
 Upuść nowy ZIP na kartę gry w studiu, zagraj w nową wersję, potwierdź, czy to poprawka, nowa funkcja czy nowy wygląd, i ją wypuść. Poprzednia wersja zostaje u nas, jeden przycisk dalej.
+
+- 2 min czytania
+- Kroki: 5
+
+### Na tej stronie
 
 ## Zanim zaczniesz
 
@@ -32,13 +37,11 @@ Po nowym wyglądzie stary klip schodzi z kafelka i ze strumienia. Nagraj nowy z 
 
 Wróć przyciskiem **Wróć do poprzedniej wersji**, a potem w podglądzie nowej wersji naciśnij **Pokaż, co się stało**, żeby zobaczyć brakujące pliki i błędy.
 
-## Częste pytania
-
-### Czy nowa wersja zmienia adres albo wyniki?
+## Czy nowa wersja zmienia adres albo wyniki?
 
 Nie. Adres, wyniki, rekordy, recenzje i statystyki zostają. Zmieniają się tylko pliki gry, a poprzednia wersja czeka na ewentualny powrót.
 
-### Czy asystent AI może wydać nową wersję?
+## Czy asystent AI może wydać nową wersję?
 
 Tak. Przez serwer MCP klyo wgrywa nową wersję albo poprawia pliki w wersji roboczej i wypuszcza ją, gdy mu powiesz. Zagranie w nową wersję przed wydaniem zostaje twoim sprawdzeniem.
 
@@ -47,6 +50,7 @@ Tak. Przez serwer MCP klyo wgrywa nową wersję albo poprawia pliki w wersji rob
 - [Jak wydać grę HTML5 na klyo games](https://games.klyo.pl/pl/wsparcie/jak-wydac-gre-html5/)
 - [Gra pokazuje białe okno: jak to naprawić](https://games.klyo.pl/pl/wsparcie/biale-okno/)
 - [Jak nagrać klip z gry z napisami](https://games.klyo.pl/pl/wsparcie/nagraj-klip/)
+- [Jak zapisać postęp gracza w grze HTML5](https://games.klyo.pl/pl/wsparcie/zapis-postepu/)
 - [Wszystkie instrukcje](https://games.klyo.pl/pl/wsparcie/)
 
 Nadal coś nie działa? Napisz na [kontakt@klyo.pl](mailto:kontakt@klyo.pl) i podaj adres gry. Odpowiada człowiek, w dwa dni robocze.

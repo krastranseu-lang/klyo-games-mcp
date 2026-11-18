@@ -1,8 +1,13 @@
-> **Canonical page:** https://games.klyo.pl/support/assistant-plays-your-game/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/assistant-plays-your-game/ · updated 2026-11-10 · This file is generated from the klyo games website, so changes are made on the website.
 
 # Let your AI assistant play your game
 
 Open the studio at dev.klyo.pl on the computer or phone you want to test on, and click “Allow” when your assistant asks to play. The game runs on your side, on your graphics card; your assistant sends moves and looks at screenshots. One click stops it.
+
+- 2 min read
+- Steps: 5
+
+### On this page
 
 ## Before you start
 
@@ -36,19 +41,17 @@ The game does not load the klyo SDK, or carries an old copy in its package. Load
 
 Browsers turn sound on only after your own click in the game. Your assistant's moves cannot replace it, so click the game window once.
 
-## Common questions
-
-### Does the klyo server see my game?
+## Does the klyo server see my game?
 
 It never displays it. The game runs on your device; the server only passes your assistant's moves and the screenshots to the chat that asked for them. We do not store the screenshots in a database or on disk.
 
-### Can my assistant play someone else's game?
+## Can my assistant play someone else's game?
 
 No. It opens only your account's games, the same version it reads and fixes in the workshop.
 
-### Does it work with a 3D game?
+## Does it work with a 3D game?
 
-Yes. The game uses your device's graphics card, so your assistant sees what you see. That is exactly the case where the measurement on our server says NIESPRAWDZONA.
+Yes. The game uses your device's graphics card, so your assistant sees what you see. That is exactly the case where the quality gate on our server says it has not seen the 3D graphics yet.
 
 ## Related guides
 

@@ -1,15 +1,15 @@
-> **Canonical page:** https://games.klyo.pl/features/ · updated 2026-09-29 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/features/ · updated 2026-11-18 · This file is generated from the klyo games website, so changes are made on the website.
 
 # Everything *klyo games* can do
 
-One place to play browser games, swipe through clips, talk about games and publish your own. 92 features work today and 3 are in development. Each one is checked against our code every time the site is built.
+One place to play browser games, swipe through clips, talk about games and publish your own. 108 features work today and 3 are in development. Each one is checked against our code every time the site is built.
 
 [Play now](https://games.klyo.pl/)
 
 [Publish your game](https://games.klyo.pl/developer-studio/)
 
-- **92** features that work today, each backed by our code
-- **21** tools for AI assistants over the open MCP protocol
+- **108** features that work today, each backed by our code
+- **22** tools for AI assistants over the open MCP protocol
 - **0 PLN** to play, and to publish your own game
 - **EN and PL** every page of the portal in English and Polish
 
@@ -22,7 +22,7 @@ Games start from a link, on a phone or a computer, with nothing to install.
 - **One tap to play**: A game opens in the tab you already have. No store, no download, no account and no video ad before it starts.
 - **Made for phones**: Full screen opens with the same tap that starts the game, touch controls work at once, and a landscape game on an upright phone gets a rotated frame.
 - **Mini game window**: Pop a game out into a small window next to your work. In Chrome and Edge on a computer it stays on top of everything else.
-- **Progress on every device**: Games with the klyo SDK save progress on our server, and once you sign in it moves with you from phone to computer.
+- **Progress on every device**: Once you sign in, your progress moves from phone to computer, even in a game whose developer never added a save. When two devices disagree, you choose which progress stays.
 - **Search and shelves**: Search by name, genre or mood, browse demos and games in development, and open a shelf picked for kids.
 - **Ratings and reviews**: Rate a game and change your mind later. Reviews appear under the game, and the developer can reply right below.
 - **Notifications**: The bell collects hearts, ratings, comments and new followers. Allow push notifications and they reach you outside the portal too.
@@ -43,7 +43,7 @@ Short gameplay videos you swipe through like TikTok, recorded right in the brows
 - **Keep the last 30 seconds**: With recording on, play as long as you like. When something great happens, one button keeps the last 30 seconds.
 - **Cut the best moment**: A strip of frames with two handles. A game can mark its own big moments, so the best part is selected for you.
 - **Captions from your voice**: Talk while you play and captions appear in time with your words. Your voice becomes text on our server and is deleted right after. Every caption can be edited.
-- **Caption styles and themes**: The Classic, Neon, Game and Pop themes set captions, the face frame and animations in one tap. Font, colour, outline and entrance are yours to change.
+- **Caption styles and themes**: Four ready-made themes set captions, the face frame and animations in one tap. Font, colour, outline and entrance are yours to change.
 - **Your reaction in the frame**: Turn on the camera and react in a frame over the gameplay, live or after recording by playing the clip back and filming just your face.
 - **Add your voice later**: Recorded without a microphone? Play the clip from the start of your selection and talk over it, in sync with the picture.
 - **Automatic bleep**: A swear word in your voice is covered with a short tone in the finished clip and hidden in the captions.
@@ -100,7 +100,7 @@ Everything from uploading a game to its first players, at dev.klyo.pl.
 
 [Tour the Developer Studio](https://games.klyo.pl/developer-studio/)
 
-- **Upload a ZIP**: A ZIP with index.html inside or a single HTML file, up to 200 MB. Large packages upload in chunks, so a dropped connection keeps your progress. [Guide: publish a game](https://games.klyo.pl/support/publish-html5-game/)
+- **Upload a ZIP**: A ZIP with index.html inside or a single HTML file, up to 350 MB. Large packages upload in chunks, so a dropped connection keeps your progress. [Guide: publish a game](https://games.klyo.pl/support/publish-html5-game/)
 - **Move a game from the web**: Paste the address of a game on itch.io, GameJolt, Newgrounds, GitHub Pages, Netlify or your own server. We confirm it is yours and bring the files over. [Move your game](https://games.klyo.pl/move-your-game/)
 - **Automatic check**: Every package is checked for size, missing files, paths, third-party ad networks and traces of malicious code.
 - **Your AI fills in the form**: One button and Claude, ChatGPT or Claude Code types the name, tagline and description while you watch. You tick the content survey yourself. [AI assistants and MCP](https://games.klyo.pl/mcp/)
@@ -114,13 +114,20 @@ Everything from uploading a game to its first players, at dev.klyo.pl.
 - **An answer for a white screen**: When a game does not start, the studio lists the files it asked for and the errors it threw in the browser, in order. [Guide: white screen](https://games.klyo.pl/support/white-screen/)
 - **Through Google's eyes**: See your game page the way a search engine does: a verdict first, then the tasks that would lift it.
 - **30 days of analytics**: Visits and plays day by day, counted on our side without identifying players.
+- **Where players drop off**: Six steps of every session: visit, Play, load, first move, 30 s of play, score. You see at which step people leave, phone and computer apart, and how long the game loads. No code needed.
+- **Levels and your own events**: One line, `klyo.level(3, "complete")`, gives a level funnel: how many people started, completed and failed each level. `klyo.event("coins", 50)` counts your own events. No console, no setup.
+- **Click map**: The klyo kit records where players touch the game screen, on a grid, without recording the picture. Clicks on dead spots show where someone looks for a button.
+- **Analytics for your AI**: The MCP tool klyo_game_analytics gives your assistant the funnel, levels, click map and tasks with a reason, so the AI knows what to fix in the game.
 - **Reply to reviews**: Reviews of your games reach the studio, and you can answer each one publicly under the game.
 - **Your creator page**: Your name next to every game, your own address, a tagline for search and links to your other profiles, each one verified.
 - **App Store and Google Play badges**: If your game is also a phone app, paste the store links and the badges appear on the game page.
 - **A badge for your own site**: A short code for your own site that leads straight to your game on klyo.
 - **Event record**: Download every publication, edit and moderation decision with its date, as a spreadsheet file.
+- **Playtest links**: A named link to your game, from Reddit for example, counts visits and people, and testers who agree leave a recording for 48 hours. [Playtesting with recordings](https://games.klyo.pl/playtesting/)
+- **Video of the tester's game**: The tester's game picture, WebGL and WebGPU included, with their cursor, taps and keys. The game's HTML dialogs show together with the canvas. [Playtesting with recordings](https://games.klyo.pl/playtesting/)
+- **Dead taps and rage clicks**: The player marks taps after which the game did nothing and bursts of taps on one spot, and skips idle time by itself. [Playtesting with recordings](https://games.klyo.pl/playtesting/)
 - **Talk to the team**: A private conversation with the klyo team inside the studio, with a screenshot or a code patch attached.
-- **Payouts: 70% of ad revenue**: Developers will get 70% of the net ad revenue next to their games, paid out from 100 PLN. It starts on the day Google approves ads on the portal. In development
+- **Payouts: 70% of in-game ad revenue**: Developers will get 70% of the net revenue from ads in their own games (ad breaks and rewarded ads through the klyo toolkit), paid out from 100 PLN. Ads are not shown yet, on purpose: we are growing the player base first. When they go live we start with a test phase. In development
 
 ## AI assistants
 
@@ -128,9 +135,10 @@ Publish, fix and check your game by talking to the assistant you already use.
 
 [Connect your AI assistant](https://games.klyo.pl/mcp/)
 
-- **MCP server with 21 tools for developers**: Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code publish and manage your games through the open Model Context Protocol.
-- **You have the last word**: The assistant prepares the game, but you accept the terms, you tick the survey and you release the game to the catalogue. It never sees your money.
-- **Fixes without a ZIP**: Your assistant reads the game's files and patches them in a draft version. Players do not see it until you play it and release it.
+- **MCP server with 22 tools for developers**: Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code publish and manage your games through the open Model Context Protocol.
+- **Playtest report for your assistant**: Dead taps with the element's name, game errors and the screens where testers quit, with evidence from the recording. The assistant gets them in klyo_game_analytics. [Playtesting with recordings](https://games.klyo.pl/playtesting/)
+- **You have the last word**: The assistant prepares the game, but you accept the terms, you tick the survey and you release the game; it enters the catalogue after a person from klyo has looked at it. It never sees your money.
+- **Fixes without a ZIP**: Your assistant reads the game's files and patches them in a draft version. Players do not see it until you play it and release it, and you discard a failed draft in the studio.
 - **Your agent sees inside the game**: Diagnostics hand your assistant the missing files and browser errors, so a white screen turns into one clear sentence.
 - **Your assistant plays your game**: On your device, in the studio, while you watch: it presses keys, clicks and drags, then looks at screenshots. 3D games too, because the game runs on your graphics card, not on our server.
 - **Starter files for a new game**: Ask for a new game and get working files built on the Klyo Kit, with menu, pause and sound from the first minute.
@@ -140,7 +148,7 @@ Publish, fix and check your game by talking to the assistant you already use.
 - **Readable by machines**: llms.txt, a Markdown copy of every page, an MCP server card, an agent catalogue and a game index with age labels.
 - **Tools for agents in the browser**: The portal describes its search and pages as WebMCP tools, so an agent in the browser uses them without guessing.
 
-## klyo SDK and Kit
+## klyo SDK and Klyo Kit
 
 One script connects a game to scores, saves, ads, clips and multiplayer.
 
@@ -148,9 +156,22 @@ One script connects a game to scores, saves, ads, clips and multiplayer.
 
 - **One line in your game**: Add one script and the game reports scores, saves progress, asks for an ad break or a rewarded ad, requests full screen and lets players record clips.
 - **Cloud saves up to 64 KB**: Per player and per game, stored on our server and shared across all of the player's devices.
+- **Progress without a line of code**: A game that keeps progress in localStorage or in engine files (Godot, Unity) has it on every device of the player: the SDK copies it to the cloud (localStorage and engine files, up to 120 KB each) and restores it before the game starts.
+- **Test saves before release**: In the studio preview saves go to a preview cloud that only you can see. Players start from scratch after release, and the preview save disappears with the preview.
 - **Klyo Kit**: A game skeleton with menu, pause, end screen, settings, touch, mouse, keyboard and gamepad, sound without files and effects. You write only the gameplay.
-- **Test on your machine first**: klyo-test measures your game exactly as we do at release, including on a slow phone and in both languages.
+- **Test on your machine first**: `klyo-test` measures your game exactly as we do at release, including on a slow phone and in both languages.
 - **Works outside klyo too**: Open the same build anywhere else and nothing breaks: an ad break returns at once, and scores and saves stay in the browser.
+
+## Tournaments and clubs
+
+Live tournaments with a broadcast, clubs and schools, referees with reviews and certificates that cannot be faked.
+
+- **Live tournaments**: Tournaments in Makao, checkers, backgammon and dominoes, knockout or Swiss, with sign up, check in before the start and a walkover for no shows.
+- **A broadcast no one can use to cheat**: Spectators watch matches with every player's cards and a 60 second delay, and a player in a running tournament gets neither the broadcast nor the chat.
+- **Clubs, teams and schools**: A club has a page with a crest or its own logo, social links, invitations, members only tournaments, a club standing and a badge after verification.
+- **Referee board**: Referees for chosen games with their languages and country, invitations from organisers, looking for a referee notices and reviews only from the players of the tournament.
+- **Certificates that cannot be faked**: Every certificate has a random code and a QR code, the server counts the place from the matches, and the tournament page shows the official record. The PDF is built in the browser, in four languages.
+- **XP for tournaments**: XP for games played in a tournament, a place bonus from four players up and XP for the referee. Walkovers and test tournaments give nothing.
 
 ## Safety and trust
 
@@ -158,7 +179,7 @@ People review the games, age labels are clear, and every decision can be appeale
 
 [Read the moderation report](https://games.klyo.pl/moderation-report/)
 
-- **A person reviews every game**: After release someone at klyo plays every new developer game. Until then it opens only for adult accounts, and ads next to it stay off.
+- **A person reviews every game**: After release someone at klyo plays every new developer game, and only then does it enter the catalogue and search engines. Until then it opens at its own address only for adult accounts, and ads next to it stay off.
 - **Every game in its own sandbox**: Each game runs at its own address in a separated frame, so it cannot reach your account or other games.
 - **No outside scripts in games**: A game that sends data to someone else's server or carries its own ad network does not pass the check.
 - **Clear age labels**: Every game carries an age label, published on both the PEGI and the Apple scale, and games for adults never show ads.
@@ -176,29 +197,27 @@ Not here yet. We say so plainly, so nobody counts on something they will not get
 - **Apps for iPhone and Android**: Recording straight from the game window, clips without permission prompts and offline play. Today the portal runs in the browser and can be added to the home screen. In development
 - **The portal in more languages**: Game texts can already be stored in ten languages. Portal pages beyond English and Polish are still to come. In development
 
-## Common questions
-
-### What is klyo games?
+## What is klyo games?
 
 A free portal of browser games with a vertical clip feed, a community, records and ranks, and a studio where independent developers publish HTML5 games the same day. It is run by klyo, a Polish software company.
 
-### Do I need an account to play?
+## Do I need an account to play?
 
 No. Games start from a link without an account. An account adds your name on leaderboards, ratings, comments, clips and progress that follows you between devices.
 
-### Can an AI assistant publish a game on klyo games?
+## Can an AI assistant publish a game on klyo games?
 
-Yes. Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code connect to the klyo MCP server, which has 21 tools for game developers. The assistant uploads and prepares the game, and you accept the terms and release it to the catalogue yourself.
+Yes. Claude, ChatGPT, Gemini, Copilot, Cursor and VS Code connect to the klyo MCP server, which has 22 tools for game developers. The assistant uploads and prepares the game, and you accept the terms and release it to the catalogue yourself.
 
-### How do clips work?
+## How do clips work?
 
 A player or developer records gameplay in the browser, cuts the best moment, adds captions from their voice or their face, and posts it to the vertical feed. Until it is posted, the recording stays on their device.
 
-### What is not ready yet?
+## What is not ready yet?
 
 In development: payouts for developers, apps for iPhone and Android and portal pages in more languages. Each of these is marked as in development here until it works for everyone.
 
-### How do you know these features really work?
+## How do you know these features really work?
 
 Every entry on this list points to a piece of our code. Each time the site is built we check that the code is still there. If it is gone, the site does not build until this page is corrected.
 

@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/zestaw-do-gry/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/zestaw-do-gry/ · aktualizacja 2026-11-17 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Zestaw klyo dla gry HTML5
 
@@ -82,12 +82,68 @@ pokazTurniej(t);
 
 ## Jak zapisać postęp gracza między urządzeniami
 
-Do 64 KB na gracza i grę, po stronie serwera. Wczytaj na starcie, zapisuj po ważnych zmianach, nie po każdej klatce.
+Do 64 KB na gracza i grę, na naszym serwerze, z kopią w przeglądarce. Wczytaj na starcie, zapisuj po ważnych zmianach: zapisy częstsze niż co 2 sekundy zestaw sam łączy w jeden i wysyła ostatni stan. Odpowiedź mówi, skąd są dane: `z.cloud` znaczy, że odpowiedział serwer klyo, a `z.reason` mówi, dlaczego dane są tylko z przeglądarki. Odpowiedź przychodzi zawsze, więc nie dokładaj własnego limitu czasu.
 
-`klyo.save.set({ poziom: 4, zloto: 120 });
-klyo.save.get((z) => {
+`klyo.save.get((z) => {
 if (z.ok && z.data) wczytajStan(z.data);
+// z.cloud: odpowiedział serwer klyo
+// z.reason: dlaczego tylko kopia z przeglądarki
+});
+klyo.save.set({ poziom: 4, zloto: 120 }, (o) => {
+if (!o.cloud) pokazUwage(o.reason);
 });`
+[Jak zapisać postęp gracza w grze HTML5](https://games.klyo.pl/pl/wsparcie/zapis-postepu/)
+
+## Jak sprawdzić zapis w chmurze przed wydaniem gry
+
+Wgraj paczkę w studiu i zagraj w oknie podglądu: zestaw odpowiada tam na każde wywołanie. Zapis idzie do chmury podglądu, którą widzisz tylko ty; gracze po wydaniu zaczynają od zera, a zapis znika razem z podglądem. Nowa wersja wydanej gry czyta w podglądzie twój zapis z gry, dopóki nie zapisze własnego, więc sprawdzisz, czy wczyta postęp graczy. Przerwa i reklama za nagrodę pokazują zaślepkę na 3 i 5 sekund, wynik i tablica pokazują wyniki z podglądu, a turniej, ligi i pokoje online odpowiadają od razu powodem `podglad` i sprawdzisz je na stronie gry po wydaniu. Kod QR otwiera grę na telefonie bez strony klyo: tam zapis zostaje w telefonie.
+
+`klyo.save.set({ test: 1 }, (o) => {
+console.log(o.cloud, o.preview, o.updatedAt); // true, true, chwila zapisu na serwerze
+});
+// później albo po ponownym otwarciu podglądu:
+klyo.save.get((z) => console.log(z.source, z.data)); // "chmura" { test: 1 }`
+[Jak zapisać postęp gracza w grze HTML5](https://games.klyo.pl/pl/wsparcie/zapis-postepu/)
+
+## Jak zapisać postęp gry z Godota w przeglądarce
+
+Godot 4 w eksporcie do przeglądarki woła zestaw przez `JavaScriptBridge`: `get_interface("klyo")` daje obiekt zestawu, a `create_callback` odbiera odpowiedź jako tablicę z jednym obiektem. Odwołanie trzymaj w zmiennej klasy, inaczej odpowiedź nie przyjdzie. Stan wysyłaj jako tekst JSON i czytaj go przez `JSON.parse_string`. Poza przeglądarką `OS.has_feature("web")` zwraca fałsz i gra zapisuje po swojemu.
+
+`var _klyo = JavaScriptBridge.get_interface("klyo") if OS.has_feature("web") else null
+var _po_wczytaniu = JavaScriptBridge.create_callback(_wczytano)
+var _po_zapisie = JavaScriptBridge.create_callback(_zapisano)
+
+func wczytaj() -> void:
+if _klyo: _klyo.save.get(_po_wczytaniu)
+
+func _wczytano(args: Array) -> void:
+var z = args[0]
+if z.ok and z.data:
+var stan = JSON.parse_string(z.data)
+
+func zapisz(stan: Dictionary) -> void:
+if _klyo: _klyo.save.set(JSON.stringify(stan), _po_zapisie)
+
+func _zapisano(args: Array) -> void:
+print(args[0].cloud, " ", args[0].reason)`
+
+## Jak zapisać pełny stan, gdy gracz zamyka kartę
+
+Zamknięcie karty, przejście do innej aplikacji albo na inną stronę nie daje silnikowi czasu na zapis przy zamykaniu gry, więc stan, który zapisujesz tylko wtedy, przepada. `klyo.onLeave` woła twoją funkcję w chwili, gdy karta znika, a zapis podany w niej jedzie od razu. Z Godota: `_klyo.onLeave(JavaScriptBridge.create_callback(_zapisz_wszystko))`, odwołanie trzymaj w zmiennej klasy. W podglądzie studia bramka jakości mówi, czy zapis w chmurze naprawdę przeszedł.
+
+`klyo.onLeave(() => {
+klyo.save.set(pelnyStanGry());
+});`
+
+## Jak gra bez klyo.save zachowuje postęp na każdym urządzeniu
+
+Nic nie dopisujesz. Zestaw sam kopiuje do chmury localStorage gry (bez kluczy `klyo-` i `kit:`) i pliki silnika w bazie przeglądarki: `user://` z Godota, `persistentDataPath` z Unity i każdą inną bazę Emscripten. Na innym urządzeniu gracza wpisuje je, zanim gra je przeczyta: localStorage przed pierwszą linijką twojego skryptu, pliki silnika przed otwarciem ich bazy. localStorage i pliki silnika mają po 120 KB na gracza i grę; pojedynczy wpis ponad 100 KB i największe wpisy ponad ten budżet zostają tylko na urządzeniu. Gdy dwa urządzenia mają inny postęp, gracz sam wybiera, który zostaje, a nic nie nadpisuje się po cichu. Gdy zapis przez `klyo.save` działa (serwer go potwierdził), kopii już nie ma: jeden zapis, jedna prawda. Warunek: zestaw jest pierwszym skryptem w ``; inaczej bramka jakości w podglądzie powie, że postęp nie przejdzie.
+
+`
+
+// gra.js, bez klyo.save: monety przejdą z telefonu na komputer same
+const monety = Number(localStorage.getItem("monety") || 0);`
+[Jak zapisać postęp gracza w grze HTML5](https://games.klyo.pl/pl/wsparcie/zapis-postepu/)
 
 ## Jak wstawić przerwę reklamową w dobrym miejscu
 
@@ -155,6 +211,26 @@ Okno „Zagraj online” (szybki mecz z graczem o podobnym bilansie, własny pok
 if (o.ok) zacznij(o.room);
 });`
 
+## Jak mieć jedną pulę graczy na swojej stronie i na innym portalu
+
+Te same pokoje działają poza klyo. Na swojej stronie albo na innym portalu z grami w przeglądarce wczytaj nasz most pokoi przed zestawem: gra łączy się wtedy z pokojami klyo jako gość, a jej gracze spotykają graczy klyo w tych samych pokojach na żywo. Most obsługuje pokoje na żywo (szybki mecz, dołączanie, start, wiadomości, kanał meczu, drużyny i mapy); pokoje turowe zostają na stronach klyo. Gość nie ma dostępu do konta klyo, płatności ani panelu. Wyniki, zapis postępu i nagrywanie działają tylko na stronach klyo. Domena musi najpierw trafić na naszą listę: napisz do nas adres swojej strony, a ją dopuścimy.
+
+`
+
+window.klyoMostPokoi = klyoPokojMost({ slug: "twoja-gra", nick: () => playerName });
+
+`
+
+## Gra multiplayer z własnym serwerem meczów
+
+Masz już serwer (Photon, Colyseus, własny WebSocket) i grę na swojej stronie? Nie przenosisz niczego: wersja na klyo łączy się z tym samym serwerem, więc gracze z klyo i z twojej strony grają w tych samych meczach. Tak samo robi CrazyGames: hostuje pliki gry, a serwer meczów ma twórca. W studiu, w ostatnim kroku kreatora „Treść”, podajesz adres serwera i politykę prywatności gry; człowiek z klyo zatwierdza je, zwykle w ciągu dnia. Do tego czasu paczka łącząca się z tym serwerem nie wejdzie do katalogu. Wpuszczamy tylko ten jeden adres i tylko w twojej grze. Warunki: gracz na klyo gra jako gość (bez logowania do twoich kont i bez płatności w grze), a gra ma nasz zestaw (gotowość i wyniki). Strona gry mówi graczowi, że mecze prowadzi twój serwer, i linkuje twoją politykę prywatności. Gra z własnym serwerem działa w przeglądarce; do aplikacji klyo na telefony na razie nie trafia.
+
+`// bez zmian w kodzie gry: ten sam adres co na twojej stronie
+const ws = new WebSocket("wss://eu1.twoja-gra.com/ws");
+klyo.ready();
+// po meczu:
+klyo.score(punkty);`
+
 ## Kompletny przykład: kółko i krzyżyk online (cały plik)
 
 Wklej do index.html, dodaj zestaw i wydaj. Gospodarz gra krzyżykiem, serwer pilnuje, kto ma ruch, a plansza wraca po odświeżeniu.
@@ -183,38 +259,48 @@ klyo.online.lobby({ players: 2 }, function (o) { if (!o.ok) S.textContent = "Zag
 });
 `
 
+## Jak sprawdzić, dlaczego gracze odchodzą
+
+Bez żadnego kodu zestaw klyo zapisuje sześć kroków każdej sesji: wejście na stronę gry, Zagraj, wczytanie (klyo.ready), pierwszy ruch, 30 sekund gry i wynik, osobno na telefonie i komputerze, oraz mapę kliknięć. W studiu, w „Wyniki i oceny”, widzisz, na którym kroku ludzie wychodzą i ile gra się wczytuje. Dwie linijki dają więcej: klyo.level(3, "complete") pokazuje, na którym poziomie odpadają, a klyo.event("monety", 50) liczy Twoje zdarzenia. To samo dostaje Twój asystent AI przez narzędzie MCP klyo_game_analytics, razem z zadaniami: co poprawić i dlaczego. Do serwera idą same liczby, bez danych osób.
+
+`klyo.level(3, "start"); // poziom 3 się zaczął
+klyo.level(3, "complete"); // przeszedł
+klyo.level(3, "fail"); // przegrał
+klyo.event("sklep_otwarty");
+klyo.event("monety", 50);`
+
 ## Jak wskazać moment, który wart jest klipu
 
 Gra wie najlepiej, kiedy dzieje się coś, co warto pokazać: combo, wybuch, przejście poziomu, przegrana o włos. Jedno wywołanie stawia znacznik na osi czasu nagrania. Edytor klipu sam zaznacza odcinek wokół ostatniego znacznika, a gracz nie szuka momentu po sekundzie. Rekord z klyo.wynik ma pierwszeństwo. Rodzaj to krótkie słowo bez spacji, dane to mały obiekt do podpisu klipu. Nic nie idzie do sieci; bez nagrywania znacznik po prostu przepada.
 
 `klyo.moment("combo", { seria: 12 });`
 
-## Wspólny turniej tygodnia — API 1.2.0
+## Wspólny turniej tygodnia: API 1.2.0
 
 Edycja zmienia się automatycznie w poniedziałek o 00:00 UTC. Serwer oblicza wynik z ruchów i zapisuje najlepszą ukończoną próbę. Zwykłe rekordy gry pozostają osobno.
 
-Właściciel najpierw włącza zainstalowany moduł reguł swojej gry. Obecnie dostępny: blockfall-weekly-v1. Inna gra wymaga własnego modułu reguł po stronie serwera.
+Właściciel najpierw włącza zainstalowany moduł reguł swojej gry. Obecnie dostępny: `blockfall-weekly-v1`. Inna gra wymaga własnego modułu reguł po stronie serwera.
 
 `klyo.league.standings({scope: 'week'}, showBoard);
 klyo.league.start(crypto.randomUUID(), resumeRun);
 // Keep run and base; retry identical moves after a lost acknowledgement.
 klyo.league.moves(run, base, [column], acceptServerState);
 klyo.league.finish(run, moveCount, showConfirmedScore);`
-Rekordy zwykłej gry: standings({scope:"classic"}). Są zgłoszone przez klienta, nie zweryfikowane ruchem. record({}) zwraca profil i requiredConsent. Jawna publikacja wymaga {score, gameRank, publish:true, consentVersion:requiredConsent, eligible16:true}; nie ustawiaj zgody automatycznie. record({score,gameRank}) aktualizuje tylko opublikowany wpis. record({publish:false}) wycofuje publikację bez zmiany prywatnej gry. data i erase obejmują obie tabele.
+Rekordy zwykłej gry: `standings({scope:"classic"})`. Są zgłoszone przez klienta, nie zweryfikowane ruchem. `record({})` zwraca profil i `requiredConsent`. Jawna publikacja wymaga `{score, gameRank, publish:true, consentVersion:requiredConsent, eligible16:true}`; nie ustawiaj zgody automatycznie. `record({score,gameRank})` aktualizuje tylko opublikowany wpis. `record({publish:false})` wycofuje publikację bez zmiany prywatnej gry. `data` i `erase` obejmują obie tabele.
 
 | SDK | RPC v1 | Argumenty |
 | --- | --- | --- |
-| `klyo.league.standings` | `gry.liga.tablica.v1` | options, callback |
-| `klyo.league.start` | `gry.liga.start.v1` | requestId string or {requestId, gameRank?}, callback |
-| `klyo.league.moves` | `gry.liga.ruchy.v1` | run, base, columns, callback |
-| `klyo.league.finish` | `gry.liga.koniec.v1` | run, moves, callback |
-| `klyo.league.data` | `gry.liga.dane.v1` | options, callback |
-| `klyo.league.erase` | `gry.liga.usun.v1` | confirm, callback |
-| `klyo.league.record` | `gry.liga.rekord.v1` | options, callback |
+| `klyo.league.standings` | `gry.liga.tablica.v1` | `options, callback` |
+| `klyo.league.start` | `gry.liga.start.v1` | `requestId string or {requestId, gameRank?}, callback` |
+| `klyo.league.moves` | `gry.liga.ruchy.v1` | `run, base, columns, callback` |
+| `klyo.league.finish` | `gry.liga.koniec.v1` | `run, moves, callback` |
+| `klyo.league.data` | `gry.liga.dane.v1` | `options, callback` |
+| `klyo.league.erase` | `gry.liga.usun.v1` | `confirm, callback` |
+| `klyo.league.record` | `gry.liga.rekord.v1` | `options, callback` |
 
 Tożsamość nadaje zalogowany host Klyo lub zweryfikowany podpis Facebooka. Konta tych dostawców nie są automatycznie łączone. Przyszłe aplikacje Klyo Games mogą użyć tego samego mostu SDK; ta wersja nie dostarcza aplikacji mobilnej.
 
-Eksport danych jest stronicowany po 10 prób (pole next); usunięcie wymaga confirm: "DELETE". Próby: 90 dni, edycje tygodniowe: 52 tygodnie, rekord turniejowy: do usunięcia. Przy błędzie SERVER_BUSY ponów z opóźnieniem, zachowując identyfikator operacji.
+Eksport danych jest stronicowany po 10 prób (pole `next`); usunięcie wymaga `confirm: "DELETE"`. Próby: 90 dni, edycje tygodniowe: 52 tygodnie, rekord turniejowy: do usunięcia. Przy błędzie `SERVER_BUSY` ponów z opóźnieniem, zachowując identyfikator operacji.
 
 ## Jak zbudować grę pod rekordy
 
@@ -240,7 +326,7 @@ Eksport danych jest stronicowany po 10 prób (pole next); usunięcie wymaga conf
 
 ## Co się dzieje, gdy ktoś otworzy grę poza klyo
 
-Nic się nie psuje. Przerwa wraca natychmiast, wynik i zapis zostają w pamięci przeglądarki, a klip po prostu nie ma gdzie się zapisać. Możesz więc trzymać jedną wersję gry na wszystko i nie potrzebujesz osobnej paczki dla nas.
+Nic się nie psuje. Przerwa wraca natychmiast, wynik i zapis zostają w pamięci przeglądarki, a klip po prostu nie ma gdzie się zapisać. Tak samo w ramce na cudzej stronie, na przykład twojej albo na itch.io: zestaw rozpoznaje, że strona nad grą nie jest nasza, i odpowiada od razu (w Chrome, Edge i Safari zawsze, w Firefoksie, gdy strona podaje swój adres). Możesz więc trzymać jedną wersję gry na wszystko i nie potrzebujesz osobnej paczki dla nas.
 
 ## Klyo Kit: szkielet gry na poziomie studia
 
@@ -255,7 +341,7 @@ gra.on("tap", function (d) { /* dotyk i mysz razem */ gra.dzwiek.graj("zbior"); 
 gra.koniec({ wygrana: true, wynik: 120 }); // ekran końca + tablica + rekord
 `
 
-- **Gra referencyjna na kicie:** [Statki](https://games.klyo.pl/pl/statki/) (solo, na jednym urządzeniu, online na link, ~200 linii). Przeciwnika do gier turowych daje `gra.ai.minimax`, a sterowanie kilkoma palcami na jednym ekranie `gra.wskazniki`. Reszta jest w kicie.
+- **Gra referencyjna na kicie:** [Admiral's Notebook](https://games.klyo.pl/pl/statki/) (gra w statki: solo, na jednym urządzeniu, online na link). Przeciwnika do gier turowych daje `gra.ai.minimax`, a sterowanie kilkoma palcami na jednym ekranie `gra.wskazniki`. Reszta jest w kicie.
 - **Przez asystenta:** `klyo_game_scaffold` zwraca pliki-startery i pełne API; asystent nie pisze menu, pauzy ani dźwięku drugi raz.
 - **Bez zewnętrznych arkuszy i czcionek:** hosty gier mają `style-src 'self'`, więc kit ma CSS wbudowany, czcionka systemowa, kolory z `gra.motyw.paleta`.
 
@@ -271,13 +357,13 @@ Gra dostaje u nas cały prostokąt sceny, a w pełnym ekranie cały ekran urząd
 - **Waga i czas.** Pierwsze pobranie ≤ 20 MB na telefon, pierwsza klatka gry ≤ 20 s, ścieżki względne.
 - **Sprawdź u siebie, zanim wgrasz.** `node klyo-test.mjs http://localhost:8080/ moja-gra ./klyo-test --uklad=pion`. Plik [/sdk/klyo-test.mjs](https://games.klyo.pl/sdk/klyo-test.mjs) mierzy dokładnie to, co my przy publikacji, z tymi samymi progami (Node 22 + Chrome/Chromium); `--uklad` to układ, który zadeklarujesz przy wydaniu (pion | poziom | oba). Przed wydaniem dodaj `--slaby-telefon --jezyki`: tani telefon (procesor cztery razy wolniejszy, słaba sieć) oraz ta sama gra po polsku i po angielsku, z miniaturą każdego języka.
 
-Przy publikacji otwieramy grę w czterech ekranach (telefon w pionie i w poziomie z dotykiem, tablet, komputer) i mierzymy: przewijanie w ramce, ułamek ekranu zajęty przez grę, najmniejszy tekst, nasłuchy dotyku, wagę pierwszego pobrania i czas wczytania. Wynik z miniaturami widzisz w Karcie gry w studiu, a twój asystent w klyo_game_diagnostics. Sami nie zgadujemy: to samo widzi gracz.
+Przy publikacji otwieramy grę w czterech ekranach (telefon w pionie i w poziomie z dotykiem, tablet, komputer) i mierzymy: przewijanie w ramce, ułamek ekranu zajęty przez grę, najmniejszy tekst, nasłuchy dotyku, wagę pierwszego pobrania i czas wczytania. Wynik z miniaturami widzisz w Karcie gry w studiu, a twój asystent w `klyo_game_diagnostics`. Sami nie zgadujemy: to samo widzi gracz.
 
 ## Czego wymagamy od paczki
 
 - Plik **index.html** w katalogu głównym paczki ZIP. Od niego zaczyna się gra.
 - Gra ma działać **bez instalacji i bez konta**, w przeglądarce, także na telefonie.
-- Do 200 MB. Sito sprawdza rozmiar, brakujące pliki, obce sieci reklamowe i ślady złośliwego kodu w kilkanaście sekund.
+- Do 350 MB. Sito sprawdza rozmiar, brakujące pliki, obce sieci reklamowe i ślady złośliwego kodu w kilkanaście sekund.
 - Ankieta wieku wypełniana przy wgrywaniu daje etykietę, która decyduje o widoczności i o wejściu do aplikacji sklepowych.
 
 ---

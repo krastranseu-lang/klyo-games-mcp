@@ -1,8 +1,13 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/nagraj-klip/ · aktualizacja 2026-09-28 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/nagraj-klip/ · aktualizacja 2026-11-10 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Jak nagrać klip z gry z napisami
 
 Uruchom grę i naciśnij „Nagraj klip” obok niej. Graj, potem naciśnij „Zapisz ostatnie 30 s” albo „Stop”, wytnij najlepszy moment, dodaj napisy z głosu albo swoją twarz i naciśnij „Wystaw klip”. Nic nie opuszcza twojego urządzenia, dopóki klipu nie wystawisz.
+
+- 2 min czytania
+- Kroki: 6
+
+### Na tej stronie
 
 ## Zanim zaczniesz
 
@@ -33,13 +38,11 @@ Zatrzymaj nagrywanie, zacznij od nowa i wskaż kartę z grą, gdy przeglądarka 
 
 Napisy z mowy wymagają mikrofonu włączonego w trakcie nagrania albo głosu dogranego później przyciskiem **Nagraj głos**. Bez mowy napisy wpiszesz sam.
 
-## Częste pytania
-
-### Czy klyo przechowuje mój głos?
+## Czy klyo przechowuje mój głos?
 
 Nie. Głos trafia na nasz serwer tylko po to, żeby zamienić go na tekst, i jest kasowany zaraz potem. Napisy zostają przy klipie i możesz je poprawić przed wystawieniem.
 
-### Co dzieje się z przekleństwami w klipie?
+## Co dzieje się z przekleństwami w klipie?
 
 W gotowym klipie przykrywa je krótki ton, a z napisów znikają.
 

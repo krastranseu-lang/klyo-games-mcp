@@ -1,8 +1,13 @@
-> **Canonical page:** https://games.klyo.pl/support/record-gameplay-clip/ · updated 2026-09-28 · This file is generated from the klyo games website, so changes are made on the website.
+> **Canonical page:** https://games.klyo.pl/support/record-gameplay-clip/ · updated 2026-11-10 · This file is generated from the klyo games website, so changes are made on the website.
 
 # How to record a gameplay clip with captions
 
 Start the game and press “Record a clip” next to it. Play, then press “Save the last 30s” or “Stop”, cut the best moment, add captions from your voice or your face, and press “Post the clip”. Nothing leaves your device until you post it.
+
+- 3 min read
+- Steps: 6
+
+### On this page
 
 ## Before you start
 
@@ -33,13 +38,11 @@ Stop, start again, and pick the tab with the game when the browser asks. Games t
 
 Captions from speech need the microphone on during the recording, or a voice added later with **Record voice**. Without speech you can still type captions yourself.
 
-## Common questions
-
-### Does klyo keep my voice?
+## Does klyo keep my voice?
 
 No. Your voice goes to our server only to be turned into text and is deleted right after. The captions stay with the clip, and you can edit them before posting.
 
-### What happens to swear words in my clip?
+## What happens to swear words in my clip?
 
 They are covered with a short tone in the finished clip and disappear from the captions.
 

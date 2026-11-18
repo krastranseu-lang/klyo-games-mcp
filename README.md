@@ -4,6 +4,7 @@
 <p align="center">
   <a href="https://games.klyo.pl/mcp/">Connection guide</a> &nbsp; · &nbsp;
   <a href="https://dev.klyo.pl/">Developer studio</a> &nbsp; · &nbsp;
+  <a href="https://games.klyo.pl/playtesting/">Playtest recordings</a> &nbsp; · &nbsp;
   <a href="docs/tool-reference.md">Tool reference</a> &nbsp; · &nbsp;
   <a href="docs/README.md">Product documentation</a>
 </p>
@@ -88,7 +89,7 @@ For a new project:
 | Packages and versions | `klyo_upload_package`, `klyo_publish_game`, `klyo_update_game`, `klyo_release_version`, `klyo_release_rollback` | Preview and approval are distinct from a public release. |
 | Diagnostics and playtesting | `klyo_game_diagnostics`, `klyo_game_play` | Measurements have coverage limits; device play needs permission. |
 | Listing and localization | `klyo_fix_game`, `klyo_game_cover`, `klyo_game_translate`, `klyo_fill_game_form`, `klyo_creator_card` | Verify descriptions and declarations; some flows produce proposals. |
-| Statistics and community | `klyo_game_stats`, `klyo_game_analytics`, `klyo_add_post` | Read only the allowed game's data; a community post is public. |
+| Statistics and community | `klyo_game_stats`, `klyo_game_analytics`, `klyo_add_post` | Read only the allowed game's data, including fixes from playtest recordings; a community post is public. |
 | Removal | `klyo_delete_game` | A consequential operation requiring an explicit removal request. |
 
 Availability is determined by live discovery and permissions. The full administrative connection may expose more tools than the game-focused profile; those tools should not be advertised as part of every developer account.
@@ -115,6 +116,26 @@ For updates, reuse the game's existing slug. A new version should preserve the g
 `klyo_game_play` controls the game on the owner's permitted device session and returns screenshots and game state. It is distinct from automated server-side measurements.
 
 Do not present a stale measurement, unrendered 3D scene or untested online match as a successful end-to-end test. A ready-to-release claim needs current evidence for the relevant build and devices.
+
+## Playtest recordings from real players
+
+<p align="center"><a href="https://games.klyo.pl/playtesting/"><picture><source type="image/avif" srcset="https://games.klyo.pl/foto/testy-gier-film-en.avif"><img src="https://games.klyo.pl/foto/testy-gier-film-en-1280.jpg" width="720" alt="The playtest player in the Klyo studio: video of a 3D game, the tester cursor and a timeline of taps"></picture></a><br><sub>A real playtest of FRONTBREAK (WebGPU) in the studio player, 18 November 2026.</sub></p>
+
+A developer creates a playtest link for a game in the Klyo developer studio, under the game's Results. A visitor who opens the link sees a consent card first. Nothing is recorded before they accept, and without consent the game starts as usual.
+
+For an accepted test Klyo stores:
+
+- a video of the game canvas (2D canvas, WebGL and WebGPU) at 640 px and 10 frames per second, plus the HTML layer the game draws above the canvas;
+- pointer, touch and key input on the same game clock as the video;
+- dead taps (nothing changed on screen within one second), rage clicks, JavaScript errors and the text on screen when the tester left.
+
+The developer sees a pseudonym such as "Tester 6", the country and the device type, not the tester's account. Recordings stay on Klyo's own server, take at most 48 MB per test and are deleted after 48 hours; the developer can delete one earlier from the studio.
+
+`klyo_game_analytics` returns these findings in its `testy` section, and they come first in the fix list. Each task names the element under the pointer or its position on screen in percent, the error text where there is one, and the evidence as a tester and a moment in the recording. The assistant can then read and edit the game with `klyo_game_files` and `klyo_game_patch`, and the developer checks the fix with a new test from the same link.
+
+A recording shows what one person did on one device. Treat a single dead tap as a lead to check, not as proof that a control fails for every player.
+
+[How playtest recordings work, with real recordings](https://games.klyo.pl/playtesting/)
 
 ## SDK features are integrations, not automatic gameplay
 

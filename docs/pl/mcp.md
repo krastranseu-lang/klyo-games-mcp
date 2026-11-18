@@ -1,4 +1,4 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/mcp/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/mcp/ · aktualizacja 2026-11-18 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Serwer MCP klyo: wydaj grę HTML5 asystentem AI
 
@@ -12,7 +12,7 @@ MCP (Model Context Protocol) to otwarty standard, przez który asystenci AI się
 1. **Podpisz zasady w przeglądarce**: Wejdź na [dev.klyo.pl](https://dev.klyo.pl/) i przyjmij regulamin dla twórców. Tego kroku asystent nie zrobi za ciebie i tak ma być: umowę podpisuje człowiek.
 2. **Dodaj klyo do swojego asystenta**: Najprościej: [**podłącz jednym kliknięciem**](https://panel.klyo.pl/mcp/connect): wybierasz swoje AI (Claude, ChatGPT, Gemini, Copilot, Claude Code, opencode), resztę robimy za Ciebie. Ręcznie: w ustawieniach asystenta dodaj serwer narzędzi (MCP) pod adresem `https://panel.klyo.pl/mcp?profil=gry`. Zalogujesz się swoim kontem klyo i zdecydujesz, na co się zgadzasz, tak samo jak przy podłączaniu dysku albo poczty.
 3. **Powiedz, co ma zrobić**: „Wydaj tę grę na klyo, paczka leży pod tym adresem” wystarczy. Asystent poda adres paczki ZIP, nazwę, opis dla gracza i odpowiedzi ankiety wieku. Chcesz tablicę wyników i miejsce na hubie rekordów? Powiedz „dodaj tablicę wyników klyo”, a narzędzie klyo_game_sdk opisze mu wywołania (gotowa → postęp → wynik) i próg wyniku.
-4. **Obejrzyj i wypuść**: Gra czeka w studiu z podglądem i kodem QR. Zagrywasz w nią na telefonie, a potem klikasz „Wypuść do katalogu”. Dopiero to kliknięcie stawia grę przed graczami.
+4. **Obejrzyj i wypuść**: Gra czeka w studiu z podglądem i kodem QR. Zagrywasz w nią na telefonie, a potem klikasz „Wypuść do katalogu”. Dopiero to kliknięcie wypuszcza grę, a do katalogu wchodzi ona, gdy obejrzy ją człowiek z klyo.
 
 ## Twoje AI w studiu, na twoim planie
 
@@ -51,13 +51,15 @@ Nie jesteśmy jedynym serwerem MCP, który wydaje gry przeglądarkowe. Oto, co k
 
 | | klyo games | Playgama | AIGameShare | Playfrog |
 | --- | --- | --- | --- | --- |
-| Narzędzia dla twórcy | 21 | 25+ | 5 | 2 |
+| Narzędzia dla twórcy | 22 | 25+ | 5 | 2 |
 | Logowanie | OAuth 2.1, nic nie wklejasz | OAuth 2.1 | token z konta wklejany do konfiguracji | brak; osobny token zarządzania dla każdej gry |
-| Paczka | ZIP do 200 MB i 5 000 plików | ZIP do 300 MB | HTML do 2 MB albo ZIP do 30 MB | do 2,5 MB |
+| Paczka | ZIP do 350 MB i 5 000 plików | ZIP do 300 MB | HTML do 2 MB albo ZIP do 30 MB | do 2,5 MB |
 | Co dostaje gra | własny adres g-.klyo.pl, stronę w katalogu po angielsku i po polsku, tablicę wyników, klipy graczy, statystyki dzień po dniu | publiczny link do gry z piaskownicy Playgama | link do udostępnienia z zagraniami, polubieniami i tablicą wyników | link do gry; grę trzeba przejąć w ciągu 7 dni |
-| Pieniądze dla twórcy | 70% przychodu z reklam od dnia akceptacji portalu przez Google AdSense (jeszcze nie) | reklamy przez Playgama po przekroczeniu progu sesji; wypłaty od 100 USD | nie podają | nie podają |
+| Pieniądze dla twórcy | 70% przychodu z reklam w grze, gdy włączymy reklamy (jeszcze nie) | reklamy przez Playgama po przekroczeniu progu sesji; wypłaty od 100 USD | nie podają | nie podają |
 
 Sprawdzone 23 września 2026 w dokumentacji każdego serwisu: [Playgama](https://github.com/Playgama/developer-cabinet-mcp), [AIGameShare](https://www.aigameshare.com/developers), [Playfrog](https://glama.ai/mcp/connectors/games.playfrog/publish). Zasady tamtych serwisów zmieniają się bez zapowiedzi; jeśli coś się rozjechało, napisz, a poprawimy tego samego dnia.
+
+### Na tej stronie
 
 ## Co jeszcze potrafią narzędzia
 
@@ -65,6 +67,7 @@ Sprawdzone 23 września 2026 w dokumentacji każdego serwisu: [Playgama](https:/
 | --- | --- |
 | `klyo_publish_game` | wysyła paczkę i przygotowuje grę do wypuszczenia: nazwa, hasło, opis po angielsku i po polsku, rodzaj, ankieta treści; te same pola i limity co w kreatorze |
 | `klyo_game_stats` | wejścia i zagrania dzień po dniu |
+| `klyo_game_analytics` | dlaczego gracze odpadają: lejek, poziomy i mapa kliknięć, a z testów z linku martwe stuknięcia, szał klikania i błędy gry z dowodem z nagrania |
 | `klyo_game_requirements` | kontrakt produkcyjny gry, pierwsze wywołanie agenta: ekrany, wejście, cykl gry, dźwięk, grafika, warstwa społeczna, test lokalny, bramka jakości, etapy wydania |
 | `klyo_game_scaffold` | Klyo Kit, szkielet gry na poziomie studia: pliki-startery i API (menu, pauza, koniec, dźwięk, motyw, wejście, online, hot-seat); asystent pisze tylko rozgrywkę |
 | `klyo_release_rollback` | cofnięcie gry do poprzedniej wersji jednym ruchem: pliki poprzedniej leżą obok, nic nie trzeba wgrywać |
@@ -100,11 +103,22 @@ Asystent wypełnia dokładnie to, co człowiek klika w studiu. Limity stoją w s
 | Sklepy | `sklep_play` i `sklep_apple`: adresy tej samej gry w Google Play i App Store: odznaki na stronie gry i w tekstach udostępnienia. |
 | Jak grać, partia, układ, wynik | Sterowanie na telefonie i komputerze (do 300 znaków), czas partii (do 40), układ poziom/pion/oba, najwyższy możliwy wynik jako zapora na tablicy. |
 
+## Które klienty AI działają z klyo
+
+Stan na dziś, z naszego dziennika logowań, nie z obietnic. Gdy twój klient nie przechodzi logowania, połącz go kluczem: ten sam adres, te same narzędzia.
+
+- **ChatGPT** działa Logowanie przez klyo (OAuth) w płatnym planie ChatGPT, w przeglądarce, z włączonym trybem dewelopera.
+- **Claude** działa Logowanie przez klyo (OAuth), na stronie i w aplikacjach. Własny łącznik: wklej adres, a pola klienta OAuth zostaw puste.
+- **Własny program albo agent** działa Klucz z dev.klyo.pl w nagłówku `Authorization: Bearer klyo_sk_…`. Bez okna logowania.
+- **Claude Code, Codex, Cursor, VS Code** działa Adres serwera dodajesz jako zdalny serwer MCP i łączysz się logowaniem klyo albo kluczem z dev.klyo.pl w nagłówku. Claude Code i Codex łączą się z klyo na co dzień.
+
+Twój klient zatrzymał się na logowaniu? Serwer odpowiada wtedy kodem invalid_request z opisem. Wygeneruj klucz i podaj go w nagłówku: to działa w każdym kliencie, który pozwala dopisać nagłówek HTTP. Konektor w czacie (claude.ai, ChatGPT) nagle nie łączy się z klyo? Zwykle to awaria po stronie dostawcy czatu, nie klyo: sprawdź jego stronę statusu, a w tym czasie pracuj w Klyo Studio albo z kluczem, bo te drogi łączą się z klyo bezpośrednio.
+
 ## Własny agent: klucz zamiast logowania
 
 Claude i ChatGPT logują się na twoje konto same. Jeśli piszesz własnego agenta albo skrypt, dostaniesz klucz i podasz go w nagłówku. To ta sama droga i te same narzędzia, tylko bez okna logowania.
 
-1. **Wygeneruj klucz w studiu**: Na [dev.klyo.pl](https://dev.klyo.pl/), w polu „Integracja z serwerem (API)”, kliknij „Wygeneruj klucz”. Pokazujemy go raz, więc zapisz go od razu. Klucz zaczyna się od `klyo_sk_` i możesz go w każdej chwili unieważnić.
+1. **Wygeneruj klucz w studiu**: Na [dev.klyo.pl](https://dev.klyo.pl/), w zakładce „MCP i klucz” → „Klucz dla programu” kliknij „Wygeneruj klucz”, a potem „Sprawdź”: zobaczysz, ile narzędzi gier dostanie twój program i czy już się połączył. Pokazujemy go raz, więc zapisz go od razu. Klucz zaczyna się od `klyo_sk_` i możesz go w każdej chwili unieważnić.
 2. **Podaj go przy połączeniu**: Nagłówek `Authorization: Bearer klyo_sk_…` przy adresie `https://panel.klyo.pl/mcp?profil=gry`. Twój agent widzi dokładnie te narzędzia co Claude, ani jednego więcej.
 3. **Sprawdzaj, co robi gra**: Po otwarciu podglądu wywołaj diagnozę. Dostaniesz pliki, o które gra prosiła, a których nie ma w paczce, i błędy z przeglądarki, zamiast zgadywania z białego okna.
 
@@ -142,7 +156,7 @@ Asystent w rozmowie nie ma ekranu, więc do tej pory znał grę tylko z listy b�
 - **Gra potrzebuje zestawu klyo.** Ruchy wykonuje zestaw z `games.klyo.pl/sdk/klyo-gry-sdk.js`. Gra bez niego albo ze starą kopią w paczce odpowiada „bez zestawu”, a asystent mówi, co podmienić.
 - **Jedno granie naraz.** Jedno wywołanie naraz na konto, do 600 na godzinę. Studio schowane w tle wstrzymuje grę, więc trzymaj je na wierzchu, obok rozmowy.
 - **Błędy z tego grania.** Każda sesja ma własny znacznik czujnika, więc `klyo_game_diagnostics` z `sesja` pokazuje wyłącznie błędy z gry asystenta.
-- **Gdy pomiar mówi NIESPRAWDZONA.** Nasz serwer mierzy grę bez karty graficznej, więc gry 3D nie zobaczy i nie da jej zielonego światła. Wtedy obraz z twojego urządzenia pokazuje asystentowi, czy gra działa, a decyzję o wydaniu podejmujesz ty, jak zawsze.
+- **Gdy bramka jakości pisze, że grafiki 3D jeszcze nie widzieliśmy.** Nasz serwer mierzy grę bez karty graficznej, więc gry 3D nie zobaczy i nie da jej zielonego światła. Wtedy obraz z twojego urządzenia pokazuje asystentowi, czy gra działa, a decyzję o wydaniu podejmujesz ty, jak zawsze.
 
 [Instrukcja dla twórcy krok po kroku, z nazwami przycisków ze studia](https://games.klyo.pl/pl/wsparcie/asystent-gra-w-twoja-gre/)
 
@@ -166,7 +180,7 @@ Zwykły człowiek pisze do swojego asystenta „chcę grę w statki”. Asystent
 
 ## Nowa wersja gry: przez asystenta tak samo jak w studiu
 
-Trzy kroki, te same co przyciski „Nowa wersja” i „Wypuść” w studiu. Asystent nie zgaduje, co się zmieniło: mierzymy to z plików i mówimy mu, co z tego wynika dla klipu. **Klip do nowej wersji nagrywasz sam**: w studiu, po wypuszczeniu (okno nagrywania otwiera się samo przy nowym wyglądzie albo funkcji).
+Trzy kroki, te same co przyciski „Nowa wersja” i „Wypuść” w studiu. Asystent nie zgaduje, co się zmieniło: mierzymy to z plików i mówimy mu, co z tego wynika dla klipu. **Klip do nowej wersji nagrywasz sam**: w studiu, po wypuszczeniu. Okno nagrywania otwiera się samo tylko przy nowym wyglądzie; po poprawce i nowej funkcji klip zostaje, a nowy nagrywasz, kiedy chcesz.
 
 1. **Wgraj**: `klyo_update_game` z `slug` i `upload_id` (plik z dysku) albo `zip_url`. Gra w katalogu nie zmienia się od razu: nowa wersja czeka w poczekalni pod własnym adresem podglądu. Odpowiedź: `zmiana` (kod / wygląd / dźwięk w %, nowe pliki i napisy, `podpowiedz`: poprawka | funkcja | interfejs), `adres_nowej`, `wyrok` i `dalej`.
 2. **Zagraj**: To twoje sprawdzenie, nie asystenta: otwórz adres podglądu, najlepiej na telefonie. Studio pokazuje tę samą wersję w oknie gry z torem „wersja → zagraj → wypuść → klip”.
@@ -210,93 +224,91 @@ Bramka łapie błędy, ale nie powie, czy gra wygląda tanio. Dlatego asystent, 
 
 Tablica wyników: gra, która deklaruje wynik (`wynik_max`), a nie wysyła go przez `klyo.score`, nie przejdzie bramki jako gotowa. Gra bez punktów podaje powód w opisie. Przy demo i grze w budowie przegląd można pominąć, a przy samej poprawce (`zmiana: "poprawka"`) też.
 
-## Częste pytania
-
-### Co tu znaczy MCP?
+## Co tu znaczy MCP?
 
 Model Context Protocol: otwarty standard, przez który asystent AI woła narzędzia na cudzych serwerach. To nie jest hosting. Platformą jest klyo games, a MCP to sposób, w jaki twój asystent z nią rozmawia: wysyła paczkę, wypełnia opis i oddaje link do gry.
 
-### Którzy asystenci AI wydadzą grę na klyo?
+## Którzy asystenci AI wydadzą grę na klyo?
 
 Każdy klient, który obsługuje zdalne serwery MCP z logowaniem. Instrukcje krok po kroku mamy dla: Claude (claude.ai, aplikacje i Claude Code), ChatGPT w trybie dewelopera, Cursor, VS Code z Copilotem, opencode i Gemini Enterprise. Adres serwera dodajesz raz; pierwsze wywołanie narzędzia otwiera logowanie klyo i zakłada konto.
 
-### Skąd asystent weźmie adres paczki?
+## Skąd asystent weźmie adres paczki?
 
-Z miejsca, w którym już pracujecie: repozytorium, dysk, własny serwer. Adres musi być publiczny i prowadzić prosto do pliku ZIP, w którym na wierzchu leży `index.html`. Paczka może ważyć do 200 MB i zawierać do 5 000 plików.
+Z miejsca, w którym już pracujecie: repozytorium, dysk, własny serwer. Adres musi być publiczny i prowadzić prosto do pliku ZIP, w którym na wierzchu leży `index.html`. Paczka może ważyć do 350 MB i zawierać do 5 000 plików.
 
-### Czy to działa z Unity i Godotem?
+## Czy to działa z Unity i Godotem?
 
 Tak, jeśli eksportujesz do przeglądarki. Przyjmujemy pliki WebAssembly, dane Unity i paczki Godota tak samo jak zwykły HTML z JavaScriptem.
 
-### Co, jeśli gra nie wstanie?
+## Co, jeśli gra nie wstanie?
 
 Zobaczysz to w podglądzie, zanim cokolwiek wypuścisz. Jeśli grze brakuje pliku, powiemy którego, a przy przenoszeniu z innego portalu dobierzemy brakujące pliki spod adresu źródłowego.
 
-### Czy asystent poprawi grę bez paczki ZIP?
+## Czy asystent poprawi grę bez paczki ZIP?
 
 Tak. `klyo_game_files` czyta pliki gry, a `klyo_game_patch` poprawia pliki tekstowe w warsztacie, obok wersji, w którą grają gracze. Zmiany widzisz w studiu jako „Nowa wersja czeka” i wypuszczasz je jednym kliknięciem. Obrazy i dźwięki nadal podmienia się paczką.
 
-### Agent widzi, co się dzieje w grze?
+## Agent widzi, co się dzieje w grze?
 
 Widzi to, co widziałaby konsola przeglądarki po twojej stronie: pliki, o które gra poprosiła bezskutecznie, i błędy JavaScriptu w kolejności, w jakiej wystąpiły. Zbieramy je, dopóki gra CZEKA: w podglądzie paczki i pod własnym adresem przed twoim kliknięciem „Wypuść do katalogu”. W chwili publikacji przestajemy: gra należy wtedy do gracza i nie wysyła nam niczego.
 
-### Czy klyo płaci za moje AI albo widzi moje logowanie?
+## Czy klyo płaci za moje AI albo widzi moje logowanie?
 
 Nie. Twoje AI działa na twojej subskrypcji, a logowanie zostaje u ciebie, tak jak w VS Code i w Cursorze. My dostajemy tylko gotowy tekst i nic nie publikujemy bez twojej zgody.
 
-### Jak wybrać języki tłumaczenia?
+## Jak wybrać języki tłumaczenia?
 
 W oknie „Przetłumacz swoim AI” klikasz języki, które chcesz. Możesz też napisać w rozmowie „a teraz niemiecki”. Każdy język pojawia się w oknie „Tłumaczenia” do zatwierdzenia.
 
-### Skąd wiem, że moje AI jest połączone z klyo?
+## Skąd wiem, że moje AI jest połączone z klyo?
 
 Okno w studiu pokazuje to po kliknięciu: znak ✓ i nazwę połączonego AI. Pełna lista połączeń i odłączanie są na [stronie połączeń](https://panel.klyo.pl/mcp/connect).
 
-### Dlaczego strony mojej gry nie ma w Google?
+## Dlaczego strony mojej gry nie ma w Google?
 
 Strona gry wchodzi do Google, gdy w danym języku ma co najmniej 220 słów opisu napisanego albo przyjętego przez twórcę oraz nazwę i hasło w tym języku. Krótsza ma zakaz indeksowania, żeby cienka strona nie ciągnęła w dół całego portalu. Tak samo strona, która w ponad 42% powtarza inną stronę gry: wtedy dopisz zdania, które mówią tylko o tej grze. `klyo_my_games` pokazuje przy każdej grze w `tlumaczenia.indeks` powód z liczbami, na przykład „opis ma 198/220 słów”. Strony gier są po polsku i po angielsku, a teksty mogą mieć dziesięć języków.
 
-### Jak sprawdzić, co Google widzi teraz?
+## Jak sprawdzić, co Google widzi teraz?
 
 `klyo_game_stats` z `sprawdz_google: true` pyta Google o strony gry w tej chwili (raz na godzinę na grę) i przy każdej stronie podaje, kiedy pytaliśmy i kiedy robot Google był na niej ostatnio. O ponowne zindeksowanie zwykłej strony prosi się w Search Console przyciskiem przy adresie: Google nie przyjmuje takiej prośby przez API, a mapa witryny zgłasza stronę sama.
 
-### Kiedy powstaje strona kategorii, na przykład pasjans?
+## Kiedy powstaje strona kategorii, na przykład pasjans?
 
 Gdy w kategorii są co najmniej trzy gry. Strona z jedną grą to dla Google kopia kafla, a za takie strony obniża cały portal. Pierwsza gra w kategorii może zajść wysoko sama, stroną gry z pełnym opisem; strona kategorii dołączy przy trzeciej.
 
-### Mój klucz nie widzi części narzędzi. Co zrobić?
+## Mój klucz nie widzi części narzędzi. Co zrobić?
 
 `klyo_status` wypisuje ukryte narzędzia, powód (zakres albo rodzaj konta) i sposób odblokowania. Zakres `klyo:publish` obejmuje poprawki podglądu (`klyo:edit_preview`), a nowe klucze ze studia mają komplet zakresów.
 
-### Sprawdzanie opisu zatrzymało grę. Dlaczego?
+## Sprawdzanie opisu zatrzymało grę. Dlaczego?
 
 Odmowa zawsze podaje słowo, które ją spowodowało. Opis sprawdzamy w języku każdego znacznika (``, ``), a słowa gatunku, jak strzał w Statkach czy strzelanie kulką, nie wymagają zaznaczenia przemocy w ankiecie. Przemoc to zabijanie, krew, broń i gatunek strzelanki.
 
-### Jak usunąć paczkę z poczekalni?
+## Jak usunąć paczkę z poczekalni?
 
 `klyo_delete_game` z `upload_id` zamiast `slug`. Paczka, z której powstała już gra, zostaje, bo jest podglądem tej gry.
 
-### Bramka pisze „wyjątki”, a gra działa. Co to znaczy?
+## Bramka pisze „wyjątki”, a gra działa. Co to znaczy?
 
 Wyjątek to błąd JavaScriptu zgłoszony przez przeglądarkę. Meldunki stanu gry (`stan:`) i dziennik nagrywania (`obraz:`, `kompozyt:`) wyjątkami nie są i wydania nie zatrzymują. Wynik wysyłany przez zestaw trzymany w zmiennej też się liczy: podgląd melduje wtedy „gra wysłała wynik”.
 
-### Czy gry online przetrwają zerwane połączenie?
+## Czy gry online przetrwają zerwane połączenie?
 
 Tak. Każdy ruch ma numer i własny identyfikator. Gdy telefon na chwilę straci sieć, strona po powrocie dociąga ruchy, które ominęły gracza, raz i w kolejności, a ruch wysłany w złej chwili ponawia się sam, bez dublowania. Szybki mecz sam dobiera przeciwnika, a „Wyjdź z pokoju” naprawdę zamyka pokój.
 
-### Odpowiedź narzędzia jest za duża dla asystenta. Co zrobić?
+## Odpowiedź narzędzia jest za duża dla asystenta. Co zrobić?
 
 Użyj `limit`. `klyo_ads_ideas` oddaje najpopularniejsze frazy (domyślnie 50, z liczbą wszystkich), a z `tylko_zarodki` tylko podane frazy z liczbami. `klyo_keyword_map` skraca listy do 40 i liczy stan z całości. `klyo_my_games` niesie przy grze sam wyrok nagrania, bez pomiarów.
 
-### Czy mogę zmierzyć grę w wybranych językach?
+## Czy mogę zmierzyć grę w wybranych językach?
 
 Tak. `klyo_game_diagnostics` z `zmierz`, `pelny` i `jezyki: ["pl","en","de"]` sprawdza dokładnie te języki, razem ze słabym telefonem. Drugi pomiar zamówiony w czasie pierwszego czeka w kolejce i rusza sam.
 
-### Czy asystent może sam zagrać w moją grę?
+## Czy asystent może sam zagrać w moją grę?
 
 Tak, na twoim urządzeniu. Otwórz studio na [dev.klyo.pl](https://dev.klyo.pl/) i kliknij „Pozwól”, gdy asystent poprosi. Gra działa u ciebie, na twojej karcie graficznej, a asystent wysyła ruchy i dostaje zdjęcia ekranu. Serwer klyo gier nie wyświetla, a granie zatrzymasz jednym kliknięciem.
 
-### Czy muszę używać asystenta?
+## Czy muszę używać asystenta?
 
 Nie. Wszystko, co robi narzędzie, zrobisz w przeglądarce na [dev.klyo.pl](https://dev.klyo.pl/): wybierasz paczkę, od razu widzisz grę w oknie i uzupełniasz opis.
 

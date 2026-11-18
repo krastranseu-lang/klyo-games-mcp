@@ -1,8 +1,13 @@
-> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/biale-okno/ · aktualizacja 2026-09-29 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
+> **Strona kanoniczna:** https://games.klyo.pl/pl/wsparcie/biale-okno/ · aktualizacja 2026-11-10 · Plik powstaje automatycznie ze strony klyo games, więc poprawki wprowadzamy na stronie.
 
 # Gra pokazuje białe okno: jak to naprawić
 
 Naciśnij „Pokaż, co się stało” w podglądzie studia. Zobaczysz pliki, o które gra prosiła i których nie dostała, oraz błędy, które rzuciła. Najczęściej winne są wielkie litery w nazwach plików, ścieżki bezwzględne albo skrypty z cudzego serwera.
+
+- 2 min czytania
+- Kroki: 6
+
+### Na tej stronie
 
 ## Zanim zaczniesz
 
@@ -32,13 +37,11 @@ Przeglądarki włączają dźwięk dopiero po pierwszym dotknięciu albo klikni�
 
 Naciśnij **Porozmawiaj z nami** w studiu i wyślij adres gry ze zrzutem ekranu. Przeczyta to człowiek.
 
-## Częste pytania
-
-### Dlaczego gra działa u mnie, a na klyo nie?
+## Dlaczego gra działa u mnie, a na klyo nie?
 
 Zwykle przez wielkie litery w nazwach plików, ścieżki bezwzględne albo pliki z cudzego serwera. Komputer lokalny to wybacza, serwer w sieci już nie.
 
-### Czy asystent AI znajdzie przyczynę?
+## Czy asystent AI znajdzie przyczynę?
 
 Tak. Podłączony przez serwer MCP klyo czyta tę samą diagnozę, brakujące pliki i błędy z przeglądarki, i może poprawić pliki w wersji roboczej, którą potem sam sprawdzasz i wydajesz.
 
